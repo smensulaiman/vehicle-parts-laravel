@@ -47,7 +47,8 @@
                 <div class="dropdown-divider"></div>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <a class="dropdown-item text-danger" href="#">
+                    <a class="dropdown-item text-danger" href="#"
+                       onclick="event.preventDefault(); this.closest('form').submit();">
                         <i class="material-icons md-exit_to_app"></i><span>Logout</span>
                     </a>
                 </form>
