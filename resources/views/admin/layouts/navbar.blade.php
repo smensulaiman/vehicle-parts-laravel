@@ -45,7 +45,12 @@
                 <a class="dropdown-item" href="#"><i class="material-icons md-receipt"></i>Billing</a>
                 <a class="dropdown-item" href="#"><i class="material-icons md-help_outline"></i>Help center</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-danger" href="#"><i class="material-icons md-exit_to_app"></i>Logout</a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a class="dropdown-item text-danger" href="#">
+                        <i class="material-icons md-exit_to_app"></i><span>Logout</span>
+                    </a>
+                </form>
             </div>
         </li>
     </ul>

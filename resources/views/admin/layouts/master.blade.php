@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>Parts Dashboard</title>
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/imgs/theme/favicon.svg')}}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/imgs/theme/favicon.svg')}}"/>
     <!-- Template CSS -->
     <script src="{{asset('assets/js/vendors/color-modes.js')}}"></script>
-    <link href="{{asset('assets/css/main.css?v=6.0')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('assets/css/main.css?v=6.0')}}" rel="stylesheet" type="text/css"/>
 </head>
 
 <body>
@@ -22,9 +22,7 @@
     <header class="main-header navbar">
         @include('admin.layouts.navbar')
     </header>
-    <section class="content-main">
-        @yield('content')
-    </section>
+    @yield('content')
     <!-- content-main end// -->
     <footer class="main-footer font-xs">
         <div class="row pb-30 pt-15">
@@ -33,9 +31,6 @@
                     document.write(new Date().getFullYear());
                 </script>
                 &copy; Parts Management System - Senda Japan Ltd.
-            </div>
-            <div class="col-sm-6">
-                <div class="text-sm-end">All rights reserved</div>
             </div>
         </div>
     </footer>
