@@ -9,22 +9,21 @@
     </div>
     <nav>
         <ul class="menu-aside">
-            <li class="menu-item active">
-                <a class="menu-link" href="index.html">
+            <li class="menu-item {{ setActive(array('admin.dashboard')) }}">
+                <a class="menu-link {{ setActive(array('admin.dashboard')) }}" href="{{ route('admin.dashboard') }}">
                     <i class="icon material-icons md-home"></i>
                     <span class="text">Dashboard</span>
                 </a>
             </li>
-            <li class="menu-item has-submenu">
+            <li class="menu-item has-submenu {{ setActive(array('admin.parts.*')) }}">
                 <a class="menu-link" href="page-products-list.html">
                     <i class="icon material-icons md-shopping_bag"></i>
-                    <span class="text">Products</span>
+                    <span class="text">Parts</span>
                 </a>
                 <div class="submenu">
-                    <a href="page-products-list.html">Product List</a>
-                    <a href="page-products-grid.html">Product grid</a>
-                    <a href="page-products-grid-2.html">Product grid 2</a>
-                    <a href="page-categories.html">Categories</a>
+                    <a class="{{ setActive(array('admin.parts.create')) }}" href="{{ route('admin.parts.create') }}">Import Parts</a>
+                    <a href="#">Create Parts</a>
+                    <a href="">All Parts</a>
                 </div>
             </li>
             <li class="menu-item has-submenu">
