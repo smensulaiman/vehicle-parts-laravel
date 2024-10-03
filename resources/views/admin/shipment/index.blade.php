@@ -8,13 +8,13 @@
 
     <section class="content-main">
         <div class="content-header">
-            <h2 class="content-title">Import</h2>
+            <h2 class="content-title">Import Shipment</h2>
         </div>
         <div class="row">
             <div class="card px-0">
                 <div class="card-header bg-white">
                     <div class="col-xl-6 col-lg-9 col-md-12 ms-auto">
-                        <form action="{{ route('admin.parts.create') }}" method="GET">
+                        <form action="{{ route('admin.shipment.create') }}" method="GET">
                             @csrf
                             <div class="d-flex justify-content-end gap-2">
                                 <input
@@ -37,10 +37,10 @@
                         <div class="row">
                             <div class="col-lg-9">
                                 <div class="table-responsive">
-                                    <table class="table table-hover">
-                                        <thead>
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead class="bg-primary-subtle">
                                         <tr>
-                                            <th>S/N</th>
+                                            <th class="text-center">S/N</th>
                                             <th>Provider Name</th>
                                             <th>Make</th>
                                             <th>Model</th>
@@ -57,7 +57,7 @@
 
                                             @foreach($shippingData->data as $key => $val)
                                                 <tr>
-                                                    <td>{{++$key}}</td>
+                                                    <td class="text-center">{{++$key}}</td>
                                                     <td>{{$val->provider}}</td>
                                                     <td>{{$val->make_title}}</td>
                                                     <td>{{$val->model_title}}</td>
@@ -67,14 +67,13 @@
                                                     <td>{{$val->veh_year}}</td>
                                                     <td>{{$val->purchase_price}}</td>
                                                     <td class="text-center">
-                                                        <a href="#"
-                                                           class="btn btn-sm btn-light font-sm rounded">Details</a>
+                                                        <a href="#" class="btn btn-sm btn-light font-sm rounded">Details</a>
                                                     </td>
                                                 </tr>
                                             @endforeach
                                         @else
                                             <tr>
-                                                <td>No data</td>
+                                                <td class="text-center text-danger" colspan="10">No data</td>
                                             </tr>
                                         @endif
                                         </tbody>
@@ -85,7 +84,7 @@
                             <!-- col end// -->
                             <aside class="col-lg-3">
                                 <div class="box bg-light px-4">
-                                    <h6 class="mt-15">Shipping Details</h6>
+                                    <h6 class="mt-15 text-primary">Shipping Details</h6>
                                     <hr/>
                                     @if($shippingData->shipment)
                                         @foreach($shippingData->shipment as $key => $val)
@@ -93,7 +92,7 @@
                                                 $formattedKey = ucwords(str_replace('_', ' ', $key));
                                             @endphp
                                             <div class="d-flex">
-                                                <h6 class="mb-0">{{ $formattedKey }} : </h6>
+                                                <h6 class="mb-0 text-black">{{ $formattedKey }} : </h6>
                                                 <p class="ms-2 text-sm">{{$val}}</p>
                                             </div>
                                             <br/>
@@ -101,10 +100,10 @@
                                     @endif
                                 </div>
                                 <hr class="my-4"/>
-                                <form action="{{route('admin.parts.store')}}" method="post">
+                                <form action="{{route('admin.shipment.store')}}" method="post">
                                     @csrf
                                     <div class="d-flex justify-content-between">
-                                        <p>{{"Message : $shippingData->message"}}</p>
+                                        <p class="text-muted">{{"Message : $shippingData->message"}}</p>
                                         <input type="hidden" name="booking-id" value="{{$_GET['booking-id']}}">
                                         <button class="btn btn-primary">Click to import</button>
                                     </div>
@@ -113,7 +112,7 @@
                             <!-- col end// -->
                         </div>
                     @else
-                        <p>No Data</p>
+                        <p class="text-center">Please enter a booking id and click search to fetch data.</p>
                     @endif
 
                 </div>

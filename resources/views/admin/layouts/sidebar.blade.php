@@ -15,14 +15,14 @@
                     <span class="text">Dashboard</span>
                 </a>
             </li>
-            <li class="menu-item has-submenu {{ setActive(array('admin.parts.*')) }}">
+            <li class="menu-item has-submenu {{ setActive(array('admin.shipment.*')) }}">
                 <a class="menu-link" href="page-products-list.html">
                     <i class="icon material-icons md-shopping_bag"></i>
-                    <span class="text">Parts</span>
+                    <span class="text">Shipment</span>
                 </a>
                 <div class="submenu">
-                    <a class="{{ setActive(array('admin.parts.create')) }}" href="{{ route('admin.parts.create') }}">Import Parts</a>
-                    <a href="">All Shipments</a>
+                    <a class="{{ setActive(array('admin.shipment.create')) }}" href="{{ route('admin.shipment.create') }}">Import Shipment</a>
+                    <a class="{{ setActive(array('admin.shipment.index')) }}" href="{{ route('admin.shipment.index') }}">All Shipments</a>
                 </div>
             </li>
             <li class="menu-item has-submenu">

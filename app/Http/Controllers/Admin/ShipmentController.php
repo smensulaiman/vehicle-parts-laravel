@@ -15,7 +15,7 @@ use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use stdClass;
 
-class PartsController extends Controller
+class ShipmentController extends Controller
 {
 
     protected ApiService $apiService;
@@ -45,10 +45,10 @@ class PartsController extends Controller
             $this->shippingData = $this->apiService->getBookingData($request->input('booking-id'));
             session()->put(Constants::KEY_SHIPPING, $this->shippingData);
 
-            return view('admin.parts.index')->with('shippingData', $this->shippingData);
+            return view('admin.shipment.index')->with('shippingData', $this->shippingData);
         }
 
-        return view('admin.parts.index');
+        return view('admin.shipment.index');
     }
 
     /**
@@ -92,7 +92,7 @@ class PartsController extends Controller
             // Save the shipment
             $shipmentObject->save();
 
-            // Iterate through vehicle data and save vehicle parts
+            // Iterate through vehicle data and save vehicle shipment
             foreach ($this->shippingData->data as $vehicleData) {
                 $vehicleParts = new VehicleParts();
                 $vehicleParts->shipment_id = $shipmentObject->id;
@@ -148,7 +148,7 @@ class PartsController extends Controller
                 $vehicleParts->veh_central_locking = $vehicleData->veh_central_locking;
                 $vehicleParts->veh_roof_rail = $vehicleData->veh_roof_rail;
 
-                // Save vehicle parts
+                // Save vehicle shipment
                 $vehicleParts->save();
             }
 
