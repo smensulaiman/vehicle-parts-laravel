@@ -126,7 +126,7 @@
                                         </td>
                                         <td><a href="#" class="fw-bold">#VPMS{{$shipment->id}}</a></td>
                                         <td>{{$shipment->provider}}</td>
-                                        <td>{{$shipment->departure}}/td>
+                                        <td>{{$shipment->departure}}</td>
                                         <td>{{$shipment->destination_port}}</td>
                                         <td>{{$shipment->vessel}}</td>
                                         <td>

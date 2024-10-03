@@ -22,8 +22,7 @@
                 </a>
                 <div class="submenu">
                     <a class="{{ setActive(array('admin.parts.create')) }}" href="{{ route('admin.parts.create') }}">Import Parts</a>
-                    <a href="#">Create Parts</a>
-                    <a href="">All Parts</a>
+                    <a href="">All Shipments</a>
                 </div>
             </li>
             <li class="menu-item has-submenu">

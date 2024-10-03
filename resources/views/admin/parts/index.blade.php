@@ -12,7 +12,7 @@
         </div>
         <div class="row">
             <div class="card px-0">
-                <div class="card-header bg-primary-light">
+                <div class="card-header bg-white">
                     <div class="col-xl-6 col-lg-9 col-md-12 ms-auto">
                         <form action="{{ route('admin.parts.create') }}" method="GET">
                             @csrf
@@ -40,194 +40,43 @@
                                     <table class="table table-hover">
                                         <thead>
                                         <tr>
-                                            <th>Transaction ID</th>
-                                            <th>Paid</th>
-                                            <th>Method</th>
-                                            <th>Date</th>
-                                            <th class="text-end">Action</th>
+                                            <th>S/N</th>
+                                            <th>Provider Name</th>
+                                            <th>Make</th>
+                                            <th>Model</th>
+                                            <th>Grade</th>
+                                            <th>Chassis</th>
+                                            <th>KM</th>
+                                            <th>Year</th>
+                                            <th>Price</th>
+                                            <th class="text-center">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td><b>#456667</b></td>
-                                            <td>$294.00</td>
-                                            <td>
-                                                <div class="icontext">
-                                                    <img class="icon border" src="assets/imgs/card-brands/1.png"
-                                                         alt="Payment"/>
-                                                    <span class="text text-muted">Amex</span>
-                                                </div>
-                                            </td>
-                                            <td>16.12.2020, 14:21</td>
-                                            <td class="text-end">
-                                                <a href="#" class="btn btn-sm btn-light font-sm rounded">Details</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>#134768</b></td>
-                                            <td>$294.00</td>
-                                            <td>
-                                                <div class="icontext">
-                                                    <img class="icon border" src="assets/imgs/card-brands/2.png"
-                                                         alt="Payment"/>
-                                                    <span class="text text-muted">Master card</span>
-                                                </div>
-                                            </td>
-                                            <td>16.12.2020, 14:21</td>
-                                            <td class="text-end">
-                                                <a href="#" class="btn btn-sm btn-light font-sm rounded">Details</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>#134768</b></td>
-                                            <td>$294.00</td>
-                                            <td>
-                                                <div class="icontext">
-                                                    <img class="icon border" src="assets/imgs/card-brands/3.png"
-                                                         alt="Payment"/>
-                                                    <span class="text text-muted">Paypal</span>
-                                                </div>
-                                            </td>
-                                            <td>16.12.2020, 14:21</td>
-                                            <td class="text-end">
-                                                <a href="#" class="btn btn-sm btn-light font-sm rounded">Details</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>#134768</b></td>
-                                            <td>$294.00</td>
-                                            <td>
-                                                <div class="icontext">
-                                                    <img class="icon border" src="assets/imgs/card-brands/4.png"
-                                                         alt="Payment"/>
-                                                    <span class="text text-muted">Visa</span>
-                                                </div>
-                                            </td>
-                                            <td>16.12.2020, 14:21</td>
-                                            <td class="text-end">
-                                                <a href="#" class="btn btn-sm btn-light font-sm rounded">Details</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>#887780</b></td>
-                                            <td>$294.00</td>
-                                            <td>
-                                                <div class="icontext">
-                                                    <img class="icon border" src="assets/imgs/card-brands/4.png"
-                                                         alt="Payment"/>
-                                                    <span class="text text-muted">Visa</span>
-                                                </div>
-                                            </td>
-                                            <td>16.12.2020, 14:21</td>
-                                            <td class="text-end">
-                                                <a href="#" class="btn btn-sm btn-light font-sm rounded">Details</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>#344556</b></td>
-                                            <td>$294.00</td>
-                                            <td>
-                                                <div class="icontext">
-                                                    <img class="icon border" src="assets/imgs/card-brands/4.png"
-                                                         alt="Payment"/>
-                                                    <span class="text text-muted">Visa</span>
-                                                </div>
-                                            </td>
-                                            <td>16.12.2020, 14:21</td>
-                                            <td class="text-end">
-                                                <a href="#" class="btn btn-sm btn-light font-sm rounded">Details</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>#134768</b></td>
-                                            <td>$294.00</td>
-                                            <td>
-                                                <div class="icontext">
-                                                    <img class="icon border" src="assets/imgs/card-brands/2.png"
-                                                         alt="Payment"/>
-                                                    <span class="text text-muted">Master card</span>
-                                                </div>
-                                            </td>
-                                            <td>16.12.2020, 14:21</td>
-                                            <td class="text-end">
-                                                <a href="#" class="btn btn-sm btn-light font-sm rounded">Details</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>#134768</b></td>
-                                            <td>$294.00</td>
-                                            <td>
-                                                <div class="icontext">
-                                                    <img class="icon border" src="assets/imgs/card-brands/2.png"
-                                                         alt="Payment"/>
-                                                    <span class="text text-muted">Master card</span>
-                                                </div>
-                                            </td>
-                                            <td>16.12.2020, 14:21</td>
-                                            <td class="text-end">
-                                                <a href="#" class="btn btn-sm btn-light font-sm rounded">Details</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>#998784</b></td>
-                                            <td>$294.00</td>
-                                            <td>
-                                                <div class="icontext">
-                                                    <img class="icon border" src="assets/imgs/card-brands/3.png"
-                                                         alt="Payment"/>
-                                                    <span class="text text-muted">Paypal</span>
-                                                </div>
-                                            </td>
-                                            <td>16.12.2020, 14:21</td>
-                                            <td class="text-end">
-                                                <a href="#" class="btn btn-sm btn-light font-sm rounded">Details</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>#556667</b></td>
-                                            <td>$294.00</td>
-                                            <td>
-                                                <div class="icontext">
-                                                    <img class="icon border" src="assets/imgs/card-brands/3.png"
-                                                         alt="Payment"/>
-                                                    <span class="text text-muted">Paypal</span>
-                                                </div>
-                                            </td>
-                                            <td>16.12.2020, 14:21</td>
-                                            <td class="text-end">
-                                                <a href="#" class="btn btn-sm btn-light font-sm rounded">Details</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>#098989</b></td>
-                                            <td>$294.00</td>
-                                            <td>
-                                                <div class="icontext">
-                                                    <img class="icon border" src="assets/imgs/card-brands/3.png"
-                                                         alt="Payment"/>
-                                                    <span class="text text-muted">Paypal</span>
-                                                </div>
-                                            </td>
-                                            <td>16.12.2020, 14:21</td>
-                                            <td class="text-end">
-                                                <a href="#" class="btn btn-sm btn-light font-sm rounded">Details</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>#134768</b></td>
-                                            <td>$294.00</td>
-                                            <td>
-                                                <div class="icontext">
-                                                    <img class="icon border" src="assets/imgs/card-brands/4.png"
-                                                         alt="Payment"/>
-                                                    <span class="text text-muted">Visa</span>
-                                                </div>
-                                            </td>
-                                            <td>16.12.2020, 14:21</td>
-                                            <td class="text-end">
-                                                <a href="#" class="btn btn-sm btn-light font-sm rounded">Details</a>
-                                            </td>
-                                        </tr>
+                                        @if(optional($shippingData)->data)
+
+                                            @foreach($shippingData->data as $key => $val)
+                                                <tr>
+                                                    <td>{{++$key}}</td>
+                                                    <td>{{$val->provider}}</td>
+                                                    <td>{{$val->make_title}}</td>
+                                                    <td>{{$val->model_title}}</td>
+                                                    <td>{{$val->grade?:'-'}}</td>
+                                                    <td>{{$val->chassis_model.'-'.$val->chassis_number}}</td>
+                                                    <td>{{$val->veh_km}}</td>
+                                                    <td>{{$val->veh_year}}</td>
+                                                    <td>{{$val->purchase_price}}</td>
+                                                    <td class="text-center">
+                                                        <a href="#"
+                                                           class="btn btn-sm btn-light font-sm rounded">Details</a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @else
+                                            <tr>
+                                                <td>No data</td>
+                                            </tr>
+                                        @endif
                                         </tbody>
                                     </table>
                                 </div>
@@ -251,6 +100,15 @@
                                         @endforeach
                                     @endif
                                 </div>
+                                <hr class="my-4"/>
+                                <form action="{{route('admin.parts.store')}}" method="post">
+                                    @csrf
+                                    <div class="d-flex justify-content-between">
+                                        <p>{{"Message : $shippingData->message"}}</p>
+                                        <input type="hidden" name="booking-id" value="{{$_GET['booking-id']}}">
+                                        <button class="btn btn-primary">Click to import</button>
+                                    </div>
+                                </form>
                             </aside>
                             <!-- col end// -->
                         </div>
