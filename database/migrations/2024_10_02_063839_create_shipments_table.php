@@ -20,8 +20,7 @@ return new class extends Migration
             $table->string('term')->nullable();
             $table->string('shipping_port')->nullable();
             $table->string('invoice_customer')->nullable();
-            $table->unsignedBigInteger('branch_id')->nullable();
-            $table->boolean('received')->default(false);
+            $table->enum('status', ['pending', 'in_transit', 'delivered', 'cancelled'])->default('in_transit');
             $table->timestamps();
         });
     }

@@ -10,7 +10,7 @@ class Shipment extends Model
 {
     use HasFactory;
 
-    public function vehicleParts():  HasMany{
-        return $this->hasMany(VehicleParts::class);
+    public function vehicles():  HasMany{
+        return $this->hasMany(Vehicle::class);
     }
 }

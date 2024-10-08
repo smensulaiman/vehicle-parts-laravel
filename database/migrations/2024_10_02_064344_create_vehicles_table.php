@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Shipment;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,9 +12,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vehicle_parts', function (Blueprint $table) {
+        Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('shipment_id'); // Foreign key to shipments table
+            $table->foreignIdFor(Shipment::class)->constrained()->cascadeOnDelete();
             $table->date('input_date')->nullable();
             $table->string('buyer1')->nullable();
             $table->string('provider_name')->nullable();
@@ -68,9 +69,6 @@ return new class extends Migration
             $table->string('veh_central_locking')->default(false);
             $table->string('veh_roof_rail')->default(false);
             $table->timestamps();
-
-            // Foreign key constraint
-            $table->foreign('shipment_id')->references('id')->on('shipments')->onDelete('cascade');
         });
     }
 

@@ -1,7 +1,3 @@
-{{--@php--}}
-{{--dd($shippingData);--}}
-{{--@endphp--}}
-
 @extends('admin.layouts.master')
 
 @section('content')
@@ -10,115 +6,96 @@
         <div class="content-header">
             <h2 class="content-title">Import Shipment</h2>
         </div>
-        <div class="row">
-            <div class="card px-0">
-                <div class="card-header bg-white">
-                    <div class="col-xl-6 col-lg-9 col-md-12 ms-auto">
-                        <form action="{{ route('admin.shipment.create') }}" method="GET">
-                            @csrf
-                            <div class="d-flex justify-content-end gap-2">
-                                <input
-                                    type="text"
-                                    name="booking-id"
-                                    class="form-control border w-25"
-                                    value="{{ request('booking-id', old('booking-id')) }}"
-                                    placeholder="Enter Booking ID"
-                                />
-                                <button type="submit" class="btn btn-md rounded font-sm hover-up">
-                                    Search
-                                </button>
-                            </div>
-                        </form>
 
+        <div class="card mb-4">
+            <header class="card-header">
+                <div class="row align-items-center">
+                    <div class="col-md-3 col-12 me-auto mb-md-0 mb-3">
+                        <h6 class="card-title">Total Shipments {{count($shipments)}}</h6>
+                    </div>
+                    <div class="col-md-2 col-6">
+                        <input type="date" class="form-control"/>
+                    </div>
+                    <div class="col-md-2 col-6">
+                        <div class="custom_select">
+                            <select class="form-select select-nice">
+                                <option selected>Status</option>
+                                <option>All</option>
+                                <option>Paid</option>
+                                <option>Chargeback</option>
+                                <option>Refund</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-                <div class="card-body">
-                    @if(!empty($shippingData))
-                        <div class="row">
-                            <div class="col-lg-9">
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered table-hover">
-                                        <thead class="bg-primary-subtle">
-                                        <tr>
-                                            <th class="text-center">S/N</th>
-                                            <th>Provider Name</th>
-                                            <th>Make</th>
-                                            <th>Model</th>
-                                            <th>Grade</th>
-                                            <th>Chassis</th>
-                                            <th>KM</th>
-                                            <th>Year</th>
-                                            <th>Price</th>
-                                            <th class="text-center">Action</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @if(optional($shippingData)->data)
-
-                                            @foreach($shippingData->data as $key => $val)
-                                                <tr>
-                                                    <td class="text-center">{{++$key}}</td>
-                                                    <td>{{$val->provider}}</td>
-                                                    <td>{{$val->make_title}}</td>
-                                                    <td>{{$val->model_title}}</td>
-                                                    <td>{{$val->grade?:'-'}}</td>
-                                                    <td>{{$val->chassis_model.'-'.$val->chassis_number}}</td>
-                                                    <td>{{$val->veh_km}}</td>
-                                                    <td>{{$val->veh_year}}</td>
-                                                    <td>{{$val->purchase_price}}</td>
-                                                    <td class="text-center">
-                                                        <a href="#" class="btn btn-sm btn-light font-sm rounded">Details</a>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        @else
-                                            <tr>
-                                                <td class="text-center text-danger" colspan="10">No data</td>
-                                            </tr>
-                                        @endif
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- table-responsive.// -->
-                            </div>
-                            <!-- col end// -->
-                            <aside class="col-lg-3">
-                                <div class="box bg-light px-4">
-                                    <h6 class="mt-15 text-primary">Shipping Details</h6>
-                                    <hr/>
-                                    @if($shippingData->shipment)
-                                        @foreach($shippingData->shipment as $key => $val)
-                                            @php
-                                                $formattedKey = ucwords(str_replace('_', ' ', $key));
-                                            @endphp
-                                            <div class="d-flex">
-                                                <h6 class="mb-0 text-black">{{ $formattedKey }} : </h6>
-                                                <p class="ms-2 text-sm">{{$val}}</p>
-                                            </div>
-                                            <br/>
-                                        @endforeach
-                                    @endif
-                                </div>
-                                <hr class="my-4"/>
-                                <form action="{{route('admin.shipment.store')}}" method="post">
-                                    @csrf
-                                    <div class="d-flex justify-content-between">
-                                        <p class="text-muted">{{"Message : $shippingData->message"}}</p>
-                                        <input type="hidden" name="booking-id" value="{{$_GET['booking-id']}}">
-                                        <button class="btn btn-primary">Click to import</button>
-                                    </div>
-                                </form>
-                            </aside>
-                            <!-- col end// -->
-                        </div>
-                    @else
-                        <p class="text-center">Please enter a booking id and click search to fetch data.</p>
-                    @endif
-
+            </header>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <div class="table-responsive">
+                        {{$dataTable->table()}}
+{{--                        <table class="table align-middle table-nowrap mb-0">--}}
+{{--                            <thead class="table-light">--}}
+{{--                            <tr>--}}
+{{--                                <th scope="col" class="text-center">--}}
+{{--                                    <div class="form-check align-middle">--}}
+{{--                                        <input class="form-check-input" type="checkbox" id="transactionCheck01"/>--}}
+{{--                                        <label class="form-check-label" for="transactionCheck01"></label>--}}
+{{--                                    </div>--}}
+{{--                                </th>--}}
+{{--                                <th class="align-middle" scope="col">Booking ID</th>--}}
+{{--                                <th class="align-middle" scope="col">Provider Name</th>--}}
+{{--                                <th class="align-middle" scope="col">Departure Date</th>--}}
+{{--                                <th class="align-middle" scope="col">Destination Port</th>--}}
+{{--                                <th class="align-middle" scope="col">Vessel</th>--}}
+{{--                                <th class="align-middle" scope="col">Status</th>--}}
+{{--                                <th class="align-middle" scope="col">Shipping Port</th>--}}
+{{--                                <th class="align-middle" scope="col">Customer</th>--}}
+{{--                                <th class="align-middle" scope="col">Action</th>--}}
+{{--                            </tr>--}}
+{{--                            </thead>--}}
+{{--                            <tbody>--}}
+{{--                            @if(!empty($shipments))--}}
+{{--                                @foreach($shipments as $shipment)--}}
+{{--                                    <tr>--}}
+{{--                                        <td class="text-center">--}}
+{{--                                            <div class="form-check">--}}
+{{--                                                <input class="form-check-input" type="checkbox"--}}
+{{--                                                       id="transactionCheck02"/>--}}
+{{--                                                <label class="form-check-label" for="transactionCheck02"></label>--}}
+{{--                                            </div>--}}
+{{--                                        </td>--}}
+{{--                                        <td><a href="#" class="fw-bold">#VPMS{{$shipment->id}}</a></td>--}}
+{{--                                        <td>{{$shipment->provider}}</td>--}}
+{{--                                        <td>{{$shipment->departure}}</td>--}}
+{{--                                        <td>{{$shipment->destination_port}}</td>--}}
+{{--                                        <td>{{$shipment->vessel}}</td>--}}
+{{--                                        <td>--}}
+{{--                                            <span class="badge badge-pill badge-soft-success">Shipped</span>--}}
+{{--                                        </td>--}}
+{{--                                        <td>{{$shipment->shipping_port}}</td>--}}
+{{--                                        <td>{{$shipment->invoice_customer}}</td>--}}
+{{--                                        <td>--}}
+{{--                                            <a href="#" class="btn btn-xs">Vehicle details</a>--}}
+{{--                                        </td>--}}
+{{--                                    </tr>--}}
+{{--                                @endforeach--}}
+{{--                            @else--}}
+{{--                                <tr>--}}
+{{--                                    <td>No Data</td>--}}
+{{--                                </tr>--}}
+{{--                            @endif--}}
+{{--                            </tbody>--}}
+{{--                        </table>--}}
+                    </div>
                 </div>
+                <!-- table-responsive end// -->
             </div>
         </div>
-        <!-- row end// -->
+
     </section>
 
 @endsection
+
+@push('scripts')
+    {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
+@endpush

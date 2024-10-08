@@ -16,6 +16,42 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property int $vehicle_id
+ * @property int $shipment_id
+ * @property int $part_name_id
+ * @property string $barcode
+ * @property int $quantity
+ * @property string $price
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Database\Factories\PartFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Part newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Part newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Part query()
+ */
+	class Part extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $name
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|PartName newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PartName newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PartName query()
+ */
+	class PartName extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string|null $departure
  * @property string|null $provider
  * @property string|null $destination_port
@@ -23,11 +59,10 @@ namespace App\Models{
  * @property string|null $term
  * @property string|null $shipping_port
  * @property string|null $invoice_customer
- * @property int|null $branch_id
- * @property int $received
+ * @property string $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\VehicleParts> $vehicleParts
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Vehicle> $vehicleParts
  * @property-read int|null $vehicle_parts_count
  * @method static \Database\Factories\ShipmentFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Shipment newModelQuery()
@@ -82,55 +117,54 @@ namespace App\Models{
  * @property string|null $veh_fuel
  * @property string|null $veh_trans
  * @property string|null $veh_traction
- * @property int|null $veh_km
- * @property int|null $veh_cc
+ * @property string|null $veh_km
+ * @property string|null $veh_cc
  * @property string|null $veh_year
- * @property int|null $veh_month
+ * @property string|null $veh_month
  * @property string|null $veh_color
- * @property int|null $gross_weight
- * @property int|null $net_weight
- * @property int|null $veh_length
- * @property int|null $veh_height
- * @property int|null $veh_width
+ * @property string|null $gross_weight
+ * @property string|null $net_weight
+ * @property string|null $veh_length
+ * @property string|null $veh_height
+ * @property string|null $veh_width
  * @property string|null $other_info
  * @property string|null $engine_type
  * @property string|null $engine_no
- * @property int|null $veh_doors
+ * @property string|null $veh_doors
  * @property string|null $purchase_price
  * @property string|null $veh_steering
  * @property string|null $veh_condition
  * @property string|null $veh_status
- * @property int|null $branch_id
+ * @property string|null $branch_id
  * @property string|null $provider
  * @property string|null $vessel
  * @property string|null $invoice_number
- * @property int $veh_a_c
- * @property int $veh_p_s
- * @property int $veh_abs
- * @property int $veh_p_w
- * @property int $veh_srs
- * @property int $veh_r_spoiler
- * @property int $veh_cd
- * @property int $veh_tv
- * @property int $veh_navigation
- * @property int $veh_a_w
- * @property int $veh_leather_seats
- * @property int $veh_b_t
- * @property int $veh_radio
- * @property int $veh_back_tyre
- * @property int $power_mirror
- * @property int $back_camera
- * @property int $front_camera
- * @property int $veh_central_locking
- * @property int $veh_roof_rail
+ * @property string $veh_a_c
+ * @property string $veh_p_s
+ * @property string $veh_abs
+ * @property string $veh_p_w
+ * @property string $veh_srs
+ * @property string $veh_r_spoiler
+ * @property string $veh_cd
+ * @property string $veh_tv
+ * @property string $veh_navigation
+ * @property string $veh_a_w
+ * @property string $veh_leather_seats
+ * @property string $veh_b_t
+ * @property string $veh_radio
+ * @property string $veh_back_tyre
+ * @property string $power_mirror
+ * @property string $back_camera
+ * @property string $front_camera
+ * @property string $veh_central_locking
+ * @property string $veh_roof_rail
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Shipment $shipment
- * @method static \Database\Factories\VehiclePartsFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|VehicleParts newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|VehicleParts newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|VehicleParts query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Vehicle newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Vehicle newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Vehicle query()
  */
-	class VehicleParts extends \Eloquent {}
+	class Vehicle extends \Eloquent {}
 }
 

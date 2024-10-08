@@ -26,8 +26,7 @@ class ShipmentFactory extends Factory
             'term' => $this->faker->word(),
             'shipping_port' => $this->faker->city(),
             'invoice_customer' => $this->faker->name(),
-            'branch_id' => $this->faker->randomDigitNotNull(),
-            'received' => $this->faker->boolean(),
+            'status' => $this->faker->randomElement(['pending', 'in_transit', 'delivered', 'cancelled']),
         ];
     }
 }

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\DataTables\ShipmentsDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Shipment;
-use App\Models\VehicleParts;
+use App\Models\Vehicle;
 use App\Services\ApiService;
 use App\Utils\Constants;
 use Exception;
@@ -30,9 +31,10 @@ class ShipmentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(ShipmentsDataTable $dataTable)
     {
-
+        $shipments = Shipment::all();
+        return $dataTable->render('admin.shipment.index', compact('shipments'));
     }
 
     /**
@@ -45,10 +47,10 @@ class ShipmentController extends Controller
             $this->shippingData = $this->apiService->getBookingData($request->input('booking-id'));
             session()->put(Constants::KEY_SHIPPING, $this->shippingData);
 
-            return view('admin.shipment.index')->with('shippingData', $this->shippingData);
+            return view('admin.shipment.create')->with('shippingData', $this->shippingData);
         }
 
-        return view('admin.shipment.index');
+        return view('admin.shipment.create');
     }
 
     /**
@@ -94,7 +96,7 @@ class ShipmentController extends Controller
 
             // Iterate through vehicle data and save vehicle shipment
             foreach ($this->shippingData->data as $vehicleData) {
-                $vehicleParts = new VehicleParts();
+                $vehicleParts = new Vehicle();
                 $vehicleParts->shipment_id = $shipmentObject->id;
                 $vehicleParts->input_date = $vehicleData->input_date;
                 $vehicleParts->buyer1 = $vehicleData->buyer1;

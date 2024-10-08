@@ -11,6 +11,8 @@
     <!-- Template CSS -->
     <script src="{{asset('assets/js/vendors/color-modes.js')}}"></script>
     <link href="{{asset('assets/css/main.css?v=6.0')}}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="{{asset('assets/css/vendors/datatables.bootstrap.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
 </head>
 
 <body>
@@ -35,9 +37,11 @@
         </div>
     </footer>
 </main>
-<script src="{{asset('assets/js/vendors/jquery-3.6.0.min.js')}}"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 {{--<script src="{{asset('assets/js/vendors/bootstrap.bundle.min.js')}}"></script>--}}
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 <script src="{{asset('assets/js/vendors/select2.min.js')}}"></script>
 <script src="{{asset('assets/js/vendors/perfect-scrollbar.js')}}"></script>
 <script src="{{asset('assets/js/vendors/jquery.fullscreen.min.js')}}"></script>
@@ -45,5 +49,10 @@
 <!-- Main Script -->
 <script src="{{asset('assets/js/main.js?v=6.0')}}" type="text/javascript"></script>
 <script src="{{asset('assets/js/custom-chart.js')}}" type="text/javascript"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
+
+@stack('scripts')
+
 </body>
 </html>
