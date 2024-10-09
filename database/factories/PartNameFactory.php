@@ -18,6 +18,7 @@ class PartNameFactory extends Factory
     {
         return [
             'name' => $this->faker->unique()->word(),
+            'quantity' => $this->faker->randomDigit(),
         ];
     }
 }

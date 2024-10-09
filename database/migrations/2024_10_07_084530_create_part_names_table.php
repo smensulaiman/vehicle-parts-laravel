@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('part_names', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
+            $table->integer('quantity');
             $table->timestamps();
         });
     }

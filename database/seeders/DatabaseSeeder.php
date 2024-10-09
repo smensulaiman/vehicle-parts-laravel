@@ -33,7 +33,8 @@ class DatabaseSeeder extends Seeder
                         Part::factory()
                             ->create([
                                 'vehicle_id' => $vehicle->id,
-                                'part_name_id' => $partName->id
+                                'part_name_id' => $partName->id,
+                                'quantity' => $partName->quantity
                             ]);
                     }
                 })

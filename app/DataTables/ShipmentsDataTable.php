@@ -22,8 +22,10 @@ class ShipmentsDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'shipments.action')
-            ->setRowId('id');
+            ->setRowId('id')
+            ->addColumn('action', function ($query){
+                return '<a class="btn btn-primary btn-xs" href="">View</a>';
+            });
     }
 
     /**
@@ -65,7 +67,7 @@ class ShipmentsDataTable extends DataTable
     {
         return [
             Column::make('id')->className('text-center'),
-            Column::make('departure'),
+            Column::make('departure')->className('text-center'),
             Column::make('provider'),
             Column::make('destination_port')
                 ->title('Destination Port'),

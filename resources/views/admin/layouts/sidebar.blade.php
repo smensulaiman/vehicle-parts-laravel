@@ -25,6 +25,16 @@
                     <a class="{{ setActive(array('admin.shipment.index')) }}" href="{{ route('admin.shipment.index') }}">All Shipments</a>
                 </div>
             </li>
+            <li class="menu-item has-submenu {{ setActive(array('admin.vehicle.*')) }}">
+                <a class="menu-link" href="page-products-list.html">
+                    <i class="icon material-icons md-shopping_bag"></i>
+                    <span class="text">Vehicle</span>
+                </a>
+                <div class="submenu">
+                    <a class="{{ setActive(array('admin.vehicle.create')) }}" href="{{ route('admin.vehicle.create') }}">Add Vehicle</a>
+                    <a class="{{ setActive(array('admin.vehicle.index')) }}" href="{{ route('admin.vehicle.index') }}">All Vehicles</a>
+                </div>
+            </li>
             <li class="menu-item has-submenu">
                 <a class="menu-link" href="page-orders-1.html">
                     <i class="icon material-icons md-shopping_cart"></i>
