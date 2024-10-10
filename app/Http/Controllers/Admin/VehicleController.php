@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Shipment;
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
 
 class VehicleController extends Controller
@@ -13,8 +14,8 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        $shipments = Shipment::all();
-        return view('admin.vehicles.index', compact('shipments'));
+        $vehicles = Vehicle::all();
+        return view('admin.vehicles.index', compact('vehicles'));
     }
 
     /**
@@ -36,9 +37,9 @@ class VehicleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Vehicle $vehicle)
     {
-        //
+        return view('admin.vehicles.index', compact('vehicle'));
     }
 
     /**

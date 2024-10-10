@@ -17,6 +17,7 @@ class ShipmentsDataTable extends DataTable
     /**
      * Build the DataTable class.
      *
+     *
      * @param QueryBuilder $query Results from query() method.
      */
     public function dataTable(QueryBuilder $query): EloquentDataTable
@@ -24,7 +25,7 @@ class ShipmentsDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->setRowId('id')
             ->addColumn('action', function ($query){
-                return '<a class="btn btn-primary btn-xs" href="">View</a>';
+                return '<a class="btn btn-primary btn-xs" href="'. route('admin.shipment.show', $query->id) .'">View</a>';
             });
     }
 

@@ -176,9 +176,10 @@ class ShipmentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Shipment $shipment)
     {
-        //
+        $vehicles = $shipment->vehicles;
+        return view('admin.vehicles.index', compact('vehicles'));
     }
 
     /**
