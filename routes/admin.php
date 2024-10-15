@@ -20,3 +20,4 @@ Route::resource('vehicle', VehicleController::class);
 
 /* Part */
 Route::resource('part', PartController::class);
+Route::get('part/print/{vehicleId}', [PartController::class, 'print'])->name('part.print');

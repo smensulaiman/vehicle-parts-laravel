@@ -58,6 +58,12 @@ class PartController extends Controller
         //
     }
 
+    public function print($vehicleId)
+    {
+        $parts = Part::where('vehicle_id', $vehicleId)->get();
+        return view('admin.parts.print', compact('parts'));
+    }
+
     /**
      * Remove the specified resource from storage.
      */
