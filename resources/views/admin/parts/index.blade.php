@@ -57,12 +57,16 @@
                                 <th class="align-middle" scope="col">Color</th>
                                 <th class="align-middle" scope="col">Net Weight</th>
                                 <th class="align-middle" scope="col">Gross Weight</th>
-                                <th class="align-middle text-center" scope="col">Action</th>
+                                <th class="align-middle" scope="col">Action</th>
                             </tr>
                             </thead>
                             <tbody>
                             @if(!empty($vehicles))
                                 @foreach($vehicles as $vehicle)
+                                    @php
+                                        //$vehicle = new \App\Models\Vehicle();
+                                     @endphp
+
                                     <tr>
                                         <td class="text-center">
                                             <div class="form-check">
@@ -90,7 +94,7 @@
                                         <td>{{$vehicle->net_weight}}</td>
                                         <td>{{$vehicle->gross_weight}}</td>
                                         <td>
-                                            <a href="{{ route('admin.part.edit', $vehicle->id) }}" class="btn btn-xs text-center">Parts details</a>
+                                            <a href="#" class="btn btn-xs">Parts details</a>
                                         </td>
                                     </tr>
                                 @endforeach

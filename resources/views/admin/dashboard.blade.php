@@ -1,5 +1,3 @@
-@php@endphp
-
 @extends('admin.layouts.master')
 
 @section('content')
