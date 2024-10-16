@@ -4,6 +4,7 @@
  */
 
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\PartsController;
 use App\Http\Controllers\Admin\ShipmentController;
 use App\Http\Controllers\Admin\VehicleController;
 use Illuminate\Support\Facades\Route;
@@ -16,3 +17,6 @@ Route::resource('shipment', ShipmentController::class);
 
 /* Vehicle */
 Route::resource('vehicle', VehicleController::class);
+
+/* Vehicle */
+Route::resource('parts', PartsController::class);

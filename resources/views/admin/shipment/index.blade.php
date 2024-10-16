@@ -4,7 +4,7 @@
 
     <section class="content-main">
         <div class="content-header">
-            <h2 class="content-title">Import Shipment</h2>
+            <h2 class="content-title">Shipments</h2>
         </div>
 
         <div class="card mb-4">

@@ -4,28 +4,14 @@
 
     <section class="content-main">
         <div class="content-header">
-            <h2 class="content-title">Vehicles</h2>
+            <h2 class="content-title">Parts</h2>
         </div>
 
         <div class="card mb-4">
             <header class="card-header">
                 <div class="row align-items-center">
                     <div class="col-md-3 col-12 me-auto mb-md-0 mb-3">
-                        <h6 class="card-title">Total Vehicles</h6>
-                    </div>
-                    <div class="col-md-2 col-6">
-                        <input type="date" class="form-control"/>
-                    </div>
-                    <div class="col-md-2 col-6">
-                        <div class="custom_select">
-                            <select class="form-select select-nice">
-                                <option selected>Status</option>
-                                <option>All</option>
-                                <option>Paid</option>
-                                <option>Chargeback</option>
-                                <option>Refund</option>
-                            </select>
-                        </div>
+                        <h6 class="card-title">Please enter parts data</h6>
                     </div>
                 </div>
             </header>
@@ -57,7 +43,7 @@
                                 <th class="align-middle" scope="col">Color</th>
                                 <th class="align-middle" scope="col">Net Weight</th>
                                 <th class="align-middle" scope="col">Gross Weight</th>
-                                <th class="align-middle text-center" scope="col">Action</th>
+                                <th class="align-middle" scope="col">Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -93,8 +79,8 @@
                                         <td>{{$vehicle->veh_color}}</td>
                                         <td>{{$vehicle->net_weight}}</td>
                                         <td>{{$vehicle->gross_weight}}</td>
-                                        <td class="text-center">
-                                            <a href="{{ route('admin.parts.show', $vehicle->id) }}" class="btn btn-xs">Parts details</a>
+                                        <td>
+                                            <a href="#" class="btn btn-xs">Parts details</a>
                                         </td>
                                     </tr>
                                 @endforeach
