@@ -1,5 +1,4 @@
-@php@endphp
-
+@php use App\Models\Shipment;use App\Models\Vehicle; @endphp
 @extends('admin.layouts.master')
 
 @section('content')
@@ -10,7 +9,8 @@
                 <p>Whole data about your business here</p>
             </div>
             <div>
-                <a href="#" class="btn btn-primary"><i class="text-muted my-auto material-icons md-barcode"></i>GENERATE QR CODE</a>
+                <a href="#" class="btn btn-primary"><i class="text-muted my-auto material-icons md-barcode"></i>GENERATE
+                    BARCODE</a>
             </div>
         </div>
         <div class="row">
@@ -34,7 +34,7 @@
                                 class="text-success material-icons md-directions_boat"></i></span>
                         <div class="text">
                             <h6 class="mb-1 card-title">Shipping</h6>
-                            <span>11</span>
+                            <span>{{ Shipment::count() }}</span>
                             <span class="text-sm"> Including shipping in transit </span>
                         </div>
                     </article>
@@ -47,8 +47,8 @@
                                 class="text-warning material-icons md-qr_code"></i></span>
                         <div class="text">
                             <h6 class="mb-1 card-title">Vehicles</h6>
-                            <span>9.856</span>
-                            <span class="text-sm"> In 19 Categories </span>
+                            <span>{{ Vehicle::count() }}</span>
+                            <span class="text-sm"> In {{ Shipment::count() }} Shipments </span>
                         </div>
                     </article>
                 </div>

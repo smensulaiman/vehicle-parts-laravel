@@ -4,7 +4,7 @@
 
     <section class="content-main">
         <div class="content-header">
-            <h2 class="content-title">Vehicles</h2>
+            <h2 class="content-title">Vehicle List</h2>
         </div>
 
         <div class="card mb-4">
@@ -63,10 +63,6 @@
                             <tbody>
                             @if(!empty($vehicles))
                                 @foreach($vehicles as $vehicle)
-                                    @php
-                                        //$vehicle = new \App\Models\Vehicle();
-                                     @endphp
-
                                     <tr>
                                         <td class="text-center">
                                             <div class="form-check">
@@ -93,8 +89,8 @@
                                         <td>{{$vehicle->veh_color}}</td>
                                         <td>{{$vehicle->net_weight}}</td>
                                         <td>{{$vehicle->gross_weight}}</td>
-                                        <td class="text-center">
-                                            <a href="{{ route('admin.parts.show', $vehicle->id) }}" class="btn btn-xs">Parts details</a>
+                                        <td>
+                                            <a href="{{ route('admin.part.edit', $vehicle->id) }}" class="btn btn-xs text-center">Parts details</a>
                                         </td>
                                     </tr>
                                 @endforeach
