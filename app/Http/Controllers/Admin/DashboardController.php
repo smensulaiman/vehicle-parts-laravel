@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\DataTables\ShipmentsDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Shipment;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function dashboard(): View
+    public function dashboard(ShipmentsDataTable $dataTable)
     {
-        $shipments = Shipment::all();
-
-        return view('admin.dashboard', compact('shipments'));
+        $totalShipment = Shipment::count();
+        return $dataTable->render('admin.dashboard', compact('totalShipment'));
     }
 }

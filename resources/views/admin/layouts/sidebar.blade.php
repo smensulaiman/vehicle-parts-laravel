@@ -35,16 +35,16 @@
                     <a class="{{ setActive(array('admin.vehicle.index')) }}" href="{{ route('admin.vehicle.index') }}">All Vehicles</a>
                 </div>
             </li>
-            <li class="menu-item has-submenu {{ setActive(array('admin.part.*')) }}">
-                <a class="menu-link" href="page-products-list.html">
-                    <i class="icon material-icons md-qr_code"></i>
-                    <span class="text">Part</span>
-                </a>
-                <div class="submenu">
-                    <a class="{{ setActive(array('admin.part.create')) }}" href="{{ route('admin.part.create') }}">Add Part</a>
-                    <a class="{{ setActive(array('admin.part.index')) }}" href="{{ route('admin.part.index') }}">All Parts</a>
-                </div>
-            </li>
+{{--            <li class="menu-item has-submenu {{ setActive(array('admin.part.*')) }}">--}}
+{{--                <a class="menu-link" href="page-products-list.html">--}}
+{{--                    <i class="icon material-icons md-qr_code"></i>--}}
+{{--                    <span class="text">Part</span>--}}
+{{--                </a>--}}
+{{--                <div class="submenu">--}}
+{{--                    <a class="{{ setActive(array('admin.part.create')) }}" href="{{ route('admin.part.create') }}">Add Part</a>--}}
+{{--                    <a class="{{ setActive(array('admin.part.index')) }}" href="{{ route('admin.part.index') }}">All Parts</a>--}}
+{{--                </div>--}}
+{{--            </li>--}}
             <li class="menu-item has-submenu">
                 <a class="menu-link" href="page-orders-1.html">
                     <i class="icon material-icons md-shopping_cart"></i>

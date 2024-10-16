@@ -8,7 +8,6 @@ use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
@@ -24,9 +23,14 @@ class ShipmentsDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->setRowId('id')
+            ->addColumn('status', function ($query){
+                return '<span class="badge badge-pill badge-soft-success font-bold">'.$query->status.'</span>';
+            })
             ->addColumn('action', function ($query){
                 return '<a class="btn btn-primary btn-xs" href="'. route('admin.shipment.show', $query->id) .'">View</a>';
-            });
+            })
+            ->rawColumns(['status', 'action']);
+
     }
 
     /**
@@ -76,7 +80,9 @@ class ShipmentsDataTable extends DataTable
             Column::make('term'),
             Column::make('shipping_port'),
             Column::make('invoice_customer'),
-            Column::make('status'),
+            Column::make('status')
+                ->width(60)
+                ->addClass('text-center'),
             Column::make('created_at'),
             Column::make('updated_at'),
             Column::computed('action')

@@ -33,8 +33,8 @@ class ShipmentController extends Controller
      */
     public function index(ShipmentsDataTable $dataTable)
     {
-        $shipments = Shipment::all();
-        return $dataTable->render('admin.shipment.index', compact('shipments'));
+        $totalShipment = Shipment::count();
+        return $dataTable->render('admin.shipment.index', compact('totalShipment'));
     }
 
     /**
@@ -60,26 +60,18 @@ class ShipmentController extends Controller
     public function store(Request $request)
     {
         try {
-            // Retrieve shipping data from session
             $this->shippingData = session()->get(Constants::KEY_SHIPPING);
 
-            //dd($this->shippingData);
-
-            // Check if shippingData exists
             if (!$this->shippingData || !isset($this->shippingData->shipment)) {
                 throw new Exception('Shipping data is missing or invalid.');
             }
 
-            // Start transaction
             DB::beginTransaction();
 
-            // Extract shipment data
             $shipment = $this->shippingData->shipment;
 
-            // Create a new shipment object
             $shipmentObject = new Shipment();
 
-            // Set shipment properties
             $shipmentObject->id = $request->input('booking-id');
             $shipmentObject->departure = $shipment->departure;
             $shipmentObject->provider = $shipment->provider;
@@ -91,10 +83,8 @@ class ShipmentController extends Controller
             $shipmentObject->branch_id = $shipment->branch_id;
             $shipmentObject->received = $shipment->received;
 
-            // Save the shipment
             $shipmentObject->save();
 
-            // Iterate through vehicle data and save vehicle shipment
             foreach ($this->shippingData->data as $vehicleData) {
                 $vehicleParts = new Vehicle();
                 $vehicleParts->shipment_id = $shipmentObject->id;
@@ -150,7 +140,6 @@ class ShipmentController extends Controller
                 $vehicleParts->veh_central_locking = $vehicleData->veh_central_locking;
                 $vehicleParts->veh_roof_rail = $vehicleData->veh_roof_rail;
 
-                // Save vehicle shipment
                 $vehicleParts->save();
             }
 
@@ -159,13 +148,13 @@ class ShipmentController extends Controller
         } catch (Exception $e) {
             DB::rollBack();
 
-            if ($e->getCode() == 23000) { // Integrity constraint violation code
+            if ($e->getCode() == 23000) {
                 return redirect()->back()->with('error', 'Duplicate entry: This shipment is already in the database.');
             }
 
             return redirect()->back()->with('error', 'Error inserting data: ' . $e->getMessage());
 
-        } catch (NotFoundExceptionInterface|ContainerExceptionInterface $e) {
+        } catch (NotFoundExceptionInterface|ContainerExceptionInterface|\Throwable $e) {
             return redirect()->back()->with('error', 'Error inserting data: ' . $e->getMessage());
         }
 
