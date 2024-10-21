@@ -17,13 +17,14 @@ namespace App\Models{
  *
  * @property int $id
  * @property int $vehicle_id
- * @property int $shipment_id
  * @property int $part_name_id
- * @property string $barcode
+ * @property string|null $barcode
  * @property int $quantity
  * @property string $price
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\PartName $partName
+ * @property-read \App\Models\Vehicle $vehicle
  * @method static \Database\Factories\PartFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Part newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Part newQuery()
@@ -38,8 +39,11 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $name
+ * @property int $quantity
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Part|null $part
+ * @method static \Database\Factories\PartNameFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|PartName newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PartName newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PartName query()
@@ -62,8 +66,8 @@ namespace App\Models{
  * @property string $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Vehicle> $vehicleParts
- * @property-read int|null $vehicle_parts_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Vehicle> $vehicles
+ * @property-read int|null $vehicles_count
  * @method static \Database\Factories\ShipmentFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Shipment newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Shipment newQuery()
@@ -160,7 +164,10 @@ namespace App\Models{
  * @property string $veh_roof_rail
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Part> $parts
+ * @property-read int|null $parts_count
  * @property-read \App\Models\Shipment $shipment
+ * @method static \Database\Factories\VehicleFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Vehicle newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Vehicle newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Vehicle query()
