@@ -3,12 +3,12 @@
 namespace App\DataTables;
 
 use App\Models\Shipment;
+use DateTime;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
 class ShipmentsDataTable extends DataTable
@@ -23,14 +23,31 @@ class ShipmentsDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->setRowId('id')
+            ->addColumn('departure', function ($shipment) {
+                return $shipment->departure
+                    ? '<strong class="text-success" style="font-size: 12px; font-weight: bold;">' . (new DateTime($shipment->departure))->format('Y/m/d') . '</strong>'
+                    : '<strong class="text-danger" style="font-size: 12px; font-weight: bold;">Not Found</strong>';
+            })
+            ->addColumn('provider', function ($shipment) {
+                $brandLogo = asset(strtolower($shipment->provider) === 'karmen' ? '/assets/imgs/brands/karmen-logo.webp' : '/assets/imgs/brands/brand-'. rand(1, 18) .'.jpg');
+                return '<div><img src="'. $brandLogo .'" alt="Company Logo" style="width: auto; height: 24px; margin-right: 10px; vertical-align: middle;">' . $shipment->provider . '</div>';
+            })
+            ->addColumn('destination_port', function ($shipment) {
+                return '<div><i class="text-body-emphasis material-icons md-local_airport" style="width: auto; height: 24px; margin-right: 10px; vertical-align: middle;"></i>' . $shipment->destination_port . '</div>';
+            })
             ->addColumn('status', function ($query){
-                return '<span class="badge badge-pill badge-soft-success font-bold">'.$query->status.'</span>';
+                return '<span class="badge badge-pill badge-soft-success font-bold" style="font-size: 11px">'.$query->status.'</span>';
+            })
+            ->addColumn('created_at', function ($query){
+                return '<span class="font-bold">'.date('Y-m-d', strtotime($query->created_at)).'</span>';
+            })
+            ->addColumn('updated_at', function ($query){
+                return '<span class="font-bold">'.date('Y-m-d', strtotime($query->updated_at)).'</span>';
             })
             ->addColumn('action', function ($query){
                 return '<a class="btn btn-primary btn-xs" href="'. route('admin.shipment.show', $query->id) .'">View</a>';
             })
-            ->rawColumns(['status', 'action']);
-
+            ->rawColumns(['departure', 'provider', 'destination_port', 'status', 'created_at', 'updated_at', 'action']);
     }
 
     /**
@@ -53,7 +70,7 @@ class ShipmentsDataTable extends DataTable
             ->columns($this->getColumns())
             ->minifiedAjax()
             //->dom('Bfrtip')
-            ->orderBy(['id'])
+            ->orderBy(0)
             ->selectStyleSingle()
             ->buttons([
                 Button::make('excel'),
@@ -71,9 +88,9 @@ class ShipmentsDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id')->className('text-center'),
-            Column::make('departure')->className('text-center'),
-            Column::make('provider'),
+            Column::make('id')->className('font-weight-bold text-center'),
+            Column::make('departure')->className('text-center')->width(140),
+            Column::make('provider')->width(280),
             Column::make('destination_port')
                 ->title('Destination Port'),
             Column::make('vessel'),

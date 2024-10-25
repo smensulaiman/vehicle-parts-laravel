@@ -56,7 +56,6 @@ class ShipmentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-
     public function store(Request $request)
     {
         try {
@@ -72,7 +71,6 @@ class ShipmentController extends Controller
 
             $shipmentObject = new Shipment();
 
-            $shipmentObject->id = $request->input('booking-id');
             $shipmentObject->departure = $shipment->departure;
             $shipmentObject->provider = $shipment->provider;
             $shipmentObject->destination_port = $shipment->destination_port;
@@ -80,8 +78,7 @@ class ShipmentController extends Controller
             $shipmentObject->term = $shipment->term;
             $shipmentObject->shipping_port = $shipment->shipping_port;
             $shipmentObject->invoice_customer = $shipment->invoice_customer;
-            $shipmentObject->branch_id = $shipment->branch_id;
-            $shipmentObject->received = $shipment->received;
+            $shipmentObject->status = $shipment->received;
 
             $shipmentObject->save();
 
@@ -147,10 +144,6 @@ class ShipmentController extends Controller
 
         } catch (Exception $e) {
             DB::rollBack();
-
-            if ($e->getCode() == 23000) {
-                return redirect()->back()->with('error', 'Duplicate entry: This shipment is already in the database.');
-            }
 
             return redirect()->back()->with('error', 'Error inserting data: ' . $e->getMessage());
 

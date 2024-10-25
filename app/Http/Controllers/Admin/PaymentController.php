@@ -24,7 +24,7 @@ class PaymentController extends Controller
 
         try {
             $charge = Charge::create([
-                'amount' => $request->amount * 100, // Stripe expects amount in cents
+                'amount' => $request->amount * 100,
                 'currency' => 'usd',
                 'source' => $request->stripeToken,
                 'description' => 'Payment description',

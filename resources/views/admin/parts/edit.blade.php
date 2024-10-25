@@ -44,11 +44,15 @@
                                                 <td>{{ $part->partName->name }}</td>
                                                 <td>
                                                     @php
-                                                        echo '<img src="data:image/png;base64,' . DNS1D::getBarcodePNG(sprintf('%03d', $part->vehicle->id). sprintf('%03d', $part->id), 'C39', 1, 33, array(1,1,1), false) . '" alt="barcode"   />';
+                                                        echo DNS1D::getBarcodeHTML(sprintf('%03d', $part->vehicle->id). sprintf('%03d', $part->id) , 'C39', 2, 50, 'black', false);
+                                                        //echo sprintf('%03d', $part->vehicle->id). sprintf('%03d', $part->id);
+                                                        //echo '<img src="data:image/png;base64,' . DNS1D::getBarcodePNG(sprintf('%03d', $part->vehicle->id). sprintf('%03d', $part->id), 'C39', 2, 33, array(1,1,1), false) . '" alt="barcode"   />';
                                                     @endphp
                                                 </td>
-                                                <td width="40"><input class="form-control text-end" type="text" value="{{ $part->quantity }}"/></td>
-                                                <td><input class="form-control text-end" type="text" value="{{ $part->price }}"/></td>
+                                                <td width="40"><input class="form-control text-end" type="text"
+                                                                      value="{{ $part->quantity }}"/></td>
+                                                <td><input class="form-control text-end" type="text"
+                                                           value="{{ $part->price }}"/></td>
                                             </tr>
                                         @endforeach
                                         </tbody>

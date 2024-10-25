@@ -1,7 +1,3 @@
-{{--@php--}}
-{{--dd($shippingData);--}}
-{{--@endphp--}}
-
 @extends('admin.layouts.master')
 
 @section('content')
@@ -76,7 +72,7 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <!-- table-responsive.// -->
+
                                 </div>
                                 <aside class="col-lg-4">
                                     <div class="box bg-light px-4">
@@ -101,7 +97,7 @@
                                         <div class="d-flex justify-content-between">
                                             <p class="text-muted">{{"Message : $shippingData->message"}}</p>
                                             <input type="hidden" name="booking-id" value="{{$_GET['booking-id']}}">
-                                            <button class="btn btn-primary">Click to import</button>
+                                            <button class="btn btn-primary">Import</button>
                                         </div>
                                     </form>
                                 </aside>

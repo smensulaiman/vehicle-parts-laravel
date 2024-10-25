@@ -25,5 +25,4 @@ Route::get('part/print/{vehicleId}', [PartController::class, 'print'])->name('pa
 
 /* Stripe */
 Route::get('/payment', [PaymentController::class, 'index'])->name('payment.index');
-
 Route::post('/handle-payment', [PaymentController::class, 'handlePayment'])->name('handle.payment');
