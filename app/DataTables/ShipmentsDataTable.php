@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Shipment;
+use Carbon\Carbon;
 use DateTime;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
@@ -25,32 +26,38 @@ class ShipmentsDataTable extends DataTable
             ->setRowId('id')
             ->addColumn('departure', function ($query) {
                 return $query->departure
-                    ? '<strong class="text-success" style="font-size: 12px; font-weight: bold;">' . date('Y/m/d', strtotime($query->departure)) . '</strong>'
+                    ? '<strong class="text-success" style="font-size: 12px; font-weight: bold;">' . Carbon::parse($query->departure)->format('Y/m/d') . '</strong>'
                     : '<strong class="text-danger" style="font-size: 12px; font-weight: bold;">Not Found</strong>';
             })
             ->addColumn('provider', function ($query) {
-                $brandLogo = asset(strtolower($query->provider) === 'karmen' ? '/assets/imgs/brands/karmen-logo.webp' : '/assets/imgs/brands/brand-'. rand(1, 18) .'.jpg');
-                return '<div><img src="'. $brandLogo .'" alt="Company Logo" style="width: auto; height: 24px; margin-right: 10px; vertical-align: middle;">' . $query->provider . '</div>';
+                $brandLogo = asset(strtolower($query->provider) === 'karmen' ? '/assets/imgs/brands/karmen-logo.webp' : '/assets/imgs/brands/brand-' . rand(1, 18) . '.jpg');
+                return '<div><img src="' . e($brandLogo) . '" alt="Company Logo" style="width: auto; height: 24px; margin-right: 10px; vertical-align: middle;">' . e($query->provider) . '</div>';
             })
             ->addColumn('shipping_port', function ($query) {
-                return '<div><i class="text-body-emphasis material-icons md-anchor" style="width: auto; height: 24px; margin-right: 10px; vertical-align: middle;"></i>' . $query->shipping_port . '</div>';
+                return '<div><i class="text-body-emphasis material-icons md-anchor" style="width: auto; height: 24px; margin-right: 10px; vertical-align: middle;"></i>' . e($query->shipping_port ?? 'Not Found') . '</div>';
             })
             ->addColumn('destination_port', function ($query) {
-                return '<div><i class="text-body-emphasis material-icons md-anchor" style="width: auto; height: 24px; margin-right: 10px; vertical-align: middle;"></i>' . $query->destination_port . '</div>';
+                return '<div><i class="text-body-emphasis material-icons md-anchor" style="width: auto; height: 24px; margin-right: 10px; vertical-align: middle;"></i>' . e($query->destination_port) . '</div>';
             })
-            ->addColumn('status', function ($query){
-                return '<span class="badge badge-pill badge-soft-success font-bold" style="font-size: 11px">'.$query->status.'</span>';
+            ->addColumn('vehicles', function ($query) {
+                return $query->vehicles->count();
             })
-            ->addColumn('created_at', function ($query){
-                return '<span class="font-bold">'.date('Y/m/d', strtotime($query->created_at)).'</span>';
+            ->addColumn('status', function ($query) {
+                return '<span class="badge badge-pill badge-soft-success font-bold" style="font-size: 11px">' . e($query->status) . '</span>';
             })
-            ->addColumn('updated_at', function ($query){
-                return '<span class="font-bold">'.date('Y/m/d', strtotime($query->updated_at)).'</span>';
+            ->addColumn('total_purchase', function ($query) {
+                return '<span class="text-success font-bold" style="font-size: 13px">' . number_format(e($query->vehicles->sum('purchase_price'))) . '</span>';
             })
-            ->addColumn('action', function ($query){
-                return '<a class="btn btn-primary btn-xs" href="'. route('admin.shipment.show', $query->id) .'">View</a>';
+            ->addColumn('created_at', function ($query) {
+                return '<span class="font-bold">' . Carbon::parse($query->created_at)->format('Y/m/d') . '</span>';
             })
-            ->rawColumns(['departure', 'provider', 'shipping_port', 'destination_port', 'status', 'created_at', 'updated_at', 'action']);
+            ->addColumn('updated_at', function ($query) {
+                return '<span class="font-bold">' . Carbon::parse($query->updated_at)->format('Y/m/d') . '</span>';
+            })
+            ->addColumn('action', function ($query) {
+                return '<a class="btn btn-primary btn-xs" href="' . route('admin.shipment.show', $query->id) . '">View</a>';
+            })
+            ->rawColumns(['departure', 'provider', 'shipping_port', 'destination_port', 'status', 'total_purchase', 'created_at', 'updated_at', 'action']);
     }
 
     /**
@@ -114,8 +121,10 @@ class ShipmentsDataTable extends DataTable
             Column::make('shipping_port'),
             Column::make('destination_port'),
             Column::make('vessel'),
+            Column::make('vehicles')->width(80)->className('text-center'),
             Column::make('term'),
             Column::make('invoice_customer'),
+            Column::make('total_purchase'),
             Column::make('status')
                 ->width(100)
                 ->addClass('text-center'),

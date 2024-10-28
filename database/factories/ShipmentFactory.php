@@ -19,6 +19,7 @@ class ShipmentFactory extends Factory
     public function definition(): array
     {
         return [
+            'booking_id' => $this->faker->unique()->randomNumber(),
             'departure' => $this->faker->date(),
             'provider' => $this->faker->company(),
             'destination_port' => $this->faker->city(),

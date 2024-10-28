@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('shipments', function (Blueprint $table) {
             $table->id();
+            $table->string('booking_id')->nullable();
             $table->date('departure')->nullable();
             $table->string('provider')->nullable();
             $table->string('destination_port')->nullable();
@@ -20,7 +21,7 @@ return new class extends Migration
             $table->string('term')->nullable();
             $table->string('shipping_port')->nullable();
             $table->string('invoice_customer')->nullable();
-            $table->enum('status', ['pending', 'in_transit', 'delivered', 'cancelled'])->default('in_transit');
+            $table->enum('status', ['pending', 'in_transit', 'delivered', 'cancelled'])->nullable()->default('in_transit');
             $table->timestamps();
         });
     }

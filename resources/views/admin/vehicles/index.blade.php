@@ -57,6 +57,7 @@
                                 <th class="align-middle" scope="col">Color</th>
                                 <th class="align-middle" scope="col">Net Weight</th>
                                 <th class="align-middle" scope="col">Gross Weight</th>
+                                <th class="align-middle" scope="col">Purchase Price</th>
                                 <th class="align-middle text-center" scope="col">Action</th>
                             </tr>
                             </thead>
@@ -89,6 +90,7 @@
                                         <td>{{$vehicle->veh_color}}</td>
                                         <td>{{$vehicle->net_weight}}</td>
                                         <td>{{$vehicle->gross_weight}}</td>
+                                        <td>{{ number_format($vehicle->purchase_price ?? 0) }}</td>
                                         <td>
                                             <a href="{{ route('admin.part.edit', $vehicle->id) }}" class="btn btn-xs text-center">Parts details</a>
                                         </td>

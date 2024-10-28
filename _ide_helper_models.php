@@ -20,7 +20,7 @@ namespace App\Models{
  * @property int $part_name_id
  * @property string|null $barcode
  * @property int $quantity
- * @property string $price
+ * @property string|null $price
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\PartName $partName
@@ -143,25 +143,25 @@ namespace App\Models{
  * @property string|null $provider
  * @property string|null $vessel
  * @property string|null $invoice_number
- * @property string $veh_a_c
- * @property string $veh_p_s
- * @property string $veh_abs
- * @property string $veh_p_w
- * @property string $veh_srs
- * @property string $veh_r_spoiler
- * @property string $veh_cd
- * @property string $veh_tv
- * @property string $veh_navigation
- * @property string $veh_a_w
- * @property string $veh_leather_seats
- * @property string $veh_b_t
- * @property string $veh_radio
- * @property string $veh_back_tyre
- * @property string $power_mirror
- * @property string $back_camera
- * @property string $front_camera
- * @property string $veh_central_locking
- * @property string $veh_roof_rail
+ * @property string|null $veh_a_c
+ * @property string|null $veh_p_s
+ * @property string|null $veh_abs
+ * @property string|null $veh_p_w
+ * @property string|null $veh_srs
+ * @property string|null $veh_r_spoiler
+ * @property string|null $veh_cd
+ * @property string|null $veh_tv
+ * @property string|null $veh_navigation
+ * @property string|null $veh_a_w
+ * @property string|null $veh_leather_seats
+ * @property string|null $veh_b_t
+ * @property string|null $veh_radio
+ * @property string|null $veh_back_tyre
+ * @property string|null $power_mirror
+ * @property string|null $back_camera
+ * @property string|null $front_camera
+ * @property string|null $veh_central_locking
+ * @property string|null $veh_roof_rail
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Part> $parts
