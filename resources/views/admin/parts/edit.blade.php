@@ -14,7 +14,7 @@
             <h2 class="content-title">Edit Part</h2>
         </div>
         <div class="row">
-            <div class="col-xxl-6 col-lg-6 col-md-12">
+            <div class="col-xxl-6 col-lg-12 col-md-12">
                 <form action="" method="POST">
                     <div class="card px-0">
                         <header class="card-header">
@@ -49,10 +49,18 @@
                                                         //echo '<img src="data:image/png;base64,' . DNS1D::getBarcodePNG(sprintf('%03d', $part->vehicle->id). sprintf('%03d', $part->id), 'C39', 2, 33, array(1,1,1), false) . '" alt="barcode"   />';
                                                     @endphp
                                                 </td>
-                                                <td width="40"><input class="form-control text-end" type="text"
-                                                                      value="{{ $part->quantity }}"/></td>
-                                                <td><input class="form-control text-end" type="text"
-                                                           value="{{ $part->price }}"/></td>
+                                                <td width="40">
+                                                    <input class="form-control text-end" type="text"
+                                                           value="{{ $part->quantity }}"/></td>
+                                                <td>
+                                                    <input class="form-control text-end" type="text"
+                                                           value="{{ $part->price }}"/>
+                                                </td>
+                                                <td>
+                                                    <a href="#" class="text-success add-to-cart"
+                                                       onclick="addToCart({{ $part->id }}, {{ $part->quantity }})">Add
+                                                        to cart</a>
+                                                </td>
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -61,7 +69,8 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a href="{{ route('admin.part.print', $vehicleId) }}" class="btn btn-primary" target="_blank"><i class="text-muted my-auto material-icons md-barcode"></i>PRINT BARCODE</a>
+                            <a href="{{ route('admin.part.print', $vehicleId) }}" class="btn btn-primary"
+                               target="_blank"><i class="text-muted my-auto material-icons md-barcode"></i>PRINT BARCODE</a>
                         </div>
                     </div>
                 </form>
@@ -70,3 +79,11 @@
     </section>
 
 @endsection
+
+@push('scripts')
+    <script>
+        function addToCart(partId, quantity) {
+            console.log(partId + ' ' + quantity);
+        }
+    </script>
+@endpush

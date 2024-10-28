@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Shipment;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
 

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\DataTables\ShipmentsDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Shipment;
-use App\Models\Vehicle;
 use App\Services\ApiService;
 use App\Services\PartService;
 use App\Services\VehicleService;
