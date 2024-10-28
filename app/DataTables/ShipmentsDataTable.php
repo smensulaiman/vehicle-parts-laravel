@@ -23,31 +23,34 @@ class ShipmentsDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->setRowId('id')
-            ->addColumn('departure', function ($shipment) {
-                return $shipment->departure
-                    ? '<strong class="text-success" style="font-size: 12px; font-weight: bold;">' . (new DateTime($shipment->departure))->format('Y/m/d') . '</strong>'
+            ->addColumn('departure', function ($query) {
+                return $query->departure
+                    ? '<strong class="text-success" style="font-size: 12px; font-weight: bold;">' . date('Y/m/d', strtotime($query->departure)) . '</strong>'
                     : '<strong class="text-danger" style="font-size: 12px; font-weight: bold;">Not Found</strong>';
             })
-            ->addColumn('provider', function ($shipment) {
-                $brandLogo = asset(strtolower($shipment->provider) === 'karmen' ? '/assets/imgs/brands/karmen-logo.webp' : '/assets/imgs/brands/brand-'. rand(1, 18) .'.jpg');
-                return '<div><img src="'. $brandLogo .'" alt="Company Logo" style="width: auto; height: 24px; margin-right: 10px; vertical-align: middle;">' . $shipment->provider . '</div>';
+            ->addColumn('provider', function ($query) {
+                $brandLogo = asset(strtolower($query->provider) === 'karmen' ? '/assets/imgs/brands/karmen-logo.webp' : '/assets/imgs/brands/brand-'. rand(1, 18) .'.jpg');
+                return '<div><img src="'. $brandLogo .'" alt="Company Logo" style="width: auto; height: 24px; margin-right: 10px; vertical-align: middle;">' . $query->provider . '</div>';
             })
-            ->addColumn('destination_port', function ($shipment) {
-                return '<div><i class="text-body-emphasis material-icons md-local_airport" style="width: auto; height: 24px; margin-right: 10px; vertical-align: middle;"></i>' . $shipment->destination_port . '</div>';
+            ->addColumn('shipping_port', function ($query) {
+                return '<div><i class="text-body-emphasis material-icons md-anchor" style="width: auto; height: 24px; margin-right: 10px; vertical-align: middle;"></i>' . $query->shipping_port . '</div>';
+            })
+            ->addColumn('destination_port', function ($query) {
+                return '<div><i class="text-body-emphasis material-icons md-anchor" style="width: auto; height: 24px; margin-right: 10px; vertical-align: middle;"></i>' . $query->destination_port . '</div>';
             })
             ->addColumn('status', function ($query){
                 return '<span class="badge badge-pill badge-soft-success font-bold" style="font-size: 11px">'.$query->status.'</span>';
             })
             ->addColumn('created_at', function ($query){
-                return '<span class="font-bold">'.date('Y-m-d', strtotime($query->created_at)).'</span>';
+                return '<span class="font-bold">'.date('Y/m/d', strtotime($query->created_at)).'</span>';
             })
             ->addColumn('updated_at', function ($query){
-                return '<span class="font-bold">'.date('Y-m-d', strtotime($query->updated_at)).'</span>';
+                return '<span class="font-bold">'.date('Y/m/d', strtotime($query->updated_at)).'</span>';
             })
             ->addColumn('action', function ($query){
                 return '<a class="btn btn-primary btn-xs" href="'. route('admin.shipment.show', $query->id) .'">View</a>';
             })
-            ->rawColumns(['departure', 'provider', 'destination_port', 'status', 'created_at', 'updated_at', 'action']);
+            ->rawColumns(['departure', 'provider', 'shipping_port', 'destination_port', 'status', 'created_at', 'updated_at', 'action']);
     }
 
     /**
@@ -55,7 +58,13 @@ class ShipmentsDataTable extends DataTable
      */
     public function query(Shipment $model): QueryBuilder
     {
-        return $model->newQuery();
+        $query = $model->newQuery();
+
+        if ($this->disablePagination) {
+            $query->limit($this->limit ?? 10);
+        }
+
+        return $query;
     }
 
     /**
@@ -63,12 +72,23 @@ class ShipmentsDataTable extends DataTable
      */
     public function html(): HtmlBuilder
     {
+        $disablePagination = $this->disablePagination ?? false;
+
         return $this->builder()
             ->setTableId('shipments-table')
             ->addTableClass("table table-striped table-hover align-middle table-nowrap mb-0")
             ->setTableHeadClass("table-light bordered")
             ->columns($this->getColumns())
             ->minifiedAjax()
+            ->parameters(
+                [
+                    'pageLength' => 100,
+                    'lengthMenu' => [25, 50, 100, 500],
+                    'paging' => !$disablePagination,
+                    'searching' => !$disablePagination,
+                    'info' => !$disablePagination
+                ]
+            )
             //->dom('Bfrtip')
             ->orderBy(0)
             ->selectStyleSingle()
@@ -91,17 +111,16 @@ class ShipmentsDataTable extends DataTable
             Column::make('id')->className('font-weight-bold text-center'),
             Column::make('departure')->className('text-center')->width(140),
             Column::make('provider')->width(280),
-            Column::make('destination_port')
-                ->title('Destination Port'),
+            Column::make('shipping_port'),
+            Column::make('destination_port'),
             Column::make('vessel'),
             Column::make('term'),
-            Column::make('shipping_port'),
             Column::make('invoice_customer'),
             Column::make('status')
-                ->width(60)
+                ->width(100)
                 ->addClass('text-center'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+            Column::make('created_at')->className('text-center')->width(140),
+            Column::make('updated_at')->className('text-center')->width(140),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

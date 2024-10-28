@@ -71,7 +71,7 @@
             <header class="card-header">
                 <div class="row align-items-center">
                     <div class="col-md-3 col-12 me-auto mb-md-0 mb-3">
-                        <h6 class="card-title">Total Shipments {{$totalShipment}}</h6>
+                        <h6 class="card-title">Latest Shipments</h6>
                     </div>
                     <div class="col-md-2 col-6">
                         <input type="date" class="form-control"/>

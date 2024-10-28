@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->foreignId('part_name_id')->constrained('part_names')->onDelete('cascade');
             $table->string('barcode')->unique()->nullable()->default(null);
             $table->integer('quantity')->default(1);
-            $table->decimal('price', 8, 2);
+            $table->decimal('price', 8, 2)->nullable()->default(null);
             $table->timestamps();
         });
     }
