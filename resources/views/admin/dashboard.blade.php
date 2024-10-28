@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-6 col-xl-3">
                 <div class="card card-body mb-4">
                     <article class="icontext">
                         <span class="icon icon-sm rounded-circle bg-primary-light"><i
@@ -27,7 +27,7 @@
                     </article>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-6 col-xl-3">
                 <div class="card card-body mb-4">
                     <article class="icontext">
                         <span class="icon icon-sm rounded-circle bg-success-light"><i
@@ -40,7 +40,7 @@
                     </article>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-6 col-xl-3">
                 <div class="card card-body mb-4">
                     <article class="icontext">
                         <span class="icon icon-sm rounded-circle bg-warning-light"><i
@@ -53,7 +53,7 @@
                     </article>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-6 col-xl-3">
                 <div class="card card-body mb-4">
                     <article class="icontext">
                         <span class="icon icon-sm rounded-circle bg-info-light"><i

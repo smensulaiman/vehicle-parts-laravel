@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Part extends Model
@@ -20,4 +21,21 @@ class Part extends Model
     {
         return $this->belongsTo(PartName::class);
     }
+
+    public function sales()
+    {
+        return $this->belongsToMany(Sale::class)
+            ->withPivot('quantity', 'price_at_sale')
+            ->withTimestamps();
+    }
+
+    public function getVehicleInfo(): ?array
+    {
+        return $this->vehicle ? [
+            'make' => $this->vehicle->make,
+            'model' => $this->vehicle->model,
+            'chassis' => $this->vehicle->chassis_number
+        ] : null;
+    }
+
 }
