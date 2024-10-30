@@ -6,7 +6,6 @@
         <div class="content-header">
             <div>
                 <h2 class="content-title card-title">Dashboard</h2>
-                <p>Whole data about your business here</p>
             </div>
             <div>
                 <a href="#" class="btn btn-primary">
@@ -19,8 +18,9 @@
             <div class="col-lg-6 col-xl-3">
                 <div class="card card-body mb-4">
                     <article class="icontext">
-                        <span class="icon icon-sm rounded-circle bg-primary-light"><i
-                                class="text-primary material-icons md-monetization_on"></i></span>
+                        <span class="icon icon-sm rounded-circle bg-primary-light">
+                            <i class="text-primary material-icons md-monetization_on"></i>
+                        </span>
                         <div class="text">
                             <h6 class="mb-1 card-title">Revenue</h6>
                             <span>¥--,---</span>
@@ -32,8 +32,9 @@
             <div class="col-lg-6 col-xl-3">
                 <div class="card card-body mb-4">
                     <article class="icontext">
-                        <span class="icon icon-sm rounded-circle bg-success-light"><i
-                                class="text-success material-icons md-directions_boat"></i></span>
+                        <span class="icon icon-sm rounded-circle bg-success-light">
+                            <i class="text-success material-icons md-directions_boat"></i>
+                        </span>
                         <div class="text">
                             <h6 class="mb-1 card-title">Shipping</h6>
                             <span>{{ Shipment::count() }}</span>
@@ -69,6 +70,149 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-xl-6 col-lg-12">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card mb-4">
+                            <article class="card-body">
+                                <h5 class="card-title">New Customers</h5>
+                                <div class="new-member-list">
+                                    <div class="d-flex align-items-center justify-content-between mb-4">
+                                        <div class="d-flex align-items-center">
+                                            <img src="{{asset('assets/imgs/people/avatar-4.png')}}" alt="" class="avatar" />
+                                            <div>
+                                                <h6>Mohammad Iftikhar</h6>
+                                                <p class="text-muted font-xs">Autocraft Japan Ltd</p>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="btn btn-xs">View</a>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-4">
+                                        <div class="d-flex align-items-center">
+                                            <img src="{{asset('assets/imgs/people/avatar-2.png')}}" alt="" class="avatar" />
+                                            <div>
+                                                <h6>Mohammad Nouman</h6>
+                                                <p class="text-muted font-xs">RZ Tech</p>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="btn btn-xs">View</a>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-4">
+                                        <div class="d-flex align-items-center">
+                                            <img src="{{asset('assets/imgs/people/avatar-3.png')}}" alt="" class="avatar" />
+                                            <div>
+                                                <h6>Md Sulaiman</h6>
+                                                <p class="text-muted font-xs">Senda Japan</p>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="btn btn-xs">View</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card mb-4">
+                            <article class="card-body">
+                                <h5 class="card-title">Recent Sales</h5>
+                                <ul class="verti-timeline list-unstyled font-sm">
+                                    <li class="event-list active">
+                                        <div class="event-timeline-dot">
+                                            <i class="material-icons md-play_circle_outline font-xxl animation-fade-right"></i>
+                                        </div>
+                                        <div class="media">
+                                            <div class="me-3">
+                                                <h6 class="m-0 p-0"><span>Today</span> <i class="material-icons md-trending_flat text-brand ml-15 d-inline-block"></i></h6>
+                                            </div>
+                                            <div class="media-body">
+                                                <div>¥2,560,000</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="event-list">
+                                        <div class="event-timeline-dot">
+                                            <i class="material-icons md-play_circle_outline font-xxl"></i>
+                                        </div>
+                                        <div class="media">
+                                            <div class="me-3">
+                                                <h6><span>29 Oct</span> <i class="material-icons md-trending_flat text-brand ml-15 d-inline-block"></i></h6>
+                                            </div>
+                                            <div class="media-body">
+                                                <div>¥3,220,000</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="event-list">
+                                        <div class="event-timeline-dot">
+                                            <i class="material-icons md-play_circle_outline font-xxl"></i>
+                                        </div>
+                                        <div class="media">
+                                            <div class="me-3">
+                                                <h6><span>28 Oct</span> <i class="material-icons md-trending_flat text-brand ml-15 d-inline-block"></i></h6>
+                                            </div>
+                                            <div class="media-body">
+                                                <div>¥1,580,000</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="event-list">
+                                        <div class="event-timeline-dot">
+                                            <i class="material-icons md-play_circle_outline font-xxl"></i>
+                                        </div>
+                                        <div class="media">
+                                            <div class="me-3">
+                                                <h6><span>27 Oct</span> <i class="material-icons md-trending_flat text-brand ml-15 d-inline-block"></i></h6>
+                                            </div>
+                                            <div class="media-body">
+                                                <div>¥560,000</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="event-list">
+                                        <div class="event-timeline-dot">
+                                            <i class="material-icons md-play_circle_outline font-xxl"></i>
+                                        </div>
+                                        <div class="media">
+                                            <div class="me-3">
+                                                <h6><span>26 Oct</span> <i class="material-icons md-trending_flat text-brand ml-15 d-inline-block"></i></h6>
+                                            </div>
+                                            <div class="media-body">
+                                                <div>¥60,000</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-12">
+                <div class="card mb-4">
+                    <article class="card-body">
+                        <h5 class="card-title">Sale By Make</h5>
+                        <span class="text-muted font-xs">Toyota Parts</span>
+                        <div class="progress mb-3">
+                            <div class="progress-bar" role="progressbar" style="width: 40%">40%</div>
+                        </div>
+                        <span class="text-muted font-xs">BMW Parts</span>
+                        <div class="progress mb-3">
+                            <div class="progress-bar" role="progressbar" style="width: 35%">35%</div>
+                        </div>
+                        <span class="text-muted font-xs">Suzuki Parts</span>
+                        <div class="progress mb-3">
+                            <div class="progress-bar" role="progressbar" style="width: 15%">15%</div>
+                        </div>
+                        <span class="text-muted font-xs">Nissan Parts</span>
+                        <div class="progress mb-3">
+                            <div class="progress-bar" role="progressbar" style="width: 10%">10%</div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+
         <div class="card mb-4">
             <header class="card-header">
                 <div class="row align-items-center">

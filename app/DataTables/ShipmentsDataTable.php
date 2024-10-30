@@ -2,11 +2,9 @@
 
 namespace App\DataTables;
 
-use App\Enums\ShipmentStatus;
 use App\Models\Shipment;
 use App\Utils\ColorUtils;
 use Carbon\Carbon;
-use DateTime;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -85,7 +83,7 @@ class ShipmentsDataTable extends DataTable
 
         return $this->builder()
             ->setTableId('shipments-table')
-            ->addTableClass("table table-striped table-hover align-middle table-nowrap mb-0")
+            ->addTableClass("table table-hover align-middle table-nowrap mb-0")
             ->setTableHeadClass("table-light bordered")
             ->columns($this->getColumns())
             ->minifiedAjax()
@@ -135,7 +133,7 @@ class ShipmentsDataTable extends DataTable
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
-                ->width(60)
+                ->width(80)
                 ->addClass('text-center')
         ];
     }
