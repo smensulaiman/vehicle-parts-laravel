@@ -61,7 +61,7 @@
                                                         <td>{{$val->chassis_model.'-'.$val->chassis_number}}</td>
                                                         <td>{{$val->veh_km}}</td>
                                                         <td>{{$val->veh_year}}</td>
-                                                        <td>{{$val->purchase_price}}</td>
+                                                        <td>¥{{$val->purchase_price}}</td>
                                                     </tr>
                                                 @endforeach
                                             @else

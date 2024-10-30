@@ -90,7 +90,7 @@
                                         <td>{{$vehicle->veh_color}}</td>
                                         <td>{{$vehicle->net_weight}}</td>
                                         <td>{{$vehicle->gross_weight}}</td>
-                                        <td>{{ number_format($vehicle->purchase_price ?? 0) }}</td>
+                                        <td>¥{{ number_format($vehicle->purchase_price ?? 0) }}</td>
                                         <td>
                                             <a href="{{ route('admin.part.edit', $vehicle->id) }}" class="btn btn-xs text-center">Parts details</a>
                                         </td>

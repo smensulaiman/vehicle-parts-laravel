@@ -23,7 +23,7 @@
                                 class="text-primary material-icons md-monetization_on"></i></span>
                         <div class="text">
                             <h6 class="mb-1 card-title">Revenue</h6>
-                            <span>$--,---</span>
+                            <span>¥--,---</span>
                             <span class="text-sm"> Shipping fees are not included </span>
                         </div>
                     </article>
@@ -62,7 +62,7 @@
                                 class="text-info material-icons md-shopping_basket"></i></span>
                         <div class="text">
                             <h6 class="mb-1 card-title">Monthly Earning</h6>
-                            <span>$--,---</span>
+                            <span>¥--,---</span>
                             <span class="text-sm"> Based in your local time. </span>
                         </div>
                     </article>

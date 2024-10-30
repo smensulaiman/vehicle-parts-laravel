@@ -2,7 +2,9 @@
 
 namespace App\DataTables;
 
+use App\Enums\ShipmentStatus;
 use App\Models\Shipment;
+use App\Utils\ColorUtils;
 use Carbon\Carbon;
 use DateTime;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
@@ -26,7 +28,7 @@ class ShipmentsDataTable extends DataTable
             ->setRowId('id')
             ->addColumn('departure', function ($query) {
                 return $query->departure
-                    ? '<strong class="text-success" style="font-size: 12px; font-weight: bold;">' . Carbon::parse($query->departure)->format('Y/m/d') . '</strong>'
+                    ? '<strong style="font-size: 12px; font-weight: bold; color: #3BB77E">' . Carbon::parse($query->departure)->format('Y/m/d') . '</strong>'
                     : '<strong class="text-danger" style="font-size: 12px; font-weight: bold;">Not Found</strong>';
             })
             ->addColumn('provider', function ($query) {
@@ -34,19 +36,19 @@ class ShipmentsDataTable extends DataTable
                 return '<div><img src="' . e($brandLogo) . '" alt="Company Logo" style="width: auto; height: 24px; margin-right: 10px; vertical-align: middle;">' . e($query->provider) . '</div>';
             })
             ->addColumn('shipping_port', function ($query) {
-                return '<div><i class="text-body-emphasis material-icons md-anchor" style="width: auto; height: 24px; margin-right: 10px; vertical-align: middle;"></i>' . e($query->shipping_port ?? 'Not Found') . '</div>';
+                return '<div><i class="text-body-emphasis material-icons md-anchor" style="width: auto; font-size: 14px; margin-right: 10px; vertical-align: middle;"></i>' . e($query->shipping_port ?? 'Not Found') . '</div>';
             })
             ->addColumn('destination_port', function ($query) {
-                return '<div><i class="text-body-emphasis material-icons md-anchor" style="width: auto; height: 24px; margin-right: 10px; vertical-align: middle;"></i>' . e($query->destination_port) . '</div>';
+                return '<div><i class="text-body-emphasis material-icons md-anchor" style="width: auto; font-size: 14px; margin-right: 10px; vertical-align: middle;"></i>' . e($query->destination_port) . '</div>';
             })
             ->addColumn('vehicles', function ($query) {
                 return $query->vehicles->count();
             })
             ->addColumn('status', function ($query) {
-                return '<span class="badge badge-pill badge-soft-success font-bold" style="font-size: 11px">' . e($query->status) . '</span>';
+                return '<span class="badge badge-pill ' . ColorUtils::$badgeClasses[$query->status] . ' font-bold" style="font-size: 11px">' . e($query->status) . '</span>';
             })
             ->addColumn('total_purchase', function ($query) {
-                return '<span class="text-success font-bold" style="font-size: 13px">' . number_format(e($query->vehicles->sum('purchase_price'))) . '</span>';
+                return '<span class="text-success font-bold" style="font-size: 13px">¥' . number_format(e($query->vehicles->sum('purchase_price'))) . '</span>';
             })
             ->addColumn('created_at', function ($query) {
                 return '<span class="font-bold">' . Carbon::parse($query->created_at)->format('Y/m/d') . '</span>';
@@ -117,7 +119,7 @@ class ShipmentsDataTable extends DataTable
         return [
             Column::make('id')->className('font-weight-bold text-center'),
             Column::make('departure')->className('text-center')->width(140),
-            Column::make('provider')->width(280),
+            Column::make('provider'),
             Column::make('shipping_port'),
             Column::make('destination_port'),
             Column::make('vessel'),
