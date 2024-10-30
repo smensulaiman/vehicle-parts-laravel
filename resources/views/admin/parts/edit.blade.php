@@ -17,11 +17,58 @@
             <div class="col-xxl-8 col-lg-12 col-md-12">
                 <form action="" method="POST">
                     <div class="card px-0">
-                        <header class="card-header dark">
-                            <div class="row align-items-center">
-                                <div class="col-md-3 col-12 me-auto mb-md-0 mb-3">
-                                    <h6 class="card-title">Total Parts</h6>
+                        <header class="card-header">
+                            <div class="card mb-4">
+                                <div class="card-header bg-brand-2" style="height: 150px"></div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-xl col-lg flex-grow-0" style="flex-basis: 230px">
+                                            <div class="img-thumbnail shadow w-100 bg-white position-relative text-center" style="height: 190px; width: 200px; margin-top: -120px">
+                                                <img src="{{asset('assets/imgs/brands/toyota.png')}}" class="center-xy img-fluid" alt="Logo Brand">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl col-lg">
+                                            <h3>{{ $parts->first()->vehicle->make_title }}</h3>
+                                            <p>3891 Ranchview Dr. Richardson, California 62639</p>
+                                        </div>
+                                        <div class="col-xl col-lg text-md-end">
+                                            <a href="#" class="btn btn-primary"> View Shipping </a>
+                                        </div>
+                                        <!--  col.// -->
+                                    </div>
+                                    <!-- card-body.// -->
+                                    <hr class="my-4">
+                                    <div class="row g-4">
+                                        <div class="col-lg-12 col-xl-4">
+                                            <article class="box">
+                                                <p class="mb-0 text-muted">Total sales:</p>
+                                                <h5 class="text-success">238</h5>
+                                                <p class="mb-0 text-muted">Revenue:</p>
+                                                <h5 class="text-success mb-0">$2380</h5>
+                                            </article>
+                                        </div>
+                                        <!--  col.// -->
+                                        <div class="col-lg-12 col-xl-4">
+                                            <h6>Contacts</h6>
+                                            <p>
+                                                Manager: Jerome Bell <br>
+                                                info@example.com <br>
+                                                (229) 555-0109, (808) 555-0111
+                                            </p>
+                                        </div>
+                                        <!--  col.// -->
+                                        <div class="col-lg-12 col-xl-4">
+                                            <h6>Address</h6>
+                                            <p>
+                                                Country: California <br>
+                                                Address: Ranchview Dr. Richardson <br>
+                                                Postal code: 62639
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <!--  row.// -->
                                 </div>
+                                <!--  card-body.// -->
                             </div>
                         </header>
                         <div class="card-body">

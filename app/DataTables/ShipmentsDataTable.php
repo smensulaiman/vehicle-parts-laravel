@@ -31,7 +31,7 @@ class ShipmentsDataTable extends DataTable
             })
             ->addColumn('provider', function ($query) {
                 $brandLogo = asset(strtolower($query->provider) === 'karmen' ? '/assets/imgs/brands/karmen-logo.webp' : '/assets/imgs/brands/brand-' . rand(1, 18) . '.jpg');
-                return '<div><img src="' . e($brandLogo) . '" alt="Company Logo" style="width: auto; height: 24px; margin-right: 10px; vertical-align: middle;">' . e($query->provider) . '</div>';
+                return '<div><img src="' . e($brandLogo) . '" alt="' . e($query->provider) . '" style="width: auto; height: 24px; margin-right: 10px; vertical-align: middle;"></div>';
             })
             ->addColumn('shipping_port', function ($query) {
                 return '<div><i class="text-body-emphasis material-icons md-anchor" style="width: auto; font-size: 14px; margin-right: 10px; vertical-align: middle;"></i>' . e($query->shipping_port ?? 'Not Found') . '</div>';
