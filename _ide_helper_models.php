@@ -24,6 +24,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\PartName $partName
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Sale> $sales
+ * @property-read int|null $sales_count
  * @property-read \App\Models\Vehicle $vehicle
  * @method static \Database\Factories\PartFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Part newModelQuery()
@@ -56,6 +58,26 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property int $part_id
+ * @property int $quantity_sold
+ * @property string $price_at_sale
+ * @property string $sold_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Part> $parts
+ * @property-read int|null $parts_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Sale newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Sale newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Sale query()
+ */
+	class Sale extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string|null $departure
  * @property string|null $provider
  * @property string|null $destination_port
@@ -63,7 +85,7 @@ namespace App\Models{
  * @property string|null $term
  * @property string|null $shipping_port
  * @property string|null $invoice_customer
- * @property string $status
+ * @property string|null $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Vehicle> $vehicles

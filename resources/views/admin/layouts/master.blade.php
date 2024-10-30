@@ -13,6 +13,7 @@
     <link href="{{asset('assets/css/main.css?v=6.0')}}" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="{{asset('assets/css/vendors/datatables.bootstrap.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
+    @livewireStyles
 </head>
 
 <body>
@@ -53,6 +54,7 @@
 <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
 
 @stack('scripts')
+@livewireScripts
 
 </body>
 </html>

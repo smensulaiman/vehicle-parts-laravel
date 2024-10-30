@@ -9,6 +9,7 @@
         "anayarojo/shoppingcart": "^4.2",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
+        "livewire/livewire": "^3.5",
         "milon/barcode": "^11.0",
         "php-flasher/flasher-laravel": "^2.0",
         "stripe/stripe-php": "^16.1",

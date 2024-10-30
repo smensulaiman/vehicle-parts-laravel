@@ -3,6 +3,7 @@
  * Admin Routes
  */
 
+use App\Http\Controllers\Admin\CartController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\PartController;
 use App\Http\Controllers\Admin\PaymentController;
@@ -22,6 +23,9 @@ Route::resource('vehicle', VehicleController::class);
 /* Part */
 Route::resource('part', PartController::class);
 Route::get('part/print/{vehicleId}', [PartController::class, 'print'])->name('part.print');
+
+/* Cart */
+Route::resource('cart', CartController::class);
 
 /* Stripe */
 Route::get('/payment', [PaymentController::class, 'index'])->name('payment.index');
