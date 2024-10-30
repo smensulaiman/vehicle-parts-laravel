@@ -9,8 +9,10 @@
                 <p>Whole data about your business here</p>
             </div>
             <div>
-                <a href="#" class="btn btn-primary"><i class="text-muted my-auto material-icons md-barcode"></i>GENERATE
-                    BARCODE</a>
+                <a href="#" class="btn btn-primary">
+                    <i class="text-muted my-auto material-icons md-barcode"></i>
+                    <span>GENERATE BARCODE</span>
+                </a>
             </div>
         </div>
         <div class="row">
@@ -21,7 +23,7 @@
                                 class="text-primary material-icons md-monetization_on"></i></span>
                         <div class="text">
                             <h6 class="mb-1 card-title">Revenue</h6>
-                            <span>$13,456.5</span>
+                            <span>$--,---</span>
                             <span class="text-sm"> Shipping fees are not included </span>
                         </div>
                     </article>
@@ -60,7 +62,7 @@
                                 class="text-info material-icons md-shopping_basket"></i></span>
                         <div class="text">
                             <h6 class="mb-1 card-title">Monthly Earning</h6>
-                            <span>$6,982</span>
+                            <span>$--,---</span>
                             <span class="text-sm"> Based in your local time. </span>
                         </div>
                     </article>

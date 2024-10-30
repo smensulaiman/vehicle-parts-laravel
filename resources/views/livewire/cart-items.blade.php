@@ -1,8 +1,8 @@
 <div class="row">
     <div class="col-xxl-6 col-lg-12">
-        Hello Hello Jonogon
+        Cart Table
     </div>
     <div class="col-xxl-6 col-lg-12">
-        Hello Hello Jonogon
+        Parts List Table
     </div>
 </div>
