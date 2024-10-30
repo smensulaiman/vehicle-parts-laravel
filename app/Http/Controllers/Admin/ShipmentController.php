@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\DataTables\ShipmentsDataTable;
+use App\Enums\ShipmentStatus;
 use App\Http\Controllers\Controller;
 use App\Models\Shipment;
 use App\Services\ApiService;
@@ -19,7 +20,6 @@ use stdClass;
 
 class ShipmentController extends Controller
 {
-
     protected ApiService $apiService;
     protected VehicleService $vehicleService;
     protected PartService $partService;
@@ -83,7 +83,7 @@ class ShipmentController extends Controller
             $shipmentObject->term = $shipment->term;
             $shipmentObject->shipping_port = $shipment->shipping_port;
             $shipmentObject->invoice_customer = $shipment->invoice_customer;
-            $shipmentObject->status = $shipment->received;
+            $shipmentObject->status = !empty($shipment->received) ? $shipment->received : ShipmentStatus::IN_TRANSIT->value;
 
             $shipmentObject->save();
 
