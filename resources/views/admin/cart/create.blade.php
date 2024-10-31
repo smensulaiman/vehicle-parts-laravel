@@ -6,7 +6,9 @@
         <div class="content-header">
             <h2 class="content-title">Cart</h2>
         </div>
-        @livewire('cart-items')
+
+        <p>Hello world</p>
+{{--        @livewire('cart-items')--}}
     </section>
 
 @endsection
