@@ -10,7 +10,6 @@
         <p>Hello world</p>
 {{--        @livewire('cart-items')--}}
         <p>This is a conflict test</p>
-        @livewire('cart-items')
     </section>
 
 @endsection

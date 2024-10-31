@@ -28,9 +28,9 @@ namespace App\Models{
  * @property-read int|null $sales_count
  * @property-read \App\Models\Vehicle $vehicle
  * @method static \Database\Factories\PartFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|Part newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Part newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Part query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Part newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Part newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Part query()
  */
 	class Part extends \Eloquent {}
 }
@@ -42,13 +42,15 @@ namespace App\Models{
  * @property int $id
  * @property string $name
  * @property int $quantity
+ * @property string|null $price
+ * @property int $is_generic
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Part|null $part
  * @method static \Database\Factories\PartNameFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|PartName newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|PartName newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|PartName query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PartName newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PartName newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PartName query()
  */
 	class PartName extends \Eloquent {}
 }
@@ -58,17 +60,17 @@ namespace App\Models{
  * 
  *
  * @property int $id
- * @property int $part_id
  * @property int $quantity_sold
  * @property string $price_at_sale
+ * @property string|null $comment
  * @property string $sold_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Part> $parts
  * @property-read int|null $parts_count
- * @method static \Illuminate\Database\Eloquent\Builder|Sale newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Sale newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Sale query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Sale newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Sale newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Sale query()
  */
 	class Sale extends \Eloquent {}
 }
@@ -78,6 +80,7 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property string|null $booking_id
  * @property string|null $departure
  * @property string|null $provider
  * @property string|null $destination_port
@@ -91,9 +94,9 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Vehicle> $vehicles
  * @property-read int|null $vehicles_count
  * @method static \Database\Factories\ShipmentFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|Shipment newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Shipment newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Shipment query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Shipment newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Shipment newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Shipment query()
  */
 	class Shipment extends \Eloquent {}
 }
@@ -107,7 +110,7 @@ namespace App\Models{
  * @property string|null $username
  * @property string $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
- * @property mixed $password
+ * @property string $password
  * @property string|null $image
  * @property string|null $phone
  * @property string $role
@@ -118,9 +121,9 @@ namespace App\Models{
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
  * @method static \Database\Factories\UserFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|User query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User query()
  */
 	class User extends \Eloquent {}
 }
@@ -190,9 +193,9 @@ namespace App\Models{
  * @property-read int|null $parts_count
  * @property-read \App\Models\Shipment $shipment
  * @method static \Database\Factories\VehicleFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|Vehicle newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Vehicle newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Vehicle query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Vehicle newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Vehicle newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Vehicle query()
  */
 	class Vehicle extends \Eloquent {}
 }

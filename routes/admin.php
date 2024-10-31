@@ -5,6 +5,7 @@
 
 use App\Http\Controllers\Admin\CartController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\PartCategoryController;
 use App\Http\Controllers\Admin\PartController;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\ShipmentController;
@@ -23,6 +24,9 @@ Route::resource('vehicle', VehicleController::class);
 /* Part */
 Route::resource('part', PartController::class);
 Route::get('part/print/{vehicleId}', [PartController::class, 'print'])->name('part.print');
+
+/* Part Category */
+Route::resource('part-category', PartCategoryController::class);
 
 /* Cart */
 Route::resource('cart', CartController::class);

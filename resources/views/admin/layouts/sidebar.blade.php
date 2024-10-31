@@ -25,14 +25,14 @@
                     <a class="{{ setActive(array('admin.shipment.index')) }}" href="{{ route('admin.shipment.index') }}">All Shipments</a>
                 </div>
             </li>
-            <li class="menu-item has-submenu {{ setActive(array('admin.vehicle.*', 'admin.part.index')) }}">
-                <a class="menu-link" href="page-products-list.html">
+            <li class="menu-item has-submenu {{ setActive(array('admin.vehicle.*', 'admin.part-category.*')) }}">
+                <a class="menu-link" href="#">
                     <i class="icon material-icons md-local_shipping"></i>
                     <span class="text">Vehicle</span>
                 </a>
                 <div class="submenu">
                     <a class="{{ setActive(array('admin.vehicle.index')) }}" href="{{ route('admin.vehicle.index') }}">Vehicles</a>
-                    <a class="{{ setActive(array('admin.part.index')) }}" href="{{ route('admin.part.index') }}">Parts Category</a>
+                    <a class="{{ setActive(array('admin.part-category.index')) }}" href="{{ route('admin.part-category.index') }}">Parts Category</a>
                 </div>
             </li>
 {{--            <li class="menu-item has-submenu {{ setActive(array('admin.part.*')) }}">--}}
