@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\PartName;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,29 +14,29 @@ class PartCategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
         $partNames = PartName::orderBy('name')->get();
-        return view('admin.parts.index' , compact('partNames'));
+        return view('admin.parts.category.index' , compact('partNames'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
-        return view('admin.parts.create');
+        return view('admin.parts.category.create');
     }
 
     /**
      * Store a newly created resource in storage.
+     * @throws \Throwable
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         DB::beginTransaction();
 
         try {
-
             $partName = new PartName();
             $partName->name = strtoupper($request->input('category_name'));
             $partName->quantity = $request->input('default_quantity');
@@ -65,7 +67,7 @@ class PartCategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        dd('hello');
     }
 
     /**
