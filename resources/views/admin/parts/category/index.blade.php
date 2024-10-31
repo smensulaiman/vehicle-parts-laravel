@@ -45,7 +45,7 @@
                                                 <td class="border-1 text-center">{{$partName->is_generic ? 'yes' : 'no'}}</td>
                                                 <td class="border-1 px-0">
                                                     <div class="d-flex justify-content-evenly text-end">
-                                                        <a href="{{ route('admin.part-category.edit') }}" class="btn btn-sm font-sm rounded btn-brand"> <i class="material-icons md-edit"></i> Edit </a>
+                                                        <a href="#" class="btn btn-sm font-sm rounded btn-brand"> <i class="material-icons md-edit"></i> Edit </a>
                                                         <a href="#" class="btn btn-sm font-sm btn-light rounded"> <i class="material-icons md-delete_forever"></i> Delete </a>
                                                     </div>
                                                 </td>
