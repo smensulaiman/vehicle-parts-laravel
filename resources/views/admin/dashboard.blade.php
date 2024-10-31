@@ -16,7 +16,7 @@
         </div>
         <div class="row">
             <div class="col-lg-6 col-xl-3">
-                <div class="card card-body mb-4">
+                <div class="card card-body bg-11 mb-4">
                     <article class="icontext">
                         <span class="icon icon-sm rounded-circle bg-primary-light">
                             <i class="text-primary material-icons md-monetization_on"></i>
@@ -30,10 +30,10 @@
                 </div>
             </div>
             <div class="col-lg-6 col-xl-3">
-                <div class="card card-body mb-4">
+                <div class="card card-body bg-12 mb-4">
                     <article class="icontext">
                         <span class="icon icon-sm rounded-circle bg-success-light">
-                            <i class="text-success material-icons md-directions_boat"></i>
+                            <i class="text-danger material-icons md-directions_boat"></i>
                         </span>
                         <div class="text">
                             <h6 class="mb-1 card-title">Shipping</h6>
@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="col-lg-6 col-xl-3">
-                <div class="card card-body mb-4">
+                <div class="card card-body bg-13 mb-4">
                     <article class="icontext">
                         <span class="icon icon-sm rounded-circle bg-warning-light"><i
                                 class="text-warning material-icons md-qr_code"></i></span>
@@ -57,7 +57,7 @@
                 </div>
             </div>
             <div class="col-lg-6 col-xl-3">
-                <div class="card card-body mb-4">
+                <div class="card card-body bg-8 mb-4">
                     <article class="icontext">
                         <span class="icon icon-sm rounded-circle bg-info-light"><i
                                 class="text-info material-icons md-shopping_basket"></i></span>
