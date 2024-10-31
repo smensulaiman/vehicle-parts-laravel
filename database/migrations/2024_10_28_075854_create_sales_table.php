@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('quantity_sold');
             $table->decimal('price_at_sale', 8, 2);
+            $table->string('comment')->nullable();
             $table->timestamp('sold_at');
             $table->timestamps();
         });

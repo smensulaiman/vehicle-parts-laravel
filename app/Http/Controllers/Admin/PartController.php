@@ -13,7 +13,8 @@ class PartController extends Controller
      */
     public function index()
     {
-        return view('admin.parts.index');
+        $name = "solaiman";
+        return view('admin.parts.index' , compact('name'));
     }
 
     /**

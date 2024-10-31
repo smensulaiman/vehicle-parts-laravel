@@ -5,7 +5,7 @@
     <section class="content-main">
         <div class="content-header">
             <div>
-                <h2 class="content-title card-title">Parts Categories</h2>
+                <h2 class="content-title card-title">Parts Categories {{$name}}</h2>
             </div>
             <div>
                 <a href="#" class="btn btn-primary btn-sm rounded">Create new</a>
@@ -39,15 +39,11 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @if(!empty($vehicles))
-                                        @foreach($vehicles as $vehicle)
-                                            @php
-                                                //$vehicle = new \App\Models\Vehicle();
-                                            @endphp
-
+                                    @if(!empty($partNames))
+                                        @foreach($partNames as $partName)
                                             <tr>
-                                                <td><a href="#" class="fw-bold">#{{$vehicle->id}}</a></td>
-                                                <td>{{$vehicle->make_title}}</td>
+                                                <td><a href="#" class="fw-bold">#{{$partName->id}}</a></td>
+                                                <td>{{$partName->name}}</td>
                                                 <td>{{$vehicle->model_title}}</td>
                                                 <td>{{$vehicle->chassis_model}}</td>
                                                 <td>{{$vehicle->chassis_number}}</td>
