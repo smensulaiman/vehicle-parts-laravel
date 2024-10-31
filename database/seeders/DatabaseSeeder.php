@@ -18,15 +18,15 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-        $this->call([
-            UserSeeder::class,
-            PartNamesSeeder::class
-        ]);
+//        $this->call([
+//            UserSeeder::class,
+//            PartNamesSeeder::class
+//        ]);
 
         Shipment::factory()
-            ->count(10)
+            ->count(50)
             ->has(Vehicle::factory()
-                ->count(5)
+                ->count(10)
                 ->afterCreating(function (Vehicle $vehicle) {
                     $partsName = PartName::all();
                     foreach ($partsName as $partName) {

@@ -9,6 +9,7 @@ use App\Models\Shipment;
 use App\Services\ApiService;
 use App\Services\PartService;
 use App\Services\VehicleService;
+use App\Utils\Constant;
 use App\Utils\Constants;
 use Exception;
 use Illuminate\Contracts\View\View;
@@ -50,7 +51,7 @@ class ShipmentController extends Controller
 
         if ($request->filled('booking-id')) {
             $this->shippingData = $this->apiService->getBookingData($request->input('booking-id'));
-            session()->put(Constants::KEY_SHIPPING, $this->shippingData);
+            session()->put(Constant::KEY_SHIPPING, $this->shippingData);
 
             return view('admin.shipment.create')->with('shippingData', $this->shippingData);
         }
@@ -64,7 +65,7 @@ class ShipmentController extends Controller
     public function store(Request $request)
     {
         try {
-            $this->shippingData = session()->get(Constants::KEY_SHIPPING);
+            $this->shippingData = session()->get(Constant::KEY_SHIPPING);
 
             if (!$this->shippingData || !isset($this->shippingData->shipment)) {
                 throw new Exception('Shipping data is missing or invalid.');
