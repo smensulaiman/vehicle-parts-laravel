@@ -16,7 +16,8 @@
                     <header class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <h6 class="card-title">Total Vehicles</h6>
-                            <a href="{{ route('admin.part-category.create') }}" class="btn btn-primary btn-sm rounded">Create New</a>
+                            <a href="{{ route('admin.part-category.create') }}" class="btn btn-primary btn-sm rounded">Create
+                                New</a>
                         </div>
                     </header>
                     <div class="card-body">
@@ -24,46 +25,47 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered table-nowrap mb-0" style="table-layout: auto">
                                     <thead class="table-light border-1">
-                                    <tr>
-                                        <th class="align-middle" scope="col" width="60">S/N</th>
-                                        <th class="align-middle" scope="col">Part Name</th>
-                                        <th class="align-middle text-center" scope="col">Quantity</th>
-                                        <th class="align-middle text-end" scope="col">Price</th>
-                                        <th class="align-middle" scope="col">Generic</th>
-                                        <th class="align-middle text-center" scope="col">Action</th>
-                                    </tr>
+                                        <tr>
+                                            <th class="align-middle" scope="col" width="60">S/N</th>
+                                            <th class="align-middle" scope="col">Part Name</th>
+                                            <th class="align-middle text-center" scope="col">Quantity</th>
+                                            <th class="align-middle text-end" scope="col">Price</th>
+                                            <th class="align-middle" scope="col">Generic</th>
+                                            <th class="align-middle text-center" scope="col">Action</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
 
-                                    @if(!empty($partNames))
-                                        @foreach($partNames as $partName)
-                                            <tr>
-                                                <td class="border-1 text-center">
-                                                    <a href="#" class="fw-bold">#{{$partName->id}}</a>
-                                                </td>
-                                                <td class="border-1">{{$partName->name}}</td>
-                                                <td class="text-center border-1">{{$partName->quantity}}</td>
-                                                <td class="text-end border-1">{{$partName->price}}</td>
-                                                <td class="border-1 text-center">{{$partName->is_generic ? 'yes' : 'no'}}</td>
-                                                <td class="border-1 px-0">
-                                                    <div class="d-flex justify-content-evenly text-end">
-                                                        <a href="#" class="btn btn-sm font-sm rounded btn-brand">
-                                                            <i class="material-icons md-edit"></i>
-                                                            <span>Edit</span>
-                                                        </a>
-                                                        <a href="#" class="btn btn-sm font-sm btn-light rounded">
-                                                            <i class="material-icons md-delete_forever"></i>
-                                                            <span>Delete</span>
-                                                        </a>
-                                                    </div>
-                                                </td>
+                                        @if (!empty($partNames))
+                                            @foreach ($partNames as $partName)
+                                                <tr>
+                                                    <td class="border-1 text-center">
+                                                        <a href="#" class="fw-bold">#{{ $partName->id }}</a>
+                                                    </td>
+                                                    <td class="border-1">{{ $partName->name }}</td>
+                                                    <td class="text-center border-1">{{ $partName->quantity }}</td>
+                                                    <td class="text-end border-1">{{ $partName->price }}</td>
+                                                    <td class="border-1 text-center">
+                                                        {{ $partName->is_generic ? 'yes' : 'no' }}</td>
+                                                    <td class="border-1 px-0">
+                                                        <div class="d-flex justify-content-evenly text-end">
+                                                            <a href="#" class="btn btn-sm font-sm rounded btn-brand">
+                                                                <i class="material-icons md-edit"></i>
+                                                                <span>Edit</span>
+                                                            </a>
+                                                            <a href="#" class="btn btn-sm font-sm btn-light rounded">
+                                                                <i class="material-icons md-delete_forever"></i>
+                                                                <span>Delete</span>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @else
+                                            <tr class="text-center">
+                                                <td class="text-danger" colspan="5">No Data</td>
                                             </tr>
-                                        @endforeach
-                                    @else
-                                        <tr class="text-center">
-                                            <td class="text-danger" colspan="5">No Data</td>
-                                        </tr>
-                                    @endif
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>

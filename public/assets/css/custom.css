@@ -1,4 +1,4 @@
-.border-1{
+.border-1 {
     border: 1px solid rgba(60, 63, 65, 0.15);
 }
 
@@ -64,4 +64,21 @@
 
 .bg-grey-9 {
     background-color: #f4f5f9 !important;
+}
+
+
+
+/* input number field remove the increase decrease default button */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0;
+    /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    /* Firefox */
 }
