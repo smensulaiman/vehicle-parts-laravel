@@ -7,7 +7,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <div class="card " style="min-width: 18rem;">
+                <div class="card">
                     <div class="card-body">
                         <div class="row gx-5">
                             <!-- Table Part 1 -->
@@ -22,49 +22,45 @@
                                 <div class="table-responsive pt-3">
                                     <table class="table table-bordered table-hover">
                                         <thead class="table-light">
-                                        <tr class="text-center">
-                                            <th scope="col">#SN</th>
-                                            <th scope="col">Item</th>
-                                            <th scope="col">Price</th>
-                                            <th scope="col">Quantity</th>
-                                            <th scope="col">Action</th>
-                                        </tr>
+                                            <tr class="text-center">
+                                                <th scope="col">#SN</th>
+                                                <th scope="col">Item</th>
+                                                <th scope="col">Price</th>
+                                                <th scope="col">Quantity</th>
+                                                <th scope="col">Action</th>
+                                            </tr>
                                         </thead>
                                         <tbody class="text-center">
-                                        <tr>
-                                            <th scope="row"><a href="#" class="fw-bold">#1</a></th>
-                                            <td>Mark</td>
-                                            <td>¥299.99</td>
-                                            <td>700</td>
-                                            <td>
-                                                <a href="#" class="btn btn-md rounded font-sm">
-                                                    <i class="fas fa-add"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                <a href="#" class="fw-bold">#2</a>
-                                            </th>
-                                            <td>Jacob</td>
-                                            <td>¥299.99</td>
-                                            <td>400</td>
-                                            <td>
-                                                <a href="#" class="btn btn-md rounded font-sm">
-                                                    <i class="fas fa-add"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><a href="#" class="fw-bold">#3</a></th>
-                                            <td>Larry the Bird</td>
-                                            <td>¥299.99</td>
-                                            <td>300</td>
-                                            <td>
-                                                <a href="#" class="btn btn-md rounded font-sm"><i
-                                                        class="fas fa-add"></i></a>
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <th scope="row"><a href="#" class="fw-bold">#1</a></th>
+                                                <td>Mark</td>
+                                                <td>¥299.99</td>
+                                                <td>700</td>
+                                                <td>
+                                                    <a href="#" class="btn btn-md rounded font-sm"><i
+                                                            class="fas fa-shopping-cart"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"><a href="#" class="fw-bold">#2</a></th>
+                                                <td>Jacob</td>
+                                                <td>¥299.99</td>
+                                                <td>400</td>
+                                                <td>
+                                                    <a href="#" class="btn btn-md rounded font-sm"><i
+                                                            class="fas fa-shopping-cart"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"><a href="#" class="fw-bold">#3</a></th>
+                                                <td>Larry the Bird</td>
+                                                <td>¥299.99</td>
+                                                <td>300</td>
+                                                <td>
+                                                    <a href="#" class="btn btn-md rounded font-sm"><i
+                                                            class="fas fa-shopping-cart"></i></a>
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
 
@@ -84,77 +80,78 @@
 
                                     <table class="table table-bordered table-hover">
                                         <thead class="table-light">
-                                        <tr class="border-bottom text-center">
-                                            <th scope="col">Item</th>
-                                            <th scope="col">Price</th>
-                                            <th scope="col">Quantity</th>
-                                            <th scope="col">Total</th>
-                                            <th scope="col">Action</th>
-                                        </tr>
+                                            <tr class="border-bottom text-center">
+                                                <th scope="col">Item</th>
+                                                <th scope="col">Price</th>
+                                                <th scope="col">Quantity</th>
+                                                <th scope="col">Total</th>
+                                                <th scope="col">Action</th>
+                                            </tr>
                                         </thead>
                                         <tbody class="text-center">
-                                        <tr class="border-bottom">
-                                            <td class="d-flex justify-items-center align-items-center gap-3 p-3">
-                                                <div>
-                                                    <img style="height:4rem; width:4rem; object-fit: contain;"
-                                                         src="../../assets/imgs/car-parts/tier.jpg" alt="Product 1"
-                                                         class="img-fluid">
-                                                </div>
-                                                <div>
-                                                    <p>Product Name</p>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p>¥299.99</p>
-                                            </td>
-                                            <td>
-                                                <div class="input-group d-flex justify-content-center ">
-                                                    <div class="btn btn-light btn-sm">+</div>
-                                                    <input type="number" class="form-control text-center w-25"
-                                                           value="1">
-                                                    <div class="btn btn-light btn-sm">-</div>
-                                                </div>
-                                            </td>
-                                            <td class="text-center">
-                                                <p>¥299.99</p>
-                                            </td>
-                                            <td>
-                                                <a href="#" class="btn btn-md rounded font-sm"><i
-                                                        class="fas fa-trash"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr class="border-bottom">
-                                            <td
-                                                class="d-flex justify-items-center align-items-center gap-3 p-3 text-center">
-                                                <div>
-                                                    <img style="height:4rem; width:4rem; object-fit: contain;"
-                                                         src="../../assets/imgs/car-parts/steering.jpg" alt="Product 2"
-                                                         class="img-fluid">
-                                                </div>
-                                                <div>
-                                                    <p>Product Name</p>
-                                                </div>
-                                            </td>
-                                            <td class="text-center">
-                                                <p>¥100.00</p>
-                                            </td>
-                                            <td class="text-center">
-                                                <div class="input-group">
-                                                    <div class="btn btn-light btn-sm">+</div>
-                                                    <input type="number" class="form-control text-center w-25"
-                                                           value="1">
-                                                    <div class="btn btn-light btn-sm">-</div>
-                                                </div>
-                                            </td>
-                                            <td class="text-center">
-                                                <p>¥100.00</p>
-                                            </td>
-                                            <td class="text-center">
-                                                <a href="#" class="btn btn-md rounded font-sm">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
+                                            <tr class="border-bottom">
+                                                <td class="d-flex justify-items-center align-items-center gap-3 p-3">
+                                                    <div>
+                                                        <img style="height:4rem; width:4rem; object-fit: contain;"
+                                                            src="../../assets/imgs/car-parts/tier.jpg" alt="Product 1"
+                                                            class="img-fluid">
+                                                    </div>
+                                                    <div>
+                                                        <p>Product Name</p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <p>¥299.99</p>
+                                                </td>
+                                                <td>
+                                                    <div class="input-group d-flex justify-content-center ">
+
+                                                        <div class="btn btn-light btn-sm">-</div>
+                                                        <input type="number" class="form-control text-center"
+                                                            value="1" style="width:4rem;">
+                                                        <div class="btn btn-light btn-sm">+</div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <p>¥299.99</p>
+                                                </td>
+                                                <td>
+                                                    <a href="#" class="btn btn-instagram rounded font-sm"><i
+                                                            class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr class="border-bottom">
+                                                <td
+                                                    class="d-flex justify-items-center align-items-center gap-3 p-3 text-center">
+                                                    <div>
+                                                        <img style="height:4rem; width:4rem; object-fit: contain;"
+                                                            src="../../assets/imgs/car-parts/steering.jpg" alt="Product 2"
+                                                            class="img-fluid">
+                                                    </div>
+                                                    <div>
+                                                        <p>Product Name</p>
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <p>¥100.00</p>
+                                                </td>
+                                                <td class="text-center">
+                                                    <div class="input-group">
+
+                                                        <div class="btn btn-light btn-sm">-</div>
+                                                        <input type="number" class="form-control text-center"
+                                                            value="1" style="width:4rem;">
+                                                        <div class="btn btn-light btn-sm">+</div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <p>¥100.00</p>
+                                                </td>
+                                                <td class="text-center">
+                                                    <a href="#" class="btn btn-instagram rounded font-sm"> <i
+                                                            class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
                                         </tbody>
 
                                     </table>
@@ -186,7 +183,10 @@
                                     </div>
 
                                 </div>
+
                             </div>
+
+
                         </div>
                     </div>
                 </div>
