@@ -12,6 +12,52 @@
                         <div class="row">
                             <!-- Table Part 1 -->
                             <div class="col-xxl-12 col-xl-12 col-sm-12">
+                                <header>
+                                    <h4 class="d-flex align-items-center justify-content-center">
+                                        <span>
+                                            <i class="fas fa-filters"></i>
+                                        </span>
+                                        <span class="ms-2">Filters</span>
+                                    </h4>
+                                </header>
+                                <div class="pt-3 row">
+                                    <div class="col-lg-12">
+                                        <label for="make" class="pb-1 ps-1 fw-bold text-primary">
+                                            <span>Make</span>
+                                        </label>
+                                        <select class="form-select p-2" multiple aria-label="multiple select example"
+                                            name="make" id="make" style="height: 7rem;overflow-y: scroll;">
+                                            <option class="p-2" value="">Select Menu</option>
+                                            <option class="p-2" value="1">One</option>
+                                            <option class="p-2" value="2">Two</option>
+                                            <option class="p-2" value="3">Three</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-12 pt-2">
+                                        <label for="make" class="pb-1 ps-1 fw-bold text-primary">
+                                            <span>Model</span>
+                                        </label>
+                                        <select class="form-select p-2" multiple aria-label="multiple select example"
+                                            name="make" id="make" style="height: 7rem;overflow-y: scroll;">
+                                            <option class="p-2" value="">Select Menu</option>
+                                            <option class="p-2" value="1">One</option>
+                                            <option class="p-2" value="2">Two</option>
+                                            <option class="p-2" value="3">Three</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-12 pt-2">
+                                        <label for="make" class="pb-1 ps-1 fw-bold text-primary">
+                                            <span>Model Grade</span>
+                                        </label>
+                                        <select class="form-select p-2" multiple aria-label="multiple select example"
+                                            name="make" id="make" style="height: 7rem;overflow-y: scroll;">
+                                            <option class="p-2" value="">Select Menu</option>
+                                            <option class="p-2" value="1">One</option>
+                                            <option class="p-2" value="2">Two</option>
+                                            <option class="p-2" value="3">Three</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
