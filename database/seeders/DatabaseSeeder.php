@@ -34,7 +34,8 @@ class DatabaseSeeder extends Seeder
                             ->create([
                                 'vehicle_id' => $vehicle->id,
                                 'part_name_id' => $partName->id,
-                                'quantity' => $partName->quantity
+                                'quantity' => $partName->quantity,
+                                'price' => $partName->price
                             ]);
                     }
                 })

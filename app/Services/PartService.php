@@ -22,6 +22,7 @@ class PartService
             $part->vehicle_id = $vehicleId;
             $part->part_name_id = $partName->id;
             $part->quantity = $partName->quantity;
+            $part->price = $partName->price;
             $part->save();
         }
     }
