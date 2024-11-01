@@ -6,12 +6,12 @@
             <h2 class="content-title">Cart</h2>
         </div>
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-6">
                 <div class="card">
                     <div class="card-body">
                         <div class="row gx-5">
                             <!-- Table Part 1 -->
-                            <div class="col-xxl-6 col-xl-12 col-sm-12">
+                            <div class="col-xxl-12 col-xl-12 col-sm-12">
                                 <h4 class="d-flex align-items-center justify-content-center">
                                     <span>
                                         <i class="fas fa-list"></i>
@@ -67,8 +67,17 @@
                                 </div>
                             </div>
 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row gx-5">
                             <!-- Checkout Part 2 -->
-                            <div class="col-xxl-6 col-xl-12 col-sm-12">
+                            <div class="col-xxl-12 col-xl-12 col-sm-12">
                                 <h4 class="d-flex align-items-center justify-content-center">
                                     <span>
                                         <i class="fas fa-shopping-cart"></i>
@@ -185,13 +194,8 @@
                                 </div>
 
                             </div>
-
-
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
 
     </section>
 @endsection
