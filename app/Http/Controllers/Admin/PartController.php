@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Part;
 use App\Models\PartName;
+use App\Utils\CarBrandUtils;
 use Illuminate\Http\Request;
 
 class PartController extends Controller
@@ -46,8 +47,11 @@ class PartController extends Controller
      */
     public function edit(string $id)
     {
+        $carBrandUtils = new CarBrandUtils();
+
         $parts = Part::where('vehicle_id', $id)->get();
-        return view('admin.parts.edit', compact('parts'));
+        $brandLogo = $carBrandUtils->getCarThumbnail(strtolower($parts->first()->vehicle->make_title));
+        return view('admin.parts.edit', compact(['parts', 'brandLogo']));
     }
 
     /**

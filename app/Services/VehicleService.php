@@ -15,7 +15,9 @@ class VehicleService
         $vehicle->buyer1 = $vehicleData->buyer1;
         $vehicle->provider_name = $vehicleData->provider_name;
         $vehicle->origin_id = $vehicleData->origin_id;
+        $vehicle->make_id = $vehicleData->make_id;
         $vehicle->make_title = $vehicleData->make_title;
+        $vehicle->model_id = $vehicleData->model_id;
         $vehicle->model_title = $vehicleData->model_title;
         $vehicle->grade = $vehicleData->grade;
         $vehicle->chassis_model = $vehicleData->chassis_model;

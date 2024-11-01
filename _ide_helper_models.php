@@ -138,8 +138,10 @@ namespace App\Models{
  * @property string|null $buyer1
  * @property string|null $provider_name
  * @property string|null $origin_id
- * @property string|null $make_title
- * @property string|null $model_title
+ * @property int $make_id
+ * @property string $make_title
+ * @property string $model_id
+ * @property string $model_title
  * @property string|null $grade
  * @property string|null $chassis_model
  * @property string|null $chassis_number
