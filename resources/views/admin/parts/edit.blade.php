@@ -24,7 +24,7 @@
                                     <div class="row">
                                         <div class="col-xl col-lg flex-grow-0" style="flex-basis: 230px">
                                             <div class="img-thumbnail shadow-sm w-100 bg-white position-relative text-center" style="height: 190px; width: 200px; margin-top: -120px">
-                                                <img src="{{ $brandLogo }}" class="center-xy img-fluid" alt="Logo Brand">
+                                                <img src="{{ $brandLogo }}" class="center-xy img-thumbnail" alt="Logo Brand">
                                             </div>
                                         </div>
                                         <div class="col-xl col-lg">

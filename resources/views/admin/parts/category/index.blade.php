@@ -51,7 +51,7 @@
                                                             <i class="material-icons md-edit"></i>
                                                             <span>Edit</span>
                                                         </a>
-                                                        <a href="#" class="btn btn-sm font-sm btn-light rounded">
+                                                        <a href="{{ route('admin.part-category.destroy', $partName->id) }}" class="btn btn-sm delete-part-category font-sm btn-light rounded">
                                                             <i class="material-icons md-delete_forever"></i>
                                                             <span>Delete</span>
                                                         </a>
@@ -76,3 +76,44 @@
     </section>
 
 @endsection
+
+@push('scripts')
+
+    <script>
+        function performDeleteRequest(url) {
+            $.ajax({
+                type: 'DELETE',
+                url: url,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: handleDeleteSuccess,
+                error: handleDeleteError
+            });
+        }
+
+        function confirmDelete(url) {
+            Swal.fire({
+                title: "Are you sure you want to delete this part?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    performDeleteRequest(url);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            $('body').on('click', '.delete-part-category', function (event) {
+                event.preventDefault();
+                confirmDelete($(this).attr('href'));
+            });
+        });
+    </script>
+
+@endpush

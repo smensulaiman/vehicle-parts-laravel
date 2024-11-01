@@ -21,7 +21,7 @@
                             @csrf
                             <div class="mb-4">
                                 <label for="category_name" class="form-label">Category Name</label>
-                                <input type="text" placeholder="ex. ABS ACTUATOR" class="form-control" id="category_name" name="category_name" required>
+                                <input type="text" placeholder="ex. ABS ACTUATOR" class="form-control" id="category_name" name="category_name"  value="{{ old('category_name') }}" required>
                             </div>
                             <div class="mb-4">
                                 <label for="category_description" class="form-label">Full Description (Optional)</label>
@@ -32,14 +32,14 @@
                                     <div class="mb-4">
                                         <label class="form-label">Default Price</label>
                                         <div class="row gx-2">
-                                            <input placeholder="$" type="text" class="form-control" name="default_price" required>
+                                            <input placeholder="¥" type="text" class="form-control" name="default_price" value="{{ old('default_price') }}" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="mb-4">
                                         <label class="form-label">Default Quantity</label>
-                                        <input type="number" class="form-control" name="default_quantity" required>
+                                        <input type="number" class="form-control" name="default_quantity" value="{{ old('default_quantity') }}" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">

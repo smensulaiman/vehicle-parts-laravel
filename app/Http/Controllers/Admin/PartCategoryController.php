@@ -53,7 +53,7 @@ class PartCategoryController extends Controller
             return redirect()->back()->with('error', 'error inserting data: ' . $exception->getMessage());
         }
 
-        return redirect()->route('admin.parts.category.index')->with('success', 'Data inserted successfully.');
+        return redirect()->route('admin.part-category.index')->with('success', 'Data inserted successfully.');
     }
 
     /**
@@ -97,7 +97,7 @@ class PartCategoryController extends Controller
             return redirect()->back()->with('error', 'error updating data: ' . $exception->getMessage());
         }
 
-        return redirect()->route('admin.parts.category.index')->with('success', 'Data updated successfully.');
+        return redirect()->route('admin.part-category.index')->with('success', 'Data updated successfully.');
     }
 
     /**
@@ -105,6 +105,15 @@ class PartCategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            PartName::where('id', $id)->firstOrFail()->delete();
+        } catch (Exception $exception){
+            return response(array('code' => 403, 'status' => 'failed', 'message' => $exception->getMessage()), 403, array('Content-Type' => 'application/json'));
+        }
+
+        return response(array('code' => 200,
+            'status' => 'success',
+            'message' => 'Part category deleted successfully!',
+        ), 200, array('Content-Type' => 'application/json'));
     }
 }

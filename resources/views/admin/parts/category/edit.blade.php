@@ -33,7 +33,7 @@
                                     <div class="mb-4">
                                         <label class="form-label">Default Price</label>
                                         <div class="row gx-2">
-                                            <input placeholder="$" type="text" class="form-control" name="default_price" value="{{ number_format($partName->price) }}" required>
+                                            <input placeholder="¥" type="text" class="form-control" name="default_price" value="{{ number_format($partName->price) }}" required>
                                         </div>
                                     </div>
                                 </div>
@@ -52,7 +52,7 @@
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end">
-                                <button class="btn btn-primary btn-sm rounded" type="submit" name="submit">SUBMIT</button>
+                                <button class="btn btn-primary btn-sm rounded" type="submit" name="submit">UPDATE</button>
                             </div>
                         </form>
                     </div>
