@@ -23,52 +23,19 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-xl col-lg flex-grow-0" style="flex-basis: 230px">
-                                            <div class="img-thumbnail shadow w-100 bg-white position-relative text-center" style="height: 190px; width: 200px; margin-top: -120px">
+                                            <div class="img-thumbnail shadow-sm w-100 bg-white position-relative text-center" style="height: 190px; width: 200px; margin-top: -120px">
                                                 <img src="{{ $brandLogo }}" class="center-xy img-fluid" alt="Logo Brand">
                                             </div>
                                         </div>
                                         <div class="col-xl col-lg">
                                             <h3>{{ $parts->first()->vehicle->make_title }}</h3>
-                                            <p>3891 Ranchview Dr. Richardson, California 62639</p>
+                                            <p>{{ $parts->first()->vehicle->model_title }}</p>
                                         </div>
                                         <div class="col-xl col-lg text-md-end">
                                             <a href="#" class="btn btn-primary"> View Shipping </a>
                                         </div>
-                                        <!--  col.// -->
                                     </div>
-                                    <!-- card-body.// -->
-                                    <hr class="my-4">
-                                    <div class="row g-4">
-                                        <div class="col-lg-12 col-xl-4">
-                                            <article class="box">
-                                                <p class="mb-0 text-muted">Total sales:</p>
-                                                <h5 class="text-success">238</h5>
-                                                <p class="mb-0 text-muted">Revenue:</p>
-                                                <h5 class="text-success mb-0">$2380</h5>
-                                            </article>
-                                        </div>
-                                        <!--  col.// -->
-                                        <div class="col-lg-12 col-xl-4">
-                                            <h6>Contacts</h6>
-                                            <p>
-                                                Manager: Jerome Bell <br>
-                                                info@example.com <br>
-                                                (229) 555-0109, (808) 555-0111
-                                            </p>
-                                        </div>
-                                        <!--  col.// -->
-                                        <div class="col-lg-12 col-xl-4">
-                                            <h6>Address</h6>
-                                            <p>
-                                                Country: California <br>
-                                                Address: Ranchview Dr. Richardson <br>
-                                                Postal code: 62639
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <!--  row.// -->
                                 </div>
-                                <!--  card-body.// -->
                             </div>
                         </header>
                         <div class="card-body">

@@ -25,12 +25,12 @@
                                 <table class="table table-bordered table-nowrap mb-0" style="table-layout: auto">
                                     <thead class="table-light border-1">
                                     <tr>
-                                        <th class="align-middle" scope="col" width="60">S/N</th>
-                                        <th class="align-middle" scope="col">Part Name</th>
-                                        <th class="align-middle text-center" scope="col">Quantity</th>
-                                        <th class="align-middle text-end" scope="col">Price</th>
-                                        <th class="align-middle" scope="col">Generic</th>
-                                        <th class="align-middle text-center" scope="col">Action</th>
+                                        <th class="text-center" scope="col" width="60">S/N</th>
+                                        <th scope="col">Part Name</th>
+                                        <th class="text-center" scope="col">Quantity</th>
+                                        <th class="text-end" scope="col">Price</th>
+                                        <th scope="col">Generic</th>
+                                        <th class="text-center" scope="col">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -43,11 +43,11 @@
                                                 </td>
                                                 <td class="border-1">{{$partName->name}}</td>
                                                 <td class="text-center border-1">{{$partName->quantity}}</td>
-                                                <td class="text-end border-1">{{$partName->price}}</td>
+                                                <td class="text-end border-1">{{ number_format($partName->price) }}</td>
                                                 <td class="border-1 text-center">{{$partName->is_generic ? 'yes' : 'no'}}</td>
                                                 <td class="border-1 px-0">
                                                     <div class="d-flex justify-content-evenly text-end">
-                                                        <a href="#" class="btn btn-sm font-sm rounded btn-brand">
+                                                        <a href="{{ route('admin.part-category.edit', $partName->id) }}" class="btn btn-sm font-sm rounded btn-brand">
                                                             <i class="material-icons md-edit"></i>
                                                             <span>Edit</span>
                                                         </a>
@@ -68,7 +68,6 @@
                                 </table>
                             </div>
                         </div>
-                        <!-- table-responsive end// -->
                     </div>
                 </div>
             </div>

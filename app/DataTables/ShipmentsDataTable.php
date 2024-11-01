@@ -34,10 +34,10 @@ class ShipmentsDataTable extends DataTable
                 return '<div><img src="' . e($brandLogo) . '" alt="' . e($query->provider) . '" style="width: auto; height: 24px; margin-right: 10px; vertical-align: middle;"></div>';
             })
             ->addColumn('shipping_port', function ($query) {
-                return '<div><i class="text-body-emphasis material-icons md-anchor" style="width: auto; font-size: 14px; margin-right: 10px; vertical-align: middle;"></i>' . e($query->shipping_port ?? 'Not Found') . '</div>';
+                return '<div class="d-flex align-items-center"><i class="text-body-emphasis material-icons md-anchor" style="width: auto; font-size: 12px; margin-right: 10px; vertical-align: middle;"></i>' . e($query->shipping_port ?? 'Not Found') . '</div>';
             })
             ->addColumn('destination_port', function ($query) {
-                return '<div><i class="text-body-emphasis material-icons md-anchor" style="width: auto; font-size: 14px; margin-right: 10px; vertical-align: middle;"></i>' . e($query->destination_port) . '</div>';
+                return '<div class="d-flex align-items-center"><i class="text-body-emphasis material-icons md-anchor" style="width: auto; font-size: 12px; margin-right: 10px; vertical-align: middle;"></i>' . e($query->destination_port) . '</div>';
             })
             ->addColumn('vehicles', function ($query) {
                 return $query->vehicles->count();

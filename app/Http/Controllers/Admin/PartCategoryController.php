@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\PartName;
+use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Throwable;
 
 class PartCategoryController extends Controller
 {
@@ -30,7 +32,7 @@ class PartCategoryController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * @throws \Throwable
+     * @throws Throwable
      */
     public function store(Request $request): RedirectResponse
     {
@@ -46,12 +48,12 @@ class PartCategoryController extends Controller
             $partName->save();
             DB::commit();
 
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             DB::rollBack();
             return redirect()->back()->with('error', 'error inserting data: ' . $exception->getMessage());
         }
 
-        return redirect()->route('admin.part-category.index')->with('success', 'Data inserted successfully.');
+        return redirect()->route('admin.parts.category.index')->with('success', 'Data inserted successfully.');
     }
 
     /**
@@ -67,15 +69,35 @@ class PartCategoryController extends Controller
      */
     public function edit(string $id)
     {
-        dd('hello');
+        $partName = PartName::where('id', $id)->firstOrFail();
+
+        return view('admin.parts.category.edit', compact('partName'));
     }
 
     /**
      * Update the specified resource in storage.
+     * @throws Throwable
      */
     public function update(Request $request, string $id)
     {
-        //
+        DB::beginTransaction();
+
+        try {
+            $partName = PartName::where('id', $id)->firstOrFail();
+            $partName->name = strtoupper($request->input('category_name'));
+            $partName->quantity = $request->input('default_quantity');
+            $partName->price = $request->input('default_price');
+            $partName->is_generic = $request->input('generic');
+
+            $partName->save();
+            DB::commit();
+
+        } catch (Exception $exception) {
+            DB::rollBack();
+            return redirect()->back()->with('error', 'error updating data: ' . $exception->getMessage());
+        }
+
+        return redirect()->route('admin.parts.category.index')->with('success', 'Data updated successfully.');
     }
 
     /**
