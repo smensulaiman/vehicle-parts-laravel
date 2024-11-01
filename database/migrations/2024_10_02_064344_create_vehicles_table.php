@@ -19,8 +19,10 @@ return new class extends Migration
             $table->string('buyer1')->nullable();
             $table->string('provider_name')->nullable();
             $table->string('origin_id')->nullable();
-            $table->string('make_title')->nullable();
-            $table->string('model_title')->nullable();
+            $table->integer('make_id');
+            $table->string('make_title');
+            $table->string('model_id');
+            $table->string('model_title');
             $table->string('grade')->nullable();
             $table->string('chassis_model')->nullable();
             $table->string('chassis_number')->nullable();

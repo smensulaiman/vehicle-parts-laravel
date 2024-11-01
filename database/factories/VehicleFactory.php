@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Shipment;
 use App\Models\Vehicle;
+use Faker\Provider\FakeCar;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,14 +19,20 @@ class VehicleFactory extends Factory
      */
     public function definition(): array
     {
+
+        $faker = (new \Faker\Factory())->create();
+        $faker->addProvider(new FakeCar($faker));
+
         return [
             'shipment_id' => Shipment::factory(), // Creates a linked shipment
             'input_date' => $this->faker->date(),
             'buyer1' => $this->faker->name(),
             'provider_name' => 'KARMEN',
             'origin_id' => 'karmen_' . $this->faker->randomNumber(),
-            'make_title' => $this->faker->word(),
-            'model_title' => $this->faker->word(),
+            'make_id' => $this->faker->randomNumber(),
+            'make_title' => $faker->vehicleBrand(),
+            'model_id' => $this->faker->randomNumber(),
+            'model_title' => $faker->vehicleModel(),
             'grade' => $this->faker->word(),
             'chassis_model' => $this->faker->word(),
             'chassis_number' => $this->faker->numerify('######'),
