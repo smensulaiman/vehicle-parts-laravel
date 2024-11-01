@@ -16,7 +16,7 @@
         </div>
         <div class="row">
             <div class="col-lg-6 col-xl-3">
-                <div class="card card-body bg-11 mb-4">
+                <div class="card card-body bg-11 mb-4 animate__animated animate__fadeInUp animate__faster">
                     <article class="icontext">
                         <span class="icon icon-sm rounded-circle bg-primary-light">
                             <i class="text-primary material-icons md-monetization_on"></i>
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="col-lg-6 col-xl-3">
-                <div class="card card-body bg-12 mb-4">
+                <div class="card card-body bg-12 mb-4 animate__animated animate__fadeInUp animate__fast">
                     <article class="icontext">
                         <span class="icon icon-sm rounded-circle bg-success-light">
                             <i class="text-danger material-icons md-directions_boat"></i>
@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="col-lg-6 col-xl-3">
-                <div class="card card-body bg-13 mb-4">
+                <div class="card card-body bg-13 mb-4 animate__animated animate__fadeInUp animate__slow">
                     <article class="icontext">
                         <span class="icon icon-sm rounded-circle bg-warning-light"><i
                                 class="text-warning material-icons md-qr_code"></i></span>
@@ -57,7 +57,7 @@
                 </div>
             </div>
             <div class="col-lg-6 col-xl-3">
-                <div class="card card-body bg-8 mb-4">
+                <div class="card card-body bg-8 mb-4 animate__animated animate__fadeInUp animate__slow">
                     <article class="icontext">
                         <span class="icon icon-sm rounded-circle bg-info-light"><i
                                 class="text-info material-icons md-shopping_basket"></i></span>
@@ -194,19 +194,19 @@
                         <h5 class="card-title">Sale By Make</h5>
                         <span class="text-muted font-xs">Toyota Parts</span>
                         <div class="progress mb-3">
-                            <div class="progress-bar" role="progressbar" style="width: 40%">40%</div>
+                            <div class="progress-bar animate__animated animate__fadeInLeft animate__faster" role="progressbar" style="width: 40%">40%</div>
                         </div>
                         <span class="text-muted font-xs">BMW Parts</span>
                         <div class="progress mb-3">
-                            <div class="progress-bar" role="progressbar" style="width: 35%">35%</div>
+                            <div class="progress-bar animate__animated animate__fadeInLeft animate__fast" role="progressbar" style="width: 35%">35%</div>
                         </div>
                         <span class="text-muted font-xs">Suzuki Parts</span>
                         <div class="progress mb-3">
-                            <div class="progress-bar" role="progressbar" style="width: 15%">15%</div>
+                            <div class="progress-bar animate__animated animate__fadeInLeft animate__slow" role="progressbar" style="width: 15%">15%</div>
                         </div>
                         <span class="text-muted font-xs">Nissan Parts</span>
                         <div class="progress mb-3">
-                            <div class="progress-bar" role="progressbar" style="width: 10%">10%</div>
+                            <div class="progress-bar animate__animated animate__fadeInLeft animate__slower" role="progressbar" style="width: 10%">10%</div>
                         </div>
                     </article>
                 </div>
