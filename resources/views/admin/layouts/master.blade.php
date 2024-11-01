@@ -18,6 +18,9 @@
 
     {{-- Font Awesome Icon --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    @vite(['resources/css/app.css'])
+
     @livewireStyles
 </head>
 
@@ -44,9 +47,7 @@
     </footer>
 </main>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-{{-- <script src="{{asset('assets/js/vendors/bootstrap.bundle.min.js')}}"></script> --}}
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
 </script>
 <script src="{{ asset('assets/js/vendors/select2.min.js') }}"></script>
 <script src="{{ asset('assets/js/vendors/perfect-scrollbar.js') }}"></script>
