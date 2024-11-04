@@ -57,7 +57,7 @@
                 </div>
             </div>
             <div class="col-lg-6 col-xl-3">
-                <div class="card card-body bg-8 mb-4 animate__animated animate__fadeInUp animate__slow">
+                <div class="card card-body bg-8 mb-4 animate__animated animate__fadeInUp animate__slower">
                     <article class="icontext">
                         <span class="icon icon-sm rounded-circle bg-info-light"><i
                                 class="text-info material-icons md-shopping_basket"></i></span>
