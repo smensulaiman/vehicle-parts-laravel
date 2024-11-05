@@ -22,19 +22,19 @@ class PartDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
+            ->filterColumn('part_name', function ($query, $keyword) {
+                $query->whereRaw('LOWER(part_names.name) LIKE ?', ["%{$keyword}%"]);
+            })
+            ->filterColumn('make', function ($query, $keyword) {
+                $query->whereRaw('LOWER(vehicles.make_title) LIKE ?', ["%{$keyword}%"]);
+            })
+            ->filterColumn('model', function ($query, $keyword) {
+                $query->whereRaw('LOWER(vehicles.model_title) LIKE ?', ["%{$keyword}%"]);
+            })
+            ->filterColumn('year', function ($query, $keyword) {
+                $query->whereRaw('LOWER(vehicles.veh_year) LIKE ?', ["%{$keyword}%"]);
+            })
             ->setRowId('id')
-            ->addColumn('part_name', function ($query) {
-                return $query->partName->name;
-            })
-            ->addColumn('make', function ($query) {
-                return $query->vehicle->make_title;
-            })
-            ->addColumn('model', function ($query) {
-                return $query->vehicle->model_title;
-            })
-            ->addColumn('year', function ($query) {
-                return $query->vehicle->veh_year;
-            })
             ->addColumn('action', 'part.action')
             ->rawColumns(['action']);
     }
@@ -44,7 +44,10 @@ class PartDataTable extends DataTable
      */
     public function query(Part $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->newQuery()
+            ->select('parts.*', 'part_names.name as part_name', 'vehicles.make_title as make', 'vehicles.model_title as model', 'vehicles.veh_year as year')
+            ->join('part_names', 'parts.part_name_id', '=', 'part_names.id')
+            ->join('vehicles', 'parts.vehicle_id', '=', 'vehicles.id');
     }
 
     /**
@@ -53,20 +56,20 @@ class PartDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('part-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    //->dom('Bfrtip')
-                    ->orderBy(1)
-                    ->selectStyleSingle()
-                    ->buttons([
-                        Button::make('excel'),
-                        Button::make('csv'),
-                        Button::make('pdf'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    ]);
+            ->setTableId('part-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            //->dom('Bfrtip')
+            ->orderBy(1)
+            ->selectStyleSingle()
+            ->buttons([
+                Button::make('excel'),
+                Button::make('csv'),
+                Button::make('pdf'),
+                Button::make('print'),
+                Button::make('reset'),
+                Button::make('reload')
+            ]);
     }
 
     /**
@@ -76,7 +79,7 @@ class PartDataTable extends DataTable
     {
         return [
             Column::make('id')->className('font-weight-bold text-center'),
-            Column::make('part_name')->className('text-start'),
+            Column::make('part_name')->title('Part Name')->className('text-start'),
             Column::make('make')->className('text-start'),
             Column::make('model')->className('text-start'),
             Column::make('year')->className('text-center'),

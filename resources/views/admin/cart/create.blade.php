@@ -67,72 +67,10 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <div class="table-responsive">
-                                    {{ $dataTable->table() }}
+                                    {{$dataTable->table()}}
                                 </div>
                             </div>
                         </div>
-                        {{--                        <div class="card-body"> --}}
-                        {{--                            <div class="row"> --}}
-                        {{--                                <div class="col-xxl-12 col-xl-12 col-sm-12"> --}}
-                        {{--                                    <header> --}}
-                        {{--                                        <h4 class="d-flex align-items-center justify-content-center"> --}}
-                        {{--                                        <span> --}}
-                        {{--                                            <i class="fas fa-list"></i> --}}
-                        {{--                                        </span> --}}
-                        {{--                                            <span class="ms-2">Items List</span> --}}
-                        {{--                                        </h4> --}}
-                        {{--                                    </header> --}}
-                        {{--                                    <div class="table-responsive pt-3"> --}}
-                        {{--                                        <table class="table table-hover"> --}}
-                        {{--                                            <thead class="table-light"> --}}
-                        {{--                                            <tr class="text-center"> --}}
-                        {{--                                                <th scope="col">#SN</th> --}}
-                        {{--                                                <th scope="col">Item</th> --}}
-                        {{--                                                <th scope="col">Price</th> --}}
-                        {{--                                                <th scope="col">Quantity</th> --}}
-                        {{--                                                <th scope="col">Action</th> --}}
-                        {{--                                            </tr> --}}
-                        {{--                                            </thead> --}}
-                        {{--                                            <tbody class="text-center"> --}}
-                        {{--                                            <tr> --}}
-                        {{--                                                <td scope="row"><a href="#" class="fw-bold">#1</a></td> --}}
-                        {{--                                                <td>Mark</td> --}}
-                        {{--                                                <td>¥299.99</td> --}}
-                        {{--                                                <td>700</td> --}}
-                        {{--                                                <td> --}}
-                        {{--                                                    <a href="#" class="btn btn-md rounded font-sm"> --}}
-                        {{--                                                        <i class="fas fa-shopping-cart"></i></a> --}}
-                        {{--                                                </td> --}}
-                        {{--                                            </tr> --}}
-                        {{--                                            <tr> --}}
-                        {{--                                                <td scope="row"><a href="#" class="fw-bold">#2</a></td> --}}
-                        {{--                                                <td>Jacob</td> --}}
-                        {{--                                                <td>¥299.99</td> --}}
-                        {{--                                                <td>400</td> --}}
-                        {{--                                                <td> --}}
-                        {{--                                                    <a href="#" class="btn btn-md rounded font-sm"> --}}
-                        {{--                                                        <i class="fas fa-shopping-cart"></i></a> --}}
-                        {{--                                                </td> --}}
-                        {{--                                            </tr> --}}
-                        {{--                                            <tr> --}}
-                        {{--                                                <td scope="row"><a href="#" class="fw-bold">#3</a></td> --}}
-                        {{--                                                <td>Larry the Bird</td> --}}
-                        {{--                                                <td>¥299.99</td> --}}
-                        {{--                                                <td>300</td> --}}
-                        {{--                                                <td> --}}
-                        {{--                                                    <a href="#" class="btn btn-md rounded font-sm"> --}}
-                        {{--                                                        <i class="fas fa-shopping-cart"></i> --}}
-                        {{--                                                    </a> --}}
-                        {{--                                                </td> --}}
-                        {{--                                            </tr> --}}
-                        {{--                                            </tbody> --}}
-                        {{--                                        </table> --}}
-
-                        {{--                                    </div> --}}
-                        {{--                                </div> --}}
-
-                        {{--                            </div> --}}
-                        {{--                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -232,31 +170,36 @@
 @endsection
 
 @push('scripts')
+
     {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
 
     <script>
         $(document).ready(function() {
             $('#make').on('change', function() {
                 let selectedMakes = $(this).val();
-
-                $.ajax({
-                    url: '{{ route('admin.vehicle.models') }}',
-                    method: 'GET',
-                    data: {
-                        makes: selectedMakes
-                    },
-                    success: function(data) {
-                        $('#model').empty();
-                        $.each(data.models, function(index, model) {
-                            $('#model').append(new Option(model.model_title, model
-                                .model_id));
-                        });
-                    },
-                    error: function(xhr) {
-                        console.error('Error fetching models:', xhr);
-                    }
-                });
+                fetchModels(selectedMakes);
             });
+
+            function fetchModels(makes) {
+                $.ajax({
+                    url: '{{ route("admin.vehicle.models") }}',
+                    method: 'GET',
+                    data: { makes },
+                    success: handleModelResponse,
+                    error: handleModelError
+                });
+            }
+
+            function handleModelResponse(data) {
+                $('#model').empty();
+                data.models.forEach(model => {
+                    $('#model').append(new Option(model.model_title, model.model_id));
+                });
+            }
+
+            function handleModelError(xhr) {
+                console.error('Error fetching models:', xhr);
+            }
         });
     </script>
 @endpush

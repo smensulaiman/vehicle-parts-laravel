@@ -23,22 +23,22 @@ class DatabaseSeeder extends Seeder
             PartNamesSeeder::class
         ]);
 
-        Shipment::factory()
-            ->count(10)
-            ->has(Vehicle::factory()
-                ->count(10)
-                ->afterCreating(function (Vehicle $vehicle) {
-                    $partsName = PartName::all();
-                    foreach ($partsName as $partName) {
-                        Part::factory()
-                            ->create([
-                                'vehicle_id' => $vehicle->id,
-                                'part_name_id' => $partName->id,
-                                'quantity' => $partName->quantity,
-                                'price' => $partName->price
-                            ]);
-                    }
-                })
-            )->create();
+//        Shipment::factory()
+//            ->count(10)
+//            ->has(Vehicle::factory()
+//                ->count(10)
+//                ->afterCreating(function (Vehicle $vehicle) {
+//                    $partsName = PartName::all();
+//                    foreach ($partsName as $partName) {
+//                        Part::factory()
+//                            ->create([
+//                                'vehicle_id' => $vehicle->id,
+//                                'part_name_id' => $partName->id,
+//                                'quantity' => $partName->quantity,
+//                                'price' => $partName->price
+//                            ]);
+//                    }
+//                })
+//            )->create();
     }
 }
