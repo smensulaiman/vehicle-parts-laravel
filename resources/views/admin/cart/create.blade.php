@@ -15,8 +15,8 @@
                                             <label for="make" class="pb-1 ps-1 fw-bold text-primary">Make</label>
                                             <select class="form-select p-2" multiple aria-label="multiple select example"
                                                 name="make" id="make" style="height: 20rem; overflow-y: auto;">
-                                                <option style="font-size: 12px;font-weight:700; text-transform: capitalize" class="p-1"
-                                                    disabled>Select Make</option>
+                                                <option style="font-size: 12px;font-weight:700; text-transform: capitalize"
+                                                    class="p-1" disabled selected value="">Select Make</option>
 
                                                 @foreach ($makers as $make)
                                                     <option style="font-size: 12px; text-transform: capitalize"
@@ -31,7 +31,7 @@
                                             <select class="form-select p-2" multiple aria-label="multiple select example"
                                                 name="make" id="make" style="height: 20rem;overflow-y: scroll;">
                                                 <option style="font-size: 12px;font-weight:700; text-transform: capitalize"
-                                                    class="p-1" value="">Select Menu</option>
+                                                    class="p-1" disabled selected value="">Select Menu</option>
                                                 <option style="font-size: 12px; text-transform: capitalize" class="p-1"
                                                     value="1">One</option>
                                                 <option style="font-size: 12px; text-transform: capitalize" class="p-1"
@@ -45,7 +45,7 @@
                                             <select class="form-select p-2" multiple aria-label="multiple select example"
                                                 name="make" id="make" style="height: 20rem;overflow-y: scroll;">
                                                 <option style="font-size: 12px; font-weight:700; text-transform: capitalize"
-                                                    class="p-1" disabled>Select Part</option>
+                                                    class="p-1" disabled selected value="">Select Part</option>
                                                 @foreach ($partNames as $partName)
                                                     <option style="font-size: 12px; text-transform: capitalize"
                                                         class="p-1" value="{{ $partName->id }}">
