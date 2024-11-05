@@ -25,8 +25,9 @@ class CartController extends Controller
     public function create()
     {
         $cartContent = Cart::content();
-        //dd($cartContent);
-        return view('admin.cart.create', compact('cartContent'));
+        $totalPrice = Cart::subtotal();
+
+        return view('admin.cart.create', compact('cartContent', 'totalPrice'));
     }
 
     /**
