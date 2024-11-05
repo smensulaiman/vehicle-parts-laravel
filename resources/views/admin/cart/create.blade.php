@@ -15,11 +15,12 @@
                                             <label for="make" class="pb-1 ps-1 fw-bold text-primary">Make</label>
                                             <select class="form-select p-2" multiple
                                                     aria-label="multiple select example"
-                                                    name="make" id="make" style="height: 20rem;overflow-y: scroll;">
-                                                <option class="p-2" value="">Select Menu</option>
-                                                <option class="p-2" value="1">One</option>
-                                                <option class="p-2" value="2">Two</option>
-                                                <option class="p-2" value="3">Three</option>
+                                                    name="make" id="make" style="height: 20rem; overflow-y: auto;">
+                                                <option class="p-2" disabled>Select Make</option>
+
+                                                @foreach($makers as $make)
+                                                    <option class="p-2" value="1">{{ $make->make_title }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="col-lg-4">

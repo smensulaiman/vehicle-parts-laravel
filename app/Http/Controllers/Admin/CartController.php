@@ -6,6 +6,7 @@ use App\DataTables\PartNameDataTable;
 use App\Helper\ApiResponseBuilder;
 use App\Http\Controllers\Controller;
 use App\Models\PartName;
+use App\Models\Vehicle;
 use Exception;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\JsonResponse;
@@ -27,12 +28,13 @@ class CartController extends Controller
     public function create()
     {
 
+        $makers = Vehicle::select('make_title')->orderBy('make_title')->distinct()->get();
         $partNames = PartName::all();
 
         $cartContent = Cart::content();
         $totalPrice = Cart::subtotal();
 
-        return view('admin.cart.create', compact('partNames', 'cartContent', 'totalPrice'));
+        return view('admin.cart.create', compact('makers', 'partNames', 'cartContent', 'totalPrice'));
     }
 
     /**
