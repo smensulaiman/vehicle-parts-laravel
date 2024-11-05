@@ -26,7 +26,7 @@
                                             <span>Make</span>
                                         </label>
                                         <select class="form-select p-2" multiple aria-label="multiple select example"
-                                            name="make" id="make" style="height: 7rem;overflow-y: scroll;">
+                                                name="make" id="make" style="height: 7rem;overflow-y: scroll;">
                                             <option class="p-2" value="">Select Menu</option>
                                             <option class="p-2" value="1">One</option>
                                             <option class="p-2" value="2">Two</option>
@@ -38,7 +38,7 @@
                                             <span>Model</span>
                                         </label>
                                         <select class="form-select p-2" multiple aria-label="multiple select example"
-                                            name="make" id="make" style="height: 7rem;overflow-y: scroll;">
+                                                name="make" id="make" style="height: 7rem;overflow-y: scroll;">
                                             <option class="p-2" value="">Select Menu</option>
                                             <option class="p-2" value="1">One</option>
                                             <option class="p-2" value="2">Two</option>
@@ -50,7 +50,7 @@
                                             <span>Model Grade</span>
                                         </label>
                                         <select class="form-select p-2" multiple aria-label="multiple select example"
-                                            name="make" id="make" style="height: 7rem;overflow-y: scroll;">
+                                                name="make" id="make" style="height: 7rem;overflow-y: scroll;">
                                             <option class="p-2" value="">Select Menu</option>
                                             <option class="p-2" value="1">One</option>
                                             <option class="p-2" value="2">Two</option>
@@ -81,45 +81,45 @@
                                 <div class="table-responsive pt-3">
                                     <table class="table table-hover">
                                         <thead class="table-light">
-                                            <tr class="text-center">
-                                                <th scope="col">#SN</th>
-                                                <th scope="col">Item</th>
-                                                <th scope="col">Price</th>
-                                                <th scope="col">Quantity</th>
-                                                <th scope="col">Action</th>
-                                            </tr>
+                                        <tr class="text-center">
+                                            <th scope="col">#SN</th>
+                                            <th scope="col">Item</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col">Quantity</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
                                         </thead>
                                         <tbody class="text-center">
-                                            <tr>
-                                                <td scope="row"><a href="#" class="fw-bold">#1</a></td>
-                                                <td>Mark</td>
-                                                <td>¥299.99</td>
-                                                <td>700</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-md rounded font-sm"><i
-                                                            class="fas fa-shopping-cart"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td scope="row"><a href="#" class="fw-bold">#2</a></td>
-                                                <td>Jacob</td>
-                                                <td>¥299.99</td>
-                                                <td>400</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-md rounded font-sm"><i
-                                                            class="fas fa-shopping-cart"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td scope="row"><a href="#" class="fw-bold">#3</a></td>
-                                                <td>Larry the Bird</td>
-                                                <td>¥299.99</td>
-                                                <td>300</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-md rounded font-sm"><i
-                                                            class="fas fa-shopping-cart"></i></a>
-                                                </td>
-                                            </tr>
+                                        <tr>
+                                            <td scope="row"><a href="#" class="fw-bold">#1</a></td>
+                                            <td>Mark</td>
+                                            <td>¥299.99</td>
+                                            <td>700</td>
+                                            <td>
+                                                <a href="#" class="btn btn-md rounded font-sm"><i
+                                                        class="fas fa-shopping-cart"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row"><a href="#" class="fw-bold">#2</a></td>
+                                            <td>Jacob</td>
+                                            <td>¥299.99</td>
+                                            <td>400</td>
+                                            <td>
+                                                <a href="#" class="btn btn-md rounded font-sm"><i
+                                                        class="fas fa-shopping-cart"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row"><a href="#" class="fw-bold">#3</a></td>
+                                            <td>Larry the Bird</td>
+                                            <td>¥299.99</td>
+                                            <td>300</td>
+                                            <td>
+                                                <a href="#" class="btn btn-md rounded font-sm"><i
+                                                        class="fas fa-shopping-cart"></i></a>
+                                            </td>
+                                        </tr>
                                         </tbody>
                                     </table>
 
@@ -132,7 +132,7 @@
             </div>
 
             <div class="col-xxl-5">
-                <div class="card">
+                <div class="card bg-warning-subtle">
                     <div class="card-body">
                         <div class="row">
                             <!-- Checkout Part 2 -->
@@ -142,7 +142,7 @@
                                         <span>
                                             <i class="fas fa-shopping-cart"></i>
                                         </span>
-                                        <span class="ms-2">Your cart (2 items)</span>
+                                        <span class="ms-2">Your cart has {{$cartContent->count()}} item(s)</span>
                                     </h4>
                                 </header>
                                 <!-- Cart Content -->
@@ -150,78 +150,51 @@
 
                                     <table class="table">
                                         <thead class="table-light">
-                                            <tr class="border-bottom text-center">
-                                                <th scope="col">#SN</th>
-                                                <th scope="col">Item</th>
-                                                <th scope="col">Quantity</th>
-                                                <th scope="col">Total</th>
-                                                <th scope="col">Action</th>
-                                            </tr>
+                                        <tr class="border-bottom text-center">
+                                            <th scope="col">#SN</th>
+                                            <th scope="col">Image</th>
+                                            <th scope="col">Item</th>
+                                            <th scope="col">Quantity</th>
+                                            <th scope="col">Total</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
                                         </thead>
+
                                         <tbody class="text-center">
+                                        @foreach($cartContent as $cartItem)
                                             <tr class="border-bottom">
-                                                <td scope="row"><a href="#" class="fw-bold">#1</a></td>
-                                                <td class="d-flex justify-content-center align-items-center gap-3 p-3">
-                                                    <div>
-                                                        <img style="height:4rem; width:4rem; object-fit: contain;"
-                                                            src="../../assets/imgs/car-parts/tier.jpg" alt="Product 1"
-                                                            class="img-fluid">
-                                                    </div>
-                                                    <div>
-                                                        <p>Steering</p>
-                                                        <p>¥299.99</p>
-                                                    </div>
+                                                <td scope="row">
+                                                    <a href="#" class="fw-bold">#{{ $loop->index + 1 }}</a>
+                                                </td>
+                                                <td>
+                                                    <img style="height:4rem; width:4rem; object-fit: contain;"
+                                                         src="{{ asset('/assets/imgs/car-parts/tier.jpg') }}"
+                                                         alt="{{ $cartItem->name }}"
+                                                         class="img-fluid">
+                                                </td>
+                                                <td class="text-start">
+                                                    <p>{{ $cartItem->name }}</p>
+                                                    <p>¥{{ $cartItem->price }}</p>
                                                 </td>
                                                 <td>
                                                     <div class="input-group d-flex justify-content-center">
                                                         <a href="#" class="btn btn-light btn-sm fw-bold">-</a>
-                                                        <input type="number" class="form-control text-center"
-                                                            value="1" style="width:4rem;">
+                                                        <input type="number" class="form-control text-center" value="{{ $cartItem->qty }}" style="width: 1rem;">
                                                         <a href="#" class="btn btn-light btn-sm fw-bold">+</a>
                                                     </div>
                                                 </td>
-                                                <td class="text-center">
-                                                    <p>¥299.99</p>
+                                                <td class="text-end">
+                                                    <p>¥{{ $cartItem->price }}</p>
                                                 </td>
                                                 <td>
-                                                    <a href="#" class="btn btn-instagram rounded font-sm"><i
-                                                            class="fas fa-trash"></i></a>
+                                                    <a href="#" class="btn btn-instagram rounded font-sm">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
                                                 </td>
                                             </tr>
-                                            <tr class="border-bottom">
-                                                <td scope="row"><a href="#" class="fw-bold">#2</a></td>
-                                                <td
-                                                    class="d-flex justify-content-center align-items-center gap-3 p-3 text-center">
-                                                    <div>
-                                                        <img style="height:4rem; width:4rem; object-fit: contain;"
-                                                            src="../../assets/imgs/car-parts/steering.jpg" alt="Product 2"
-                                                            class="img-fluid">
-                                                    </div>
-                                                    <div>
-                                                        <p>Tier</p>
-                                                        <p>¥100.00</p>
-                                                    </div>
-                                                </td>
-                                                <td class="text-center">
-                                                    <div class="input-group">
-                                                        <a href="#" class="btn btn-light btn-sm fw-bold">-</a>
-                                                        <input type="number" class="form-control text-center"
-                                                            value="1" style="width:4rem;">
-                                                        <a href="#" class="btn btn-light btn-sm fw-bold">+</a>
-                                                    </div>
-                                                </td>
-                                                <td class="text-center">
-                                                    <p>¥100.00</p>
-                                                </td>
-                                                <td class="text-center">
-                                                    <a href="#" class="btn btn-instagram rounded font-sm"> <i
-                                                            class="fas fa-trash"></i></a>
-                                                </td>
-                                            </tr>
+                                        @endforeach
                                         </tbody>
-
                                     </table>
-
                                 </div>
 
                                 <!-- Lower Part Of checkout -->
@@ -229,15 +202,11 @@
                                     <div class="col-lg-8">
                                         <div class="row  border-bottom py-2">
                                             <h6 class="col-sm-9 col-8">Subtotal:</h6>
-                                            <p class="col-sm-3 col-4">¥ 399.00</p>
-                                        </div>
-                                        <div class="row border-bottom py-2">
-                                            <h6 class="col-sm-9 col-8">Tax:</h6>
-                                            <p class="col-sm-3 col-4">¥ 100.99</p>
+                                            <p class="col-sm-3 col-4">¥ {{ $totalPrice }}</p>
                                         </div>
                                         <div class="row py-2">
-                                            <h6 class="col-sm-9 col-8">Grand Total:</h6>
-                                            <p class="col-sm-3 col-4">¥ 499.99</p>
+                                            <h6 class="col-sm-9 col-8">Total:</h6>
+                                            <p class="col-sm-3 col-4">¥ {{ $totalPrice }}</p>
                                         </div>
                                         <div class="row py-2">
                                             <button
@@ -253,6 +222,8 @@
                             </div>
                         </div>
                     </div>
-
+                </div>
+            </div>
+        </div>
     </section>
 @endsection
