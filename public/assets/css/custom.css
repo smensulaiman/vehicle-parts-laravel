@@ -116,3 +116,9 @@ input[type=number] {
     font-size: 12px;
     text-transform: capitalize;
 }
+
+/* data table */
+
+.dt-search input {
+    width: 300px !important;
+}
