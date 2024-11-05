@@ -68,18 +68,9 @@
                     <span class="text">Settings</span>
                 </a>
                 <div class="submenu">
-                    <a href="page-settings-1.html">Setting sample 1</a>
-                    <a href="page-settings-2.html">Setting sample 2</a>
+                    <a href="#">Profile Setting</a>
                 </div>
             </li>
-            <li class="menu-item">
-                <a class="menu-link" href="page-blank.html">
-                    <i class="icon material-icons md-local_offer"></i>
-                    <span class="text"> Starter page </span>
-                </a>
-            </li>
         </ul>
-        <br />
-        <br />
     </nav>
 </aside>
