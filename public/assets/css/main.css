@@ -9,6 +9,7 @@ INCLUDE STYLES AND COMPONENTS
 @import url(vendors/perfect-scrollbar.css);
 @import url(vendors/select2.min.css);
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@400;500;600;700&display=swap");
+
 /*RESET*/
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -214,7 +215,7 @@ table .form-check {
     margin: 0 auto;
 }
 
-.table > :not(caption) > * > * {
+.table> :not(caption)>*>* {
     padding: 0.8rem 0.4rem;
     vertical-align: middle;
 }
@@ -580,7 +581,7 @@ b {
     display: block;
 }
 
-.menu-aside .menu-item.has-submenu > .menu-link:after {
+.menu-aside .menu-item.has-submenu>.menu-link:after {
     display: inline-block;
     position: absolute;
     right: 10px;
@@ -660,7 +661,7 @@ b {
     border-bottom-right-radius: 4px;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
     color: #3BB77E;
     background-color: rgba(59, 183, 126, 0.2);
 }
@@ -740,13 +741,19 @@ b {
     color: #fff;
 }
 
-.btn-instagram {
+.btn.btn-instagram {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 40px;
     background-color: #E52D27;
     color: #fff;
+    border: none;
+    border-radius: 4px;
 }
 
-.btn-instagram:hover {
+.btn.btn-instagram:hover {
     color: #fff;
+    background-color: #ca1b15;
 }
 
 .btn-youtube {
@@ -844,7 +851,7 @@ b {
     color: #fff;
 }
 
-.btn-check:focus + .btn, .btn:focus {
+.btn-check:focus+.btn, .btn:focus {
     outline: 0;
     box-shadow: none;
 }
@@ -1038,7 +1045,7 @@ textarea.form-control {
     display: none;
 }
 
-.select2-container--default .select2-results > .select2-results__options {
+.select2-container--default .select2-results>.select2-results__options {
     max-height: 200px;
     overflow-y: auto;
     scrollbar-width: thin;
@@ -1620,15 +1627,19 @@ textarea.form-control {
     from {
         transform: scale3d(1, 1, 1);
     }
+
     10%, 20% {
         transform: scale3d(0.95, 0.95, 0.95) rotate3d(0, 0, 1, -10deg);
     }
+
     30%, 50%, 70%, 90% {
         transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 10deg);
     }
+
     40%, 60%, 80% {
         transform: rotate3d(0, 0, 1, -10deg);
     }
+
     to {
         transform: scale3d(1, 1, 1);
     }
@@ -1643,6 +1654,7 @@ textarea.form-control {
         transform: translateX(0);
         opacity: 1;
     }
+
     75% {
         transform: translateX(20px);
         opacity: 0;
@@ -1896,13 +1908,13 @@ ul.row, ul.row-sm {
     list-style: none;
 }
 
-.list-check > li {
+.list-check>li {
     position: relative;
     padding-left: 24px;
     margin-bottom: 7px;
 }
 
-.list-check > li::before {
+.list-check>li::before {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     font-size: 12px;
@@ -3564,7 +3576,7 @@ body.offcanvas-active {
     align-items: center;
 }
 
-.main-header .nav-item > a {
+.main-header .nav-item>a {
     color: #6c757d;
     display: block;
     text-decoration: none;
@@ -3572,7 +3584,7 @@ body.offcanvas-active {
     padding: 0 10px;
 }
 
-.main-header .nav-item > a .badge {
+.main-header .nav-item>a .badge {
     position: absolute;
     right: 2px;
     top: -5px;
@@ -3652,7 +3664,7 @@ body.aside-mini .navbar-aside .aside-top {
     text-align: center;
 }
 
-body.aside-mini .navbar-aside .aside-top > div {
+body.aside-mini .navbar-aside .aside-top>div {
     flex-grow: 1;
 }
 
@@ -3789,7 +3801,7 @@ footer.main-footer {
     border-bottom: 1px solid #2f3446;
 }
 
-.dark .main-header .nav-item > a {
+.dark .main-header .nav-item>a {
     color: #fff;
 }
 
@@ -3926,7 +3938,7 @@ footer.main-footer {
     background-color: rgba(88, 151, 251, 0.075);
 }
 
-.dark .table-hover > tbody > tr:hover {
+.dark .table-hover>tbody>tr:hover {
     --bs-table-accent-bg: rgba(88, 151, 251, 0.075);
     --bs-table-bg-state: rgba(88, 151, 251, 0.075);
     color: var(--bs-table-hover-color);
@@ -3993,7 +4005,7 @@ footer.main-footer {
     color: #fff;
 }
 
-.dark .table > :not(caption) > * > * {
+.dark .table> :not(caption)>*>* {
     padding: 0.5rem 0.5rem;
     color: #b6bbcc;
     background-color: transparent;
@@ -4008,6 +4020,7 @@ footer.main-footer {
 }
 
 @media (max-width: 1200px) {
+
     /* tablet devices */
     .main-wrap {
         margin-left: 220px;
@@ -4019,6 +4032,7 @@ footer.main-footer {
 }
 
 @media (max-width: 992px) {
+
     /* small tablet devices */
     .itemlist .col-price {
         text-align: right;
@@ -4034,6 +4048,7 @@ footer.main-footer {
 }
 
 @media all and (max-width: 768px) {
+
     /* mobile devices */
     .mobile-block {
         display: block !important;
