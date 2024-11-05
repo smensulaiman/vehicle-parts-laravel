@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\DataTables\PartNameDataTable;
 use App\Helper\ApiResponseBuilder;
 use App\Http\Controllers\Controller;
 use Exception;
@@ -22,12 +23,12 @@ class CartController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(PartNameDataTable $dataTable)
     {
         $cartContent = Cart::content();
         $totalPrice = Cart::subtotal();
 
-        return view('admin.cart.create', compact('cartContent', 'totalPrice'));
+        return $dataTable->render('admin.cart.create', compact('cartContent', 'totalPrice'));
     }
 
     /**

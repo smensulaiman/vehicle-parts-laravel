@@ -168,38 +168,38 @@
                                         </thead>
 
                                         <tbody class="text-center">
-                                            @foreach ($cartContent as $cartItem)
-                                                <tr class="border-bottom">
-                                                    <td scope="row">
-                                                        <a href="#" class="fw-bold">#{{ $loop->index + 1 }}</a>
-                                                    </td>
-                                                    <td>
-                                                        <img style="height:4rem; width:4rem; object-fit: contain;"
-                                                            src="{{ asset('/assets/imgs/car-parts/tier.jpg') }}"
-                                                            alt="{{ $cartItem->name }}" class="img-fluid">
-                                                    </td>
-                                                    <td class="text-start">
-                                                        <p>{{ $cartItem->name }}</p>
-                                                        <p>¥{{ $cartItem->price }}</p>
-                                                    </td>
-                                                    <td>
-                                                        <div class="input-group d-flex justify-content-center">
-                                                            <a href="#" class="btn btn-light btn-sm fw-bold">-</a>
-                                                            <input type="number" class="form-control text-center"
-                                                                value="{{ $cartItem->qty }}" style="width: 1rem;">
-                                                            <a href="#" class="btn btn-light btn-sm fw-bold">+</a>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-end">
-                                                        <p>¥{{ $cartItem->price }}</p>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-instagram rounded font-sm">
-                                                            <i class="fas fa-trash"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
+                                        @foreach($cartContent as $cartItem)
+                                            <tr class="border-bottom">
+                                                <td scope="row">
+                                                    <a href="#" class="fw-bold">#{{ $loop->index + 1 }}</a>
+                                                </td>
+                                                <td>
+                                                    <img style="height:4rem; width:4rem; object-fit: contain;"
+                                                         src="{{ asset('/assets/imgs/car-parts/tier.jpg') }}"
+                                                         alt="{{ $cartItem->name }}"
+                                                         class="img-fluid">
+                                                </td>
+                                                <td class="text-start">
+                                                    <p>{{ $cartItem->name }}</p>
+                                                    <p>¥{{ $cartItem->price }}</p>
+                                                </td>
+                                                <td>
+                                                    <div class="input-group d-flex justify-content-center">
+                                                        <a href="#" class="btn btn-light btn-sm fw-bold">-</a>
+                                                        <input type="number" class="form-control text-center" value="{{ $cartItem->qty }}" style="width: 1rem;">
+                                                        <a href="#" class="btn btn-light btn-sm fw-bold">+</a>
+                                                    </div>
+                                                </td>
+                                                <td class="text-end">
+                                                    <p>¥{{ $cartItem->price * $cartItem->qty }}</p>
+                                                </td>
+                                                <td>
+                                                    <a href="#" class="btn btn-instagram rounded font-sm">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>
