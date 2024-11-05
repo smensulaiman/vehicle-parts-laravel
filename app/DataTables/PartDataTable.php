@@ -80,8 +80,8 @@ class PartDataTable extends DataTable
         return [
             Column::make('id')->className('font-weight-bold text-center'),
             Column::make('part_name')->title('Part Name')->className('text-start'),
-            Column::make('make')->className('text-start'),
-            Column::make('model')->className('text-start'),
+            Column::make('make')->className('text-start uppercase'),
+            Column::make('model')->className('text-start capitalize'),
             Column::make('year')->className('text-center'),
             Column::computed('action')
                 ->exportable(false)

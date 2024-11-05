@@ -17,7 +17,7 @@
                                     <input
                                         type="text"
                                         name="booking-id"
-                                        class="form-control border w-25"
+                                        class="form-control border w-50"
                                         value="{{ request('booking-id', old('booking-id')) }}"
                                         placeholder="Enter Booking ID"
                                     />
