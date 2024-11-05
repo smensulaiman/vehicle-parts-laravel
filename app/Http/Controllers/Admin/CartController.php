@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\DataTables\PartDataTable;
 use App\DataTables\PartNameDataTable;
 use App\Helper\ApiResponseBuilder;
 use App\Http\Controllers\Controller;
@@ -25,7 +26,7 @@ class CartController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(PartDataTable $dataTable)
     {
 
         $makers = Vehicle::select(['make_id', 'make_title'])->orderBy('make_title')->distinct()->get();
@@ -34,7 +35,7 @@ class CartController extends Controller
         $cartContent = Cart::content();
         $totalPrice = Cart::subtotal();
 
-        return view('admin.cart.create', compact('makers', 'partNames', 'cartContent', 'totalPrice'));
+        return $dataTable->render('admin.cart.create', compact('makers', 'partNames', 'cartContent', 'totalPrice'));
     }
 
     /**
