@@ -70,8 +70,23 @@
                                             </span>
                                             <span class="ms-2">Items List</span>
                                         </h4>
+
+
                                     </header>
                                     <div class="table-responsive pt-3">
+                                        <div class="py-2">
+                                            <form action="" method="GET">
+                                                @csrf
+                                                <div class="d-flex justify-content-end gap-2">
+                                                    <input type="text" name="booking-id" class="form-control border w-25"
+                                                        value="{{ request('booking-id', old('booking-id')) }}"
+                                                        placeholder="Search" />
+                                                    <button type="submit" class="btn btn-md rounded font-sm hover-up">
+                                                        <i class="fas fa-search"></i>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
                                         <table class="table table-hover">
                                             <thead class="table-light">
                                                 <tr class="text-center">
