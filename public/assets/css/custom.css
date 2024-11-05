@@ -87,24 +87,32 @@ input[type=number] {
 ::-webkit-scrollbar {
     width: 6px;
     height: 5px;
-  }
+}
 
-  ::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
     background: rgb(255, 255, 255);
     border-radius: 8px;
-  }
+}
 
-  ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     background-image: linear-gradient(45deg, #29A56C, rgb(255, 255, 255));
     border-radius: 5px;
-  }
+}
 
-  ::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(45deg, rgb(255, 255, 255), #29A56C);
     border-radius: 8px;
-  }
+}
 
-  ::-webkit-scrollbar-thumb:active {
+::-webkit-scrollbar-thumb:active {
     background: linear-gradient(45deg, rgb(255, 255, 255), #29A56C);
     border-radius: 8px;
-  }
+}
+
+/* cart page select option css */
+
+#make option, #part option, #model option {
+    padding: .25rem;
+    font-size: 12px;
+    text-transform: capitalize;
+}
