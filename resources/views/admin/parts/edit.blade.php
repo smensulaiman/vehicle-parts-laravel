@@ -75,9 +75,12 @@
                                                            value="{{ $part->price }}"/>
                                                 </td>
                                                 <td>
-                                                    <a href="#" class="text-success add-to-cart"
-                                                       onclick="addToCart({{ $part->id }}, {{ $part->quantity }})">Add
-                                                        to cart</a>
+                                                    <a href="#"
+                                                       class="text-success add-to-cart"
+                                                       data-id="{{ $part->partName->id }}"
+                                                       data-name="{{ $part->partName->name }}"
+                                                       data-quantity="{{ $part->quantity }}"
+                                                       data-price="{{ $part->price }}">Add to cart</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -99,9 +102,11 @@
 @endsection
 
 @push('scripts')
+    <script defer src="https://cdn.jsdelivr.net/npm/@flasher/flasher@1.2.4/dist/flasher.min.js"></script>
     <script>
-        function addToCart(partId, quantity) {
-            console.log(partId + ' ' + quantity);
-        }
+        const cartStoreUrl = '{{ route('admin.cart.store') }}';
+        const csrfToken = '{{ csrf_token() }}';
     </script>
+    <script defer src="{{ asset('assets/js/cart.js') }}"></script>
 @endpush
+

@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helper\ApiResponseBuilder;
 use App\Http\Controllers\Controller;
+use Exception;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -20,15 +24,40 @@ class CartController extends Controller
      */
     public function create()
     {
-        return view('admin.cart.create');
+        $cartContent = Cart::content();
+        //dd($cartContent);
+        return view('admin.cart.create', compact('cartContent'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
-        //
+        $validated = $request->validate([
+            'id' => 'required|string',
+            'name' => 'required|string',
+            'quantity' => 'required|integer|min:1',
+            'price' => 'required|numeric|min:0',
+        ]);
+
+        try {
+            Cart::add($validated['id'], $validated['name'], $validated['quantity'], $validated['price']);
+
+            return ApiResponseBuilder::success(
+                $validated['name'] . ' added to cart successfully!',
+                null,
+                200
+            );
+
+        } catch (Exception $e) {
+
+            return ApiResponseBuilder::error(
+                'Failed to add product to cart. Please try again later.',
+                ['error' => $e->getMessage()],
+                500
+            );
+        }
     }
 
     /**
@@ -52,7 +81,12 @@ class CartController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        //$request->validate([
+        //            'qty' => 'required|integer|min:1',
+        //        ]);
         //
+        //        Cart::update($rowId, $request->qty);
+        //        return redirect()->route('cart.index')->with('success', 'Cart updated!')
     }
 
     /**
@@ -60,6 +94,23 @@ class CartController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Cart::remove($id);
+        return redirect()->route('cart.index')->with('success', 'Item removed from cart!');
+    }
+
+    public function clear()
+    {
+        Cart::destroy();
+        return redirect()->route('cart.index')->with('success', 'Cart cleared!');
+    }
+
+    public function search(Request $request)
+    {
+        $searchTerm = $request->get('query');
+        $cartContent = Cart::content()->filter(function ($item) use ($searchTerm) {
+            return stripos($item->name, $searchTerm) !== false;
+        });
+
+        return view('cart.index', compact('cartContent', 'searchTerm'));
     }
 }
