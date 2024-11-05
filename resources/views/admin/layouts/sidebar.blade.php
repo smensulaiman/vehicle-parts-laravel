@@ -45,13 +45,13 @@
 {{--                    <a class="{{ setActive(array('admin.part.index')) }}" href="{{ route('admin.part.index') }}">All Parts</a>--}}
 {{--                </div>--}}
 {{--            </li>--}}
-            <li class="menu-item has-submenu">
+            <li class="menu-item has-submenu {{ setActive(array('admin.cart.*')) }}">
                 <a class="menu-link" href="#">
                     <i class="icon material-icons md-shopping_cart"></i>
                     <span class="text">POS</span>
                 </a>
                 <div class="submenu">
-                    <a href="{{ route('admin.cart.create') }}">Cart</a>
+                    <a class="{{ setActive(array('admin.cart.create')) }}" href="{{ route('admin.cart.create') }}">Cart</a>
                     <a href="page-orders-2.html">Order list 2</a>
                     <a href="page-orders-detail.html">Order detail</a>
                 </div>

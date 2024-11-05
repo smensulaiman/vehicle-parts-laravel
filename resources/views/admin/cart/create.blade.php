@@ -184,7 +184,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="text-end">
-                                                    <p>¥{{ $cartItem->price }}</p>
+                                                    <p>¥{{ $cartItem->price * $cartItem->qty }}</p>
                                                 </td>
                                                 <td>
                                                     <a href="#" class="btn btn-instagram rounded font-sm">
