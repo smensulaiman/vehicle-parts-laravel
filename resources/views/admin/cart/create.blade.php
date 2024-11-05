@@ -67,7 +67,7 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <div class="table-responsive">
-                                    {{$dataTable->table()}}
+                                    {{ $dataTable->table() }}
                                 </div>
                             </div>
                         </div>
@@ -157,6 +157,11 @@
                                                 <i class="fas fa-shopping-cart"></i>
                                                 <span class="ms-2">CHECKOUT</span>
                                             </button>
+                                            <button
+                                                class="btn btn-instagram rounded font-sm text-center d-flex align-items-center justify-content-center fw-bold mt-2">
+                                                <i class="fas fa-sync-alt"></i>
+                                                <span class="ms-2">RESET ALL</span>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -170,7 +175,6 @@
 @endsection
 
 @push('scripts')
-
     {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
 
     <script>
@@ -182,9 +186,11 @@
 
             function fetchModels(makes) {
                 $.ajax({
-                    url: '{{ route("admin.vehicle.models") }}',
+                    url: '{{ route('admin.vehicle.models') }}',
                     method: 'GET',
-                    data: { makes },
+                    data: {
+                        makes
+                    },
                     success: handleModelResponse,
                     error: handleModelError
                 });
