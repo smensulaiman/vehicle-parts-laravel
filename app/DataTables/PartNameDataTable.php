@@ -62,15 +62,15 @@ class PartNameDataTable extends DataTable
     public function getColumns(): array
     {
         return [
+            Column::make('id'),
+            Column::make('name')->title('Part Name'),
+            Column::make('make')->title('Make'),
+            Column::make('model')->title('Model'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
                   ->width(60)
-                  ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+                  ->addClass('text-center')
         ];
     }
 

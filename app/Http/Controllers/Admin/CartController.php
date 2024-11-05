@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\DataTables\PartNameDataTable;
 use App\Helper\ApiResponseBuilder;
 use App\Http\Controllers\Controller;
+use App\Models\PartName;
 use Exception;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\JsonResponse;
@@ -23,12 +24,15 @@ class CartController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(PartNameDataTable $dataTable)
+    public function create()
     {
+
+        $partNames = PartName::all();
+
         $cartContent = Cart::content();
         $totalPrice = Cart::subtotal();
 
-        return $dataTable->render('admin.cart.create', compact('cartContent', 'totalPrice'));
+        return view('admin.cart.create', compact('partNames', 'cartContent', 'totalPrice'));
     }
 
     /**

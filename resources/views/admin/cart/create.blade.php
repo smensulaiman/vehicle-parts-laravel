@@ -47,7 +47,7 @@
                                     </div>
                                     <div class="col-lg-12 pt-2">
                                         <label for="make" class="pb-1 ps-1 fw-bold text-primary">
-                                            <span>Model Grade</span>
+                                            <span>Part Name</span>
                                         </label>
                                         <select class="form-select p-2" multiple aria-label="multiple select example"
                                                 name="make" id="make" style="height: 7rem;overflow-y: scroll;">
