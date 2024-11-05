@@ -15,7 +15,8 @@
                                             <label for="make" class="pb-1 ps-1 fw-bold text-primary">Make</label>
                                             <select class="form-select p-2" multiple aria-label="multiple select example"
                                                 name="make" id="make" style="height: 20rem; overflow-y: auto;">
-                                                <option class="p-1" disabled>Select Make</option>
+                                                <option style="font-size: 12px;font-weight:700; text-transform: capitalize" class="p-1"
+                                                    disabled>Select Make</option>
 
                                                 @foreach ($makers as $make)
                                                     <option style="font-size: 12px; text-transform: capitalize"
@@ -29,8 +30,8 @@
                                             <label for="make" class="pb-1 ps-1 fw-bold text-primary">Model</label>
                                             <select class="form-select p-2" multiple aria-label="multiple select example"
                                                 name="make" id="make" style="height: 20rem;overflow-y: scroll;">
-                                                <option style="font-size: 12px; text-transform: capitalize" class="p-1"
-                                                    value="">Select Menu</option>
+                                                <option style="font-size: 12px;font-weight:700; text-transform: capitalize"
+                                                    class="p-1" value="">Select Menu</option>
                                                 <option style="font-size: 12px; text-transform: capitalize" class="p-1"
                                                     value="1">One</option>
                                                 <option style="font-size: 12px; text-transform: capitalize" class="p-1"
@@ -43,7 +44,8 @@
                                             <label for="make" class="pb-1 ps-1 fw-bold text-primary">Part Name</label>
                                             <select class="form-select p-2" multiple aria-label="multiple select example"
                                                 name="make" id="make" style="height: 20rem;overflow-y: scroll;">
-                                                <option class="p-1" disabled>Select Menu</option>
+                                                <option style="font-size: 12px; font-weight:700; text-transform: capitalize"
+                                                    class="p-1" disabled>Select Part</option>
                                                 @foreach ($partNames as $partName)
                                                     <option style="font-size: 12px; text-transform: capitalize"
                                                         class="p-1" value="{{ $partName->id }}">
@@ -156,7 +158,19 @@
                                 </header>
                                 <!-- Cart Content -->
                                 <div class="table-responsive pt-3">
-
+                                    <div class="py-2">
+                                        <form action="" method="GET">
+                                            @csrf
+                                            <div class="d-flex justify-content-end gap-2">
+                                                <input type="text" name="booking-id" class="form-control border w-25"
+                                                    value="{{ request('booking-id', old('booking-id')) }}"
+                                                    placeholder="Search" />
+                                                <button type="submit" class="btn btn-md rounded font-sm hover-up">
+                                                    <i class="fas fa-search"></i>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
                                     <table class="table">
                                         <thead class="table-light">
                                             <tr class="border-bottom text-center">
