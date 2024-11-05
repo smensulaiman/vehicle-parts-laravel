@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Vehicle;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class VehicleController extends Controller
@@ -63,5 +64,21 @@ class VehicleController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function getModels(Request $request): JsonResponse
+    {
+        $request->validate([
+            'makes' => 'array',
+            'makes.*' => 'string',
+        ]);
+
+        $models = Vehicle::whereIn('make_id', $request->makes)
+            ->select(['model_id', 'model_title'])
+            ->distinct()
+            ->orderBy('model_title')
+            ->get();
+
+        return response()->json(['models' => $models]);
     }
 }
