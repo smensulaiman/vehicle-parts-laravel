@@ -16,7 +16,7 @@
                 </a>
             </li>
             <li class="menu-item has-submenu {{ setActive(array('admin.shipment.*')) }}">
-                <a class="menu-link" href="page-products-list.html">
+                <a class="menu-link" href="#">
                     <i class="icon material-icons md-directions_boat"></i>
                     <span class="text">Shipment</span>
                 </a>
@@ -25,26 +25,25 @@
                     <a class="{{ setActive(array('admin.shipment.index')) }}" href="{{ route('admin.shipment.index') }}">All Shipments</a>
                 </div>
             </li>
-            <li class="menu-item has-submenu {{ setActive(array('admin.vehicle.*', 'admin.part-category.*')) }}">
+            <li class="menu-item has-submenu {{ setActive(array('admin.vehicle.*')) }}">
                 <a class="menu-link" href="#">
                     <i class="icon material-icons md-local_shipping"></i>
                     <span class="text">Vehicle</span>
                 </a>
                 <div class="submenu">
-                    <a class="{{ setActive(array('admin.vehicle.index')) }}" href="{{ route('admin.vehicle.index') }}">Vehicles</a>
+                    <a class="{{ setActive(array('admin.vehicle.index')) }}" href="{{ route('admin.vehicle.index') }}">All Vehicles</a>
+                </div>
+            </li>
+            <li class="menu-item has-submenu {{ setActive(array('admin.part-category.*')) }}">
+                <a class="menu-link" href="#">
+                    <i class="icon material-icons md-qr_code"></i>
+                    <span class="text">Parts</span>
+                </a>
+                <div class="submenu">
+                    <a href="#">All Parts</a>
                     <a class="{{ setActive(array('admin.part-category.index')) }}" href="{{ route('admin.part-category.index') }}">Parts Category</a>
                 </div>
             </li>
-{{--            <li class="menu-item has-submenu {{ setActive(array('admin.part.*')) }}">--}}
-{{--                <a class="menu-link" href="page-products-list.html">--}}
-{{--                    <i class="icon material-icons md-qr_code"></i>--}}
-{{--                    <span class="text">Part</span>--}}
-{{--                </a>--}}
-{{--                <div class="submenu">--}}
-{{--                    <a class="{{ setActive(array('admin.part.create')) }}" href="{{ route('admin.part.create') }}">Add Part</a>--}}
-{{--                    <a class="{{ setActive(array('admin.part.index')) }}" href="{{ route('admin.part.index') }}">All Parts</a>--}}
-{{--                </div>--}}
-{{--            </li>--}}
             <li class="menu-item has-submenu {{ setActive(array('admin.cart.*')) }}">
                 <a class="menu-link" href="#">
                     <i class="icon material-icons md-shopping_cart"></i>
@@ -52,8 +51,6 @@
                 </a>
                 <div class="submenu">
                     <a class="{{ setActive(array('admin.cart.create')) }}" href="{{ route('admin.cart.create') }}">Cart</a>
-                    <a href="page-orders-2.html">Order list 2</a>
-                    <a href="page-orders-detail.html">Order detail</a>
                 </div>
             </li>
             <li class="menu-item">

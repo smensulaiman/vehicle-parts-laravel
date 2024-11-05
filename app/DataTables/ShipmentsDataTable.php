@@ -96,7 +96,6 @@ class ShipmentsDataTable extends DataTable
                     'info' => !$disablePagination
                 ]
             )
-            //->dom('Bfrtip')
             ->orderBy(0)
             ->selectStyleSingle()
             ->buttons([
