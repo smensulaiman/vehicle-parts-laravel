@@ -28,7 +28,7 @@ class CartController extends Controller
     public function create()
     {
 
-        $makers = Vehicle::select('make_title')->orderBy('make_title')->distinct()->get();
+        $makers = Vehicle::select(['make_id', 'make_title'])->orderBy('make_title')->distinct()->get();
         $partNames = PartName::all();
 
         $cartContent = Cart::content();

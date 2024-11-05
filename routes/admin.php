@@ -19,6 +19,7 @@ Route::get('dashboard', [AdminDashboardController::class, 'dashboard'])
 Route::resource('shipment', ShipmentController::class);
 
 /* Vehicle */
+Route::get('/vehicle/models', [VehicleController::class, 'getModels'])->name('vehicle.models');
 Route::resource('vehicle', VehicleController::class);
 
 /* Part */
