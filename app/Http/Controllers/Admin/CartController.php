@@ -6,6 +6,7 @@ use App\DataTables\PartDataTable;
 use App\DataTables\PartNameDataTable;
 use App\Helper\ApiResponseBuilder;
 use App\Http\Controllers\Controller;
+use App\Models\Part;
 use App\Models\PartName;
 use App\Models\Vehicle;
 use Exception;
