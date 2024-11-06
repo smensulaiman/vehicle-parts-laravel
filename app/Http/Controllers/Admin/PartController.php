@@ -4,11 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Part;
-use App\Models\PartName;
 use App\Utils\CarBrandUtils;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Yajra\DataTables\DataTables;
 
 class PartController extends Controller
 {
@@ -68,29 +65,6 @@ class PartController extends Controller
     {
         $parts = Part::where('vehicle_id', $vehicleId)->get();
         return view('admin.parts.print', compact('parts'));
-    }
-
-    public function getFilteredParts(Request $request): JsonResponse
-    {
-        $query = Part::query();
-
-        if ($makes = $request->get('make')) {
-            $query->whereIn('make_id', $makes);
-        }
-
-        if ($models = $request->get('model')) {
-            $query->whereIn('model_id', $models);
-        }
-
-        if ($parts = $request->get('part')) {
-            $query->whereIn('part_name_id', $parts);
-        }
-
-        return DataTables::of($query)
-            ->addColumn('action', function ($part) {
-                return '<button class="btn btn-sm btn-danger">Delete</button>';
-            })
-            ->make(true);
     }
 
     /**

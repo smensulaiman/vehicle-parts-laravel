@@ -167,7 +167,7 @@
 @push('scripts')
     <script>
         $(document).ready(function () {
-            var table = $('#part-table').DataTable({
+            const table = $('#part-table').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: {

@@ -23,7 +23,6 @@ Route::get('/vehicle/models', [VehicleController::class, 'getModels'])->name('ve
 Route::resource('vehicle', VehicleController::class);
 
 /* Part */
-Route::get('/part/filter', [PartController::class, 'getFilteredParts'])->name('part.filter');
 Route::get('part/print/{vehicleId}', [PartController::class, 'print'])->name('part.print');
 Route::resource('part', PartController::class);
 
