@@ -31,11 +31,9 @@ class PartDataTable extends DataTable
             ->filterColumn('model', function ($query, $keyword) {
                 $query->whereRaw('LOWER(vehicles.model_title) LIKE ?', ["%{$keyword}%"]);
             })
-            ->filterColumn('year', function ($query, $keyword) {
-                $query->whereRaw('LOWER(vehicles.veh_year) LIKE ?', ["%{$keyword}%"]);
+            ->addColumn('action', function ($query) {
+                return '<a href="#"><i class="icon material-icons md-add_shopping_cart text-primary p-1"></i></a>';
             })
-            ->setRowId('id')
-            ->addColumn('action', 'part.action')
             ->rawColumns(['action']);
     }
 
@@ -44,10 +42,28 @@ class PartDataTable extends DataTable
      */
     public function query(Part $model): QueryBuilder
     {
+        $selectColumns = [
+            'ROW_NUMBER() OVER (ORDER BY part_names.name, vehicles.make_title) AS serial_number',
+            'vehicles.model_id as model_id',
+            'SUM(parts.quantity) as total_quantity',
+            'parts.price as unit_price',
+            'part_names.name as part_name',
+            'vehicles.make_title as make',
+            'vehicles.model_title as model'
+        ];
+
         return $model->newQuery()
-            ->select('parts.*', 'part_names.name as part_name', 'vehicles.make_title as make', 'vehicles.model_title as model', 'vehicles.veh_year as year')
+            ->selectRaw(implode(', ', $selectColumns))
             ->join('part_names', 'parts.part_name_id', '=', 'part_names.id')
-            ->join('vehicles', 'parts.vehicle_id', '=', 'vehicles.id');
+            ->join('vehicles', 'parts.vehicle_id', '=', 'vehicles.id')
+            ->groupBy(
+                'vehicles.make_id',
+                'vehicles.model_id',
+                'vehicles.make_title',
+                'vehicles.model_title',
+                'part_names.name',
+                'parts.price'
+            );
     }
 
     /**
@@ -60,7 +76,7 @@ class PartDataTable extends DataTable
             ->columns($this->getColumns())
             ->minifiedAjax()
             //->dom('Bfrtip')
-            ->orderBy(1)
+            ->orderBy(1, 'DESC')
             ->selectStyleSingle()
             ->buttons([
                 Button::make('excel'),
@@ -78,11 +94,12 @@ class PartDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id')->className('font-weight-bold text-center'),
+            Column::make('serial_number')->title('S/N')->className('font-weight-bold text-center'),
             Column::make('part_name')->title('Part Name')->className('text-start'),
             Column::make('make')->className('text-start uppercase'),
             Column::make('model')->className('text-start capitalize'),
-            Column::make('year')->className('text-center'),
+            Column::make('total_quantity')->className('text-end'),
+            Column::make('unit_price')->className('text-end'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
