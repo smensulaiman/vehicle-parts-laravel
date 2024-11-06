@@ -40,13 +40,6 @@
                                             </select>
                                         </div>
                                     </div>
-
-                                    <div class="d-flex justify-content-end pt-3">
-                                        <a class="btn btn-sm btn-outline-secondary rounded-pill px-4 py-2 me-2 d-flex justify-content-center align-items-center"
-                                           href="#">Reset</a>
-                                        <a class="btn btn-sm btn-primary rounded-pill px-4 py-2 d-flex justify-content-center align-items-center"
-                                           href="javascript:void(0);" id="filter-button">Filter</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -67,7 +60,7 @@
 
             <!-- Checkout Part 2 -->
             <div class="col-xxl-6">
-                <div class="card bg-warning-subtle">
+                <div class="card" style="background-color: rgba(59, 183, 126, 0.2);">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-xxl-12 col-xl-12 col-sm-12">
@@ -132,16 +125,17 @@
 
                                 <!-- Lower Part Of checkout -->
                                 <div class="row px-3 d-flex justify-content-end">
-                                    <div class="col-lg-6">
-                                        <div class="row  border-bottom py-2">
+                                    <div class="col-lg-6 m-0 p-0">
+                                        <div class="row">
                                             <h6 class="col-sm-9 col-8">Subtotal:</h6>
-                                            <p class="col-sm-3 col-4">¥ {{ $totalPrice }}</p>
+                                            <p class="col-sm-3 col-4 text-end">¥ {{ $totalPrice }}</p>
                                         </div>
-                                        <div class="row py-2">
+                                        <hr class="my-2 bg-black" style="height: 2px;">
+                                        <div class="row">
                                             <h6 class="col-sm-9 col-8">Total:</h6>
-                                            <p class="col-sm-3 col-4">¥ {{ $totalPrice }}</p>
+                                            <h4 class="col-sm-3 col-4 text-end text-black text-nowrap">¥{{ $totalPrice }}</h4>
                                         </div>
-                                        <div class="row py-2">
+                                        <div class="row p-2">
                                             <button
                                                 class="btn btn-md rounded font-sm text-center d-flex align-items-center justify-content-center fw-bold">
                                                 <i class="fas fa-shopping-cart"></i>
@@ -191,7 +185,7 @@
                         searchable: false
                     },
                     {
-                        data: 'unit_price',
+                        data: 'unit_avg_price',
                         searchable: false
                     },
                     {

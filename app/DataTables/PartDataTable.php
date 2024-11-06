@@ -23,11 +23,12 @@ class PartDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            // Apply filtering only on actual columns, not 'serial_number'
             ->filterColumn('part_name', fn($query, $keyword) => $query->whereRaw('LOWER(part_names.name) LIKE ?', ["%{$keyword}%"]))
             ->filterColumn('make', fn($query, $keyword) => $query->whereRaw('LOWER(vehicles.make_title) LIKE ?', ["%{$keyword}%"]))
             ->filterColumn('model', fn($query, $keyword) => $query->whereRaw('LOWER(vehicles.model_title) LIKE ?', ["%{$keyword}%"]))
-            ->addColumn('action', fn($query) => '<a href="#"><i class="icon material-icons md-add_shopping_cart text-primary p-1"></i></a>')
+            ->addColumn('action', function ($query) {
+                return '<a href="#"><i class="icon material-icons md-add_shopping_cart text-primary p-2" style="font-size: 16px"></i></a>';
+            })
             ->rawColumns(['action']);
     }
 
@@ -39,18 +40,16 @@ class PartDataTable extends DataTable
      */
     public function query(Part $model): QueryBuilder
     {
-        // Select columns for the data
         $selectColumns = [
             'ROW_NUMBER() OVER (ORDER BY part_names.name, vehicles.make_title) AS serial_number',
             'vehicles.model_id as model_id',
             'SUM(parts.quantity) as total_quantity',
-            'parts.price as unit_price',
+            'ROUND(AVG(parts.price)) as unit_avg_price',
             'part_names.name as part_name',
             'vehicles.make_title as make',
             'vehicles.model_title as model'
         ];
 
-        // Base query
         $query = $model->newQuery()
             ->selectRaw(implode(', ', $selectColumns))
             ->join('part_names', 'parts.part_name_id', '=', 'part_names.id')
@@ -64,7 +63,6 @@ class PartDataTable extends DataTable
                 'parts.price'
             );
 
-        // Apply filtering from request
         $this->applyFilters($query);
 
         return $query;
@@ -99,6 +97,7 @@ class PartDataTable extends DataTable
     {
         return $this->builder()
             ->setTableId('part-table')
+            ->addTableClass('table-striped border-muted border-1')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->orderBy(1, 'DESC')
@@ -122,6 +121,7 @@ class PartDataTable extends DataTable
     {
         return [
             Column::make('serial_number')
+                ->width(40)
                 ->title('S/N')
                 ->className('font-weight-bold text-center')
                 ->searchable(false),
@@ -133,9 +133,11 @@ class PartDataTable extends DataTable
             Column::make('model')
                 ->className('text-start capitalize'),
             Column::make('total_quantity')
+                ->title('Qty')
                 ->className('text-end')
                 ->searchable(false),
-            Column::make('unit_price')
+            Column::make('unit_avg_price')
+                ->title('Avg Price')
                 ->className('text-end')
                 ->searchable(false),
             Column::computed('action')

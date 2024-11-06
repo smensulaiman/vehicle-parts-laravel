@@ -122,3 +122,15 @@ input[type=number] {
 .dt-search input {
     width: 300px !important;
 }
+
+/* part-table */
+
+#part-table {
+    table-layout: fixed;
+}
+
+#part-table td {
+    padding-block: 0;
+    padding-inline: 1rem;
+    font-size: 12px;
+}
