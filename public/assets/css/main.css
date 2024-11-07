@@ -249,6 +249,10 @@ table .form-check {
     color: #3BB77E !important;
 }
 
+.text-primary-dark {
+    color: #248055 !important;
+}
+
 .bg-primary-light {
     background-color: rgba(59, 183, 126, 0.2) !important;
 }

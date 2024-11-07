@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Part;
 use App\Utils\CarBrandUtils;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class PartController extends Controller
@@ -21,7 +22,7 @@ class PartController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
         return view('admin.parts.edit');
     }
@@ -46,7 +47,7 @@ class PartController extends Controller
      * Show the form for editing the specified resource.
      * @throws FileNotFoundException
      */
-    public function edit(string $id)
+    public function edit(string $id): View
     {
         $carBrandUtils = new CarBrandUtils();
         $parts = Part::where('vehicle_id', $id)->get();
@@ -64,7 +65,7 @@ class PartController extends Controller
         //
     }
 
-    public function print($vehicleId)
+    public function print($vehicleId): View
     {
         $parts = Part::where('vehicle_id', $vehicleId)->get();
         return view('admin.parts.print', compact('parts'));

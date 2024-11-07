@@ -133,6 +133,12 @@ class ShipmentController extends Controller
         //
     }
 
+    public function handleReceiveRequest(string $id): View
+    {
+        $shipment = Shipment::find($id);
+        return view('admin.shipment.receive-request', compact('shipment'));
+    }
+
     /**
      * Remove the specified resource from storage.
      */

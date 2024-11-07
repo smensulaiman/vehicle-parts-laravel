@@ -4,7 +4,7 @@
 
     <section class="content-main">
         <div class="content-header">
-            <h2 class="content-title">Import Shipment</h2>
+            <h4 class="content-title">Import Shipment</h4>
         </div>
         <div class="row">
             <div class="col-xxl-8 col-lg-12">

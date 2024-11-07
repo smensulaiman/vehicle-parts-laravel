@@ -55,7 +55,8 @@ class ShipmentsDataTable extends DataTable
                 return '<span class="font-bold">' . Carbon::parse($query->updated_at)->format('Y/m/d') . '</span>';
             })
             ->addColumn('action', function ($query) {
-                return '<a class="btn btn-primary btn-xs" href="' . route('admin.shipment.show', $query->id) . '">View</a>';
+                return '<a class="btn btn-warning btn-sm" href="' . route('admin.shipment.receive.request', $query->id) . '" style="font-size: 12px">Receive</a>';
+                //return '<a class="btn btn-warning btn-sm" href="' . route('admin.shipment.show', $query->id) . '" style="font-size: 12px">Receive</a>';
             })
             ->rawColumns(['departure', 'provider', 'shipping_port', 'destination_port', 'status', 'total_purchase', 'created_at', 'updated_at', 'action']);
     }

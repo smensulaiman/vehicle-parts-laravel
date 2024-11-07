@@ -109,6 +109,10 @@ input[type=number] {
     border-radius: 8px;
 }
 
+button.btn {
+    text-align: center !important;
+}
+
 /* cart page select option css */
 
 #make option, #part option, #model option {
@@ -125,12 +129,14 @@ input[type=number] {
 
 /* part-table */
 
-#part-table {
+#part-table, .vehicle-table {
     table-layout: fixed;
+    white-space: nowrap;
 }
 
-#part-table td {
-    padding-block: 0;
+#part-table td, .vehicle-table td {
+    padding-block: .25rem;
     padding-inline: 1rem;
-    font-size: 12px;
+    font-size: 13px;
+    border: 1px solid #dfdbdb;
 }

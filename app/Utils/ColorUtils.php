@@ -9,7 +9,7 @@ class ColorUtils
     public static array $badgeClasses = [
         ShipmentStatus::PENDING->value => 'badge-soft-warning',
         ShipmentStatus::IN_TRANSIT->value => 'badge-soft-info',
-        ShipmentStatus::DELIVERED->value => 'badge-soft-success',
+        ShipmentStatus::RECEIVED->value => 'badge-soft-success',
         ShipmentStatus::CANCELLED->value => 'badge-soft-danger',
     ];
 }

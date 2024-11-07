@@ -16,6 +16,7 @@ Route::get('dashboard', [AdminDashboardController::class, 'dashboard'])
     ->name('dashboard');
 
 /* Shipment */
+Route::get('shipment/receive-request/{id}', [ShipmentController::class, 'handleReceiveRequest'])->name('shipment.receive.request');
 Route::resource('shipment', ShipmentController::class);
 
 /* Vehicle */
