@@ -6,7 +6,6 @@ use App\Models\Vehicle;
 
 class VehicleService
 {
-
     public function storeVehiclesFromShipment($shipmentId, $vehicleData): Vehicle
     {
         $vehicle = new Vehicle();

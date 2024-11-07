@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Part;
 use App\Utils\CarBrandUtils;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Http\Request;
 
 class PartController extends Controller
@@ -43,13 +44,15 @@ class PartController extends Controller
 
     /**
      * Show the form for editing the specified resource.
+     * @throws FileNotFoundException
      */
     public function edit(string $id)
     {
         $carBrandUtils = new CarBrandUtils();
-
         $parts = Part::where('vehicle_id', $id)->get();
+
         $brandLogo = $carBrandUtils->getCarThumbnail(strtolower($parts->first()->vehicle->make_title));
+
         return view('admin.parts.edit', compact(['parts', 'brandLogo']));
     }
 
