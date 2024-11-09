@@ -2,7 +2,9 @@
 
 @section('content')
     <section class="content-main p-4">
-        {{-- Filtering part --}}
+        <div class="content-header">
+            <h4 class="content-title">POS</h4>
+        </div>
         <div class="row">
             <div class="col-xxl-6">
                 <div class="col-12">
@@ -65,6 +67,7 @@
                         <div class="row">
                             <div class="col-xxl-12 col-xl-12 col-sm-12">
                                 <header>
+                                    <input type="text">
                                     <h4 class="d-flex align-items-center justify-content-center">
                                         <span>
                                             <i class="fas fa-shopping-cart"></i>
@@ -85,7 +88,6 @@
                                             <th scope="col">Action</th>
                                         </tr>
                                         </thead>
-
                                         <tbody class="text-center">
                                         @foreach ($cartContent as $cartItem)
                                             <tr class="border-bottom">
@@ -133,7 +135,8 @@
                                         <hr class="my-2 bg-black" style="height: 2px;">
                                         <div class="row">
                                             <h6 class="col-sm-9 col-8">Total:</h6>
-                                            <h4 class="col-sm-3 col-4 text-end text-black text-nowrap">¥{{ $totalPrice }}</h4>
+                                            <h4 class="col-sm-3 col-4 text-end text-black text-nowrap">
+                                                ¥{{ $totalPrice }}</h4>
                                         </div>
                                         <div class="row p-2">
                                             <button
@@ -156,6 +159,16 @@
             </div>
         </div>
     </section>
+
+    @component('admin.components.parts-modal', [
+    'id' => 'partsModal',
+    'title' => 'Parts List',
+    'size' => 'modal-lg',
+    'actionLabel' => 'Save Changes'
+    ])
+        <div id="modalContent"></div>
+    @endcomponent
+
 @endsection
 
 @push('scripts')

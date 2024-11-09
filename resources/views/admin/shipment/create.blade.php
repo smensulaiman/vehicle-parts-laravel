@@ -7,7 +7,7 @@
             <h4 class="content-title">Import Shipment</h4>
         </div>
         <div class="row">
-            <div class="col-xxl-8 col-lg-12">
+            <div class="col-xxl-10 col-lg-12">
                 <div class="card px-0">
                     <div class="card-header bg-white">
                         <div class="col-xl-6 col-lg-9 col-md-12 ms-auto">
@@ -26,7 +26,6 @@
                                     </button>
                                 </div>
                             </form>
-
                         </div>
                     </div>
                     <div class="card-body">
@@ -50,7 +49,6 @@
                                             </thead>
                                             <tbody>
                                             @if(optional($shippingData)->data)
-
                                                 @foreach($shippingData->data as $key => $val)
                                                     <tr>
                                                         <td class="text-center">{{++$key}}</td>
@@ -72,7 +70,6 @@
                                             </tbody>
                                         </table>
                                     </div>
-
                                 </div>
                                 <aside class="col-lg-4">
                                     <div class="box bg-light px-4">
@@ -105,12 +102,9 @@
                         @else
                             <p class="text-center">Please enter a booking id and click search to fetch data.</p>
                         @endif
-
                     </div>
                 </div>
             </div>
         </div>
-        <!-- row end// -->
     </section>
-
 @endsection
