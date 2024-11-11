@@ -24,6 +24,7 @@ Route::get('/vehicle/models', [VehicleController::class, 'getModels'])->name('ve
 Route::resource('vehicle', VehicleController::class);
 
 /* Part */
+Route::get('part/by-group', [PartController::class, 'getPartsByGroup'])->name('part.group');
 Route::get('part/print/{vehicleId}', [PartController::class, 'print'])->name('part.print');
 Route::resource('part', PartController::class);
 

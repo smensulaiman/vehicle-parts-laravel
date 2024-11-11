@@ -166,12 +166,66 @@
     'size' => 'modal-lg',
     'actionLabel' => 'Save Changes'
     ])
-        <div id="modalContent"></div>
+        <div class="modal-body">
+            <table class="table" id="partsTable">
+                <thead>
+                <tr>
+                    <th>Make ID</th>
+                    <th>Model ID</th>
+                    <th>Part Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+                </thead>
+                <tbody id="partsTableBody">
+
+                </tbody>
+            </table>
+        </div>
     @endcomponent
 
 @endsection
 
 @push('scripts')
+
+    <script>
+        $('#partsModal').on('show.bs.modal', function(event) {
+            let button = $(event.relatedTarget);
+            let makeId = button.data('make_id');
+            let modelId = button.data('model_id');
+            let partName = button.data('part_name');
+
+            $('#partsTableBody').empty();
+
+            $.ajax({
+                url: "{{ route('admin.part.group') }}",
+                method: 'GET',
+                data: {
+                    make_id: makeId,
+                    model_id: modelId,
+                    part_name: partName
+                },
+                success: function(response) {
+                    response.data.forEach(function(item) {
+                        $('#partsTableBody').append(`
+                    <tr>
+                        <td>${item.make_id}</td>
+                        <td>${item.model_id}</td>
+                        <td>${item.part_name}</td>
+                        <td>${item.quantity}</td>
+                        <td>${item.price}</td>
+                    </tr>
+                `);
+                    });
+                },
+                error: function(xhr) {
+                    console.error("Error fetching parts data:", xhr.responseJSON?.message || "Unknown error");
+                }
+            });
+        });
+
+    </script>
+
     <script>
         $(document).ready(function () {
             const table = $('#part-table').DataTable({

@@ -40,10 +40,10 @@ class PartDataTable extends DataTable
                         class="open-modal"
                         data-bs-toggle="modal"
                         data-bs-target="#partsModal"
-                        data-part_name="' . $query->part_name . '"
                         data-make_id="' . $query->make_id . '"
-                        data-model_id="' . $query->model_id . '">
-                        <i class="icon material-icons md-add_shopping_cart text-primary p-2" style="font-size: 16px"></i>
+                        data-model_id="' . $query->model_id . '"
+                        data-part_name="' . $query->part_name . '">
+                        view
                     </a>';
             })
             ->rawColumns(['part_name', 'make', 'action']);
@@ -59,6 +59,7 @@ class PartDataTable extends DataTable
     {
         $selectColumns = [
             'ROW_NUMBER() OVER (ORDER BY part_names.name, vehicles.make_title) AS serial_number',
+            'vehicles.make_id as make_id',
             'vehicles.model_id as model_id',
             'SUM(parts.quantity) as total_quantity',
             'ROUND(AVG(parts.price)) as unit_avg_price',
