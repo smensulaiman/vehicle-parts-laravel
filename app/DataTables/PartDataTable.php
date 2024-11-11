@@ -14,8 +14,6 @@ use Yajra\DataTables\Services\DataTable;
 
 class PartDataTable extends DataTable
 {
-    //protected $carBrand
-
     /**
      * Build the DataTable class.
      *
@@ -24,9 +22,6 @@ class PartDataTable extends DataTable
      */
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
-
-
-
         return (new EloquentDataTable($query))
             ->addColumn('part_name', function ($query) {
                 return '<a class="text-black px-2 fw-bold rounded-2" href="#" style="font-size: 11px; padding-block: 2px">' . $query->part_name . '</a>';
@@ -41,7 +36,15 @@ class PartDataTable extends DataTable
             ->filterColumn('make', fn($query, $keyword) => $query->whereRaw('LOWER(vehicles.make_title) LIKE ?', ["%{$keyword}%"]))
             ->filterColumn('model', fn($query, $keyword) => $query->whereRaw('LOWER(vehicles.model_title) LIKE ?', ["%{$keyword}%"]))
             ->addColumn('action', function ($query) {
-                return '<a href="#"><i class="icon material-icons md-add_shopping_cart text-primary p-2" style="font-size: 16px"></i></a>';
+                return '<a href="#"
+                        class="open-modal"
+                        data-bs-toggle="modal"
+                        data-bs-target="#partsModal"
+                        data-part_name="' . $query->part_name . '"
+                        data-make_id="' . $query->make_id . '"
+                        data-model_id="' . $query->model_id . '">
+                        <i class="icon material-icons md-add_shopping_cart text-primary p-2" style="font-size: 16px"></i>
+                    </a>';
             })
             ->rawColumns(['part_name', 'make', 'action']);
     }
