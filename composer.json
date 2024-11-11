@@ -25,7 +25,8 @@
         "nunomaduro/collision": "^8.0",
         "pelmered/fake-car": "^2.1",
         "pestphp/pest": "^3.2",
-        "pestphp/pest-plugin-laravel": "^3.0"
+        "pestphp/pest-plugin-laravel": "^3.0",
+        "recca0120/laravel-erd": "0.1"
     },
     "autoload": {
         "psr-4": {

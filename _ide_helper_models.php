@@ -16,6 +16,24 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property string $name e.g, cutting cost, shipping cost
+ * @property int $active 0: not active, 1: active
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Shipment> $shipments
+ * @property-read int|null $shipments_count
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Cost newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Cost newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Cost query()
+ */
+	class Cost extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property int $vehicle_id
  * @property int $part_name_id
  * @property string|null $barcode
@@ -88,9 +106,12 @@ namespace App\Models{
  * @property string|null $term
  * @property string|null $shipping_port
  * @property string|null $invoice_customer
+ * @property string|null $exchange_rate
  * @property string|null $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Cost> $costs
+ * @property-read int|null $costs_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Vehicle> $vehicles
  * @property-read int|null $vehicles_count
  * @method static \Database\Factories\ShipmentFactory factory($count = null, $state = [])

@@ -103,6 +103,4 @@
 
     </section>
 
-{{--    @dd($shipment)--}}
-
 @endsection
