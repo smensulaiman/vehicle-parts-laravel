@@ -94,8 +94,11 @@ class PartController extends Controller
 
             $data = $parts->map(function ($part) {
                 return [
+                    'part_id' => $part->id,
                     'make_id' => $part->vehicle->make_id ?? '',
+                    'make_title' => $part->vehicle->make_title ?? '',
                     'model_id' => $part->vehicle->model_id ?? '',
+                    'model_title' => $part->vehicle->model_title ?? '',
                     'part_name' => $part->partName->name ?? '',
                     'quantity' => $part->quantity ?? 0,
                     'price' => $part->price ?? 0.0,

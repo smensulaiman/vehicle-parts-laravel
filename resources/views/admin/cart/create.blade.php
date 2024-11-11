@@ -160,12 +160,7 @@
         </div>
     </section>
 
-    @component('admin.components.parts-modal', [
-    'id' => 'partsModal',
-    'title' => 'Parts List',
-    'size' => 'modal-lg',
-    'actionLabel' => 'Save Changes'
-    ])
+    @component('admin.components.parts-modal', ['id' => 'partsModal', 'title' => 'Parts List', 'size' => 'modal-lg', 'actionLabel' => 'Save Changes'])
         <div class="modal-body">
             <table class="table" id="partsTable">
                 <thead>
@@ -175,6 +170,7 @@
                     <th>Part Name</th>
                     <th>Quantity</th>
                     <th>Price</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody id="partsTableBody">
@@ -188,107 +184,124 @@
 
 @push('scripts')
 
+    <script defer src="https://cdn.jsdelivr.net/npm/@flasher/flasher@1.2.4/dist/flasher.min.js"></script>
+
+    <!-- Constants -->
     <script>
-        $('#partsModal').on('show.bs.modal', function(event) {
-            let button = $(event.relatedTarget);
-            let makeId = button.data('make_id');
-            let modelId = button.data('model_id');
-            let partName = button.data('part_name');
+        const cartStoreUrl = '{{ route('admin.cart.store') }}';
+        const csrfToken = '{{ csrf_token() }}';
+    </script>
+
+    <!-- Custom Scripts -->
+    <script defer src="{{ asset('assets/js/part-modal-cart.js') }}"></script>
+
+    <!-- Modal Show Event and Data Fetching -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            $('#partsModal').on('show.bs.modal', handleModalShow);
+            setupDataTable();
+        });
+
+        function handleModalShow(event) {
+            const button = $(event.relatedTarget);
+            const makeId = button.data('make_id');
+            const modelId = button.data('model_id');
+            const partName = button.data('part_name');
 
             $('#partsTableBody').empty();
+            fetchPartsData(makeId, modelId, partName);
+        }
 
+        function fetchPartsData(makeId, modelId, partName) {
             $.ajax({
                 url: "{{ route('admin.part.group') }}",
                 method: 'GET',
-                data: {
-                    make_id: makeId,
-                    model_id: modelId,
-                    part_name: partName
-                },
-                success: function(response) {
-                    response.data.forEach(function(item) {
-                        $('#partsTableBody').append(`
-                    <tr>
-                        <td>${item.make_id}</td>
-                        <td>${item.model_id}</td>
-                        <td>${item.part_name}</td>
-                        <td>${item.quantity}</td>
-                        <td>${item.price}</td>
-                    </tr>
-                `);
-                    });
-                },
-                error: function(xhr) {
+                data: {make_id: makeId, model_id: modelId, part_name: partName},
+                success: populatePartsTable,
+                error: function (xhr) {
                     console.error("Error fetching parts data:", xhr.responseJSON?.message || "Unknown error");
                 }
             });
-        });
+        }
 
+        function populatePartsTable(response) {
+            response.data.forEach(item => {
+                $('#partsTableBody').append(`
+                    <tr>
+                        <td>${item.make_title}</td>
+                        <td>${item.model_title}</td>
+                        <td>${item.part_name}</td>
+                        <td>${item.quantity}</td>
+                        <td>${item.price}</td>
+                        <td>
+                            <a href="#" class="text-success add-to-cart"
+                               data-id="${item.part_id}"
+                               data-name="${item.part_name}"
+                               data-quantity="${item.quantity}"
+                               data-price="${item.price}">Add to cart</a>
+                        </td>
+                    </tr>
+                `);
+            });
+        }
     </script>
 
+    <!-- DataTable Initialization and Filters -->
     <script>
-        $(document).ready(function () {
+        function setupDataTable() {
             const table = $('#part-table').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: {
                     url: '{{ route('admin.cart.create') }}',
-                    data: function (d) {
-                        d.make = $('#make').val();
-                        d.model = $('#model').val();
-                        d.part = $('#part').val();
-                    }
+                    data: fetchDataFilters
                 },
                 columns: [
-                    {
-                        data: 'serial_number',
-                        searchable: false
-                    },
+                    {data: 'serial_number', searchable: false},
                     {data: 'part_name'},
                     {data: 'make'},
                     {data: 'model'},
-                    {
-                        data: 'total_quantity',
-                        searchable: false
-                    },
-                    {
-                        data: 'unit_avg_price',
-                        searchable: false
-                    },
-                    {
-                        data: 'action',
-                        searchable: false
-                    }
+                    {data: 'total_quantity', searchable: false},
+                    {data: 'unit_avg_price', searchable: false},
+                    {data: 'action', searchable: false}
                 ]
             });
 
-            $('#make, #model, #part').on('change', function () {
-                table.ajax.reload();
-            });
+            $('#make, #model, #part').on('change', () => table.ajax.reload());
+            $('#make').on('change', updateModelOptions);
+        }
 
-            $('#make').on('change', function () {
-                let selectedMakes = $(this).val();
-                fetchModels(selectedMakes);
-            });
+        function fetchDataFilters(d) {
+            d.make = $('#make').val();
+            d.model = $('#model').val();
+            d.part = $('#part').val();
+        }
 
-            function fetchModels(makes) {
-                $.ajax({
-                    url: '{{ route('admin.vehicle.models') }}',
-                    method: 'GET',
-                    data: {makes: makes},
-                    success: function (data) {
-                        $('#model').empty();
-                        $('#model').append(new Option('Select Model', '', false, false));
-                        data.models.forEach(function (model) {
-                            $('#model').append(new Option(model.model_title, model.model_id));
-                        });
-                    },
-                    error: function (xhr) {
-                        console.error('Error fetching models:', xhr);
-                    }
-                });
-            }
-        });
+        function updateModelOptions() {
+            const selectedMakes = $('#make').val();
+            fetchModels(selectedMakes);
+        }
+
+        function fetchModels(makes) {
+            $.ajax({
+                url: '{{ route('admin.vehicle.models') }}',
+                method: 'GET',
+                data: {makes: makes},
+                success: populateModelOptions,
+                error: function (xhr) {
+                    console.error('Error fetching models:', xhr);
+                }
+            });
+        }
+
+        function populateModelOptions(data) {
+            const modelDropdown = $('#model');
+            modelDropdown.empty();
+            modelDropdown.append(new Option('Select Model', '', false, false));
+            data.models.forEach(model => {
+                modelDropdown.append(new Option(model.model_title, model.model_id));
+            });
+        }
     </script>
 
 @endpush
